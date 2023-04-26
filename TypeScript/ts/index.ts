@@ -45,7 +45,11 @@
 // something2.age;
 
 //------union -------
-// |
+// let myVariable: string | number;
+// myVariable = "hello"; // OK
+// myVariable = 42; // OK
+// myVariable = true; // Error: Type 'boolean' is not assignable to type 'string | number'.
+
 
 //-------as--------------
 // function getLength(strOrArr: string | string[]) : number {
@@ -59,6 +63,11 @@
 // console.log(getLength(['hello', 'world', 'hi']));
 
 // -enum
+// it is a type to represent a group of constants
+
+// enum vs object
+// 1. enum are not iteratble 
+// 2. enums can not add or remove values once they are defined
 
 // -decorator
 const printMemberName = (target: any, memberName: string) => {
