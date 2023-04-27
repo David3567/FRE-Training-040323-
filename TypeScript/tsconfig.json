@@ -5,7 +5,11 @@
       "removeComments": true,
       "preserveConstEnums": true,
       "outFile": "./js/index.js",
-      "sourceMap": true
+      "experimentalDecorators": true,
+      "sourceMap": true,
+      "emitDecoratorMetadata": true,
+      "target": "ES5"
+      
     },
     "include": ["./ts/index.ts"],
     "exclude": ["node_modules", "**/*.spec.ts"]

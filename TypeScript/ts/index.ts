@@ -62,6 +62,14 @@
 
 // console.log(getLength(['hello', 'world', 'hi']));
 
+
+// function printObject(obj: unknown) {
+//   const user = obj as { name: string; age: number };
+//   console.log(`Name: ${user.name}, Age: ${user.age}`);
+// }
+
+// printObject({ name: "John", age: 30 }); // Output: "Name: John, Age: 30"
+
 // -enum
 // it is a type to represent a group of constants
 
@@ -70,11 +78,52 @@
 // 2. enums can not add or remove values once they are defined
 
 // -decorator
-const printMemberName = (target: any, memberName: string) => {
-  console.log(memberName);
-};
+// function enumerable (target: any, propertyKey: string, descriptor: TypedPropertyDescriptor<any>): any {
+//     descriptor.value = function(...args: any[]) {
+//       console.log(...args);
+//     }
+//     return descriptor;
+// }
 
-class Person {
-  @printMemberName
-  name: string = "Jon";
+// class Greeter {
+//   // greeting: string;
+//   // constructor(message: string) {
+//   //   this.greeting = message;
+//   // }
+ 
+//   @enumerable
+//   greet(num: number) {}
+// }
+
+// const g = new Greeter();
+// g.greet(12);
+
+
+function enumerable(value: boolean) {
+  return function (target: any, propertyKey: string, descriptor: TypedPropertyDescriptor<any>) {
+    const org = descriptor.value;
+
+    descriptor.value = function(...args: any[]) {
+      
+      return org.apply(this, args);
+    }
+
+    return descriptor;
+  };
 }
+
+class Greeter {
+  greeting: string;
+  constructor(message: string) {
+    this.greeting = message;
+  }
+ 
+  @enumerable(true)
+  greet() {
+    return "Hello, " + this.greeting;
+  }
+}
+const g = new Greeter('world');
+console.log(g.greet());
+
+
