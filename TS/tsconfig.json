@@ -6,7 +6,10 @@
 		"preserveConstEnums": true,
 		"outFile": "javascript/index.js",
 		"experimentalDecorators": true,
-		"sourceMap": true
+		"sourceMap": true,
+
+		"emitDecoratorMetadata": true,
+		"target": "ES5"
 	},
 	"include": ["typescript/index.ts"],
 	"exclude": ["node_modules", "**/*.spec.ts"]
