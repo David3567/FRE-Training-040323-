@@ -4,26 +4,26 @@ import { Directive, ElementRef, HostBinding, HostListener, Input } from '@angula
   selector: '[appColor]'
 })
 export class ColorDirective {
-  color!: string;
   @Input() colorpass!: string;
   @Input() defaultColor = '';
 
   @HostListener('mouseenter')
   onMouserEnter() {
-    this.highlight(this.colorpass || this.defaultColor || 'red');
+    this.highlighting(this.colorpass || this.defaultColor || 'red');
   }
 
   @HostListener('mouseleave')
   onMouserLeave() {
-    this.highlight('');
+    this.highlighting('');
   }
 
-  // @HostBinding('disabled') disable: boolean = true;
+  @HostBinding('disabled') disable: boolean = true;
   @HostBinding('style.border') border: string = "5px solid blue";
 
   constructor(private ele: ElementRef) { }
 
-  highlight(color: string) {
+
+  highlighting(color: string) {
     this.ele.nativeElement.style.backgroundColor = color;
   }
 

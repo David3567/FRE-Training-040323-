@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class CustompipeComponent implements OnInit {
   Fahrenheit!: number;
   celcius!: number;
-  str: string = "abcsdfsdfdsffdsfdsfdsfdfsdfdsfds";
+  str: string = "this is a long paragraph, so we use pipe to make it bit shorter.";
 
   constructor() { }
 

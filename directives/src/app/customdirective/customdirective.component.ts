@@ -6,7 +6,7 @@ import { Component, ElementRef, HostListener, Input, OnInit } from '@angular/cor
   styleUrls: ['./customdirective.component.css']
 })
 export class CustomdirectiveComponent implements OnInit {
-  
+
   color!: string;
   constructor() { }
 

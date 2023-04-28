@@ -19,7 +19,6 @@ export class PipesComponent implements OnInit, OnDestroy {
   // arr = [{a: 1}, {b: 2}]
   // todos: any;
   // subscription!: Subscription;
-  // todos$: any;
   todos$: any;
 
   constructor(private http: HttpClient) { }

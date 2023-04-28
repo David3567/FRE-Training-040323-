@@ -12,6 +12,8 @@ import { NgfortrackbyComponent } from './ngfortrackby/ngfortrackby.component';
 import { CustomdirectiveComponent } from './customdirective/customdirective.component';
 import { ColorDirective } from './customdirective/color.directive';
 import { NewcolorDirective } from './customdirective/newcolor.directive';
+import { TtClassDirective } from './customdirective/tt-class.directive';
+
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { NewcolorDirective } from './customdirective/newcolor.directive';
     NgfortrackbyComponent,
     CustomdirectiveComponent,
     ColorDirective,
-    NewcolorDirective
+    NewcolorDirective,
+    TtClassDirective,
+
   ],
   imports: [
     BrowserModule,

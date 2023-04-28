@@ -9,6 +9,7 @@ import { CustompipeComponent } from './custompipe/custompipe.component';
 import { ConvertPipe } from './custompipe/convert.pipe';
 import { FormsModule } from '@angular/forms';
 import { CumstomPipePipe } from './custompipe/cumstom-pipe.pipe';
+import { ShortPipe } from './custompipe/short.pipe';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { CumstomPipePipe } from './custompipe/cumstom-pipe.pipe';
     PipesComponent,
     CustompipeComponent,
     ConvertPipe,
-    CumstomPipePipe
+    CumstomPipePipe,
+    ShortPipe
   ],
   imports: [
     BrowserModule,
