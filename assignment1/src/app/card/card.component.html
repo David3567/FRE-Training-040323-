@@ -1,0 +1,11 @@
+<div [class.card]="showColor" class="card-container">
+  <h1>{{ title }}</h1>
+  <p>{{ content }}</p>
+  <button
+    class="button"
+    [style.background-color]="color"
+    (click)="selectCard()"
+  >
+    Select
+  </button>
+</div>
