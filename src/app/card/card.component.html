@@ -1,0 +1,17 @@
+<!-- <p>card works!</p> -->
+<div class="cardContainer">
+    <div class="card" *ngFor="let card of cards" [ngStyle]="{
+        'border': card.title === cardTitle ? borderStyle : '',
+        'border-color': card.title === cardTitle ? cardColor : 'black',
+        'box-shadow':
+          card.title === cardTitle ? '10px 10px 10px ' + cardColor : 'None'
+      }">
+        <div class="card-title">{{card.title}}</div>
+        <div class="card-content">{{card.content}}</div>
+        <div class="card-footer">
+            <button [ngStyle]="{'background-color': card.color}" (click)="changeColor(card.color, card.title)">
+                {{ card.button }}
+            </button>
+        </div>
+    </div>
+</div>
