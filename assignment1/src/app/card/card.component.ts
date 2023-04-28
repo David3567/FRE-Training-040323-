@@ -10,15 +10,16 @@ export class CardComponent implements OnInit {
   @Input() title: string = '';
   @Input() content: string = '';
   @Input() color: string = '';
+  @Input() nowColor: string = '';
   @Output() selectedColor = new EventEmitter<string>();
   constructor() {}
-  showColor: boolean = false;
+  selected: boolean = false;
   ngOnInit(): void {}
   // applyColor() {
   //   this.showColor = true;
   // }
   selectCard() {
-    this.showColor = true;
+    this.selected = true;
     this.selectedColor.emit(this.color);
   }
 }

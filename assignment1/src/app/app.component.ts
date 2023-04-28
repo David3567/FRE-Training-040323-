@@ -12,6 +12,7 @@ export class AppComponent implements OnInit {
   title = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.';
   cardList: Card[] = [];
   selectedColor!: string;
+  selectedCard!: Card;
   ngOnInit() {
     this.cardList = [
       {
@@ -43,4 +44,5 @@ export class AppComponent implements OnInit {
   onColorChanged(data: string) {
     this.selectedColor = data;
   }
+  
 }

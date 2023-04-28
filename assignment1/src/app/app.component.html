@@ -1,14 +1,14 @@
-
 <div class="container">
   <h1 [style.color]="selectedColor">
-  {{ title }}
-</h1>
+    {{ title }}
+  </h1>
   <div *ngFor="let card of cardList" class="card-container">
     <app-card
       [title]="card.title"
       [content]="card.content"
       [color]="card.color"
       (selectedColor)="onColorChanged($event)"
+      [nowColor]="selectedColor"
     >
     </app-card>
   </div>
