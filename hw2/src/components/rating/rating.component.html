@@ -1,0 +1,8 @@
+<div>
+  <span *ngFor="let star of [1, 2, 3, 4, 5]">
+    <span *ngIf="star <= ratingObj.rate">{{ FilledSymbol }}</span>
+    <span *ngIf="star > ratingObj.rate">{{ EmptySymbol }}</span>
+  </span>
+</div>
+<h3>{{ ratingObj.name }}</h3>
+<p>{{ ratingObj.content }}</p>
