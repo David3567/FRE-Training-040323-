@@ -1,0 +1,13 @@
+<body>
+    <div *ngFor="let num of array" class="rating-container">
+        <div class="eachBox">
+            <div class="star-container">
+                <div *ngFor="let count of [1, 2, 3, 4, 5]">
+                    <div class="star" [ngClass]="count <= num.rate? 'yellow' : 'white'"></div>
+                </div>
+            </div>
+            <div class="name">{{num.name}}</div>
+            <div class="content">{{num.content}}</div>
+        </div>
+    </div>
+</body>

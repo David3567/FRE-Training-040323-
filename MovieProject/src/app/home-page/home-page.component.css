@@ -1,0 +1,142 @@
+html {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: rgb(14,13,26);
+}
+
+
+.TopBar {
+    width: 100vw;
+    height: 30%;
+    max-height: 300px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    align-content: space-between;
+    justify-content: flex-start;
+    gap: 70vw;
+    margin: auto;
+}
+
+.TopBarDivider {
+    display: flex;
+    gap: 20px;
+}
+
+.Logo {
+    width : 10%;
+    height : 10%;
+    margin-left: 40px;
+}
+
+#dropList {
+    width : 200px;
+    height : 60px;
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    background-color: black;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.signinButton {
+    width: 120px;
+    height: 60px;
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    background-color: red;
+    border-radius: 10px;
+}
+
+.Top-Container {
+    padding-top: 200px;
+    padding-bottom: 200px;
+    margin: auto;
+    width : 80vw;
+    height: auto;
+    position: center;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    font-style: bold;
+    color: white;
+    gap: 30px;
+    background-image: url("../../assets/Marvel.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 20px;
+    margin-bottom: 20px;
+}
+
+.Top-TextContainer { margin-left: 100px; }
+.Top-Text1 { font-size: 100px; }
+.Top-Text2 { margin-top: 30px; font-size: 50px; }
+.Top-Text3 { margin-top: 30px;font-size: 35px; }
+
+.Top-Email {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+}
+
+.Top-EmailForm {
+    margin-left: 100px;
+    width: 400px;
+    height: 80px;
+    font-size: 30px;
+    box-sizing: border-box;
+    border-radius: 10px;
+    background-color: rgb(37, 35, 32);
+    color: white;
+    text-align: center;
+}
+.Top-EmailButton {
+    font-size: 30px;
+    width: 300px;
+    height: 80px;
+    border-radius: 10px;
+    background-color: red;
+    color: white;
+}
+
+.Middle-Container {
+    margin: auto;
+    width : 80vw;
+    height: auto;
+    position: center;
+    background-color: rgb(14, 10, 46);
+    border-radius: 20px;
+}
+
+.Middle-Block {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    padding: 200px;
+    align-items: center;
+}
+.Middle-TextContainer { 
+    display: flex; 
+    width: 1000px; 
+    color: white; 
+    font-style: bold;
+    gap: 20px; 
+    flex-direction: column;
+}
+.Middle-BigText { font-size: 60px; } 
+.Middle-SmallText { font-size: 40px; }
+.Middle-Image { width: 20vw; }
+.Middle-Line { border-top: 10px solid #bbb; width: 80%; }
+
+.Bottom-Container {
+    height: 200px;
+}

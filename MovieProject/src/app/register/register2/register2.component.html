@@ -1,0 +1,42 @@
+<body>
+    <div class="Top-Bar">
+        <div class="Top-Bar-Elements">
+            <button class="Logo-Button" [routerLink]="['/homepage']">
+                <img class="Logo" src="../../assets/Logo_Fake.png" />
+            </button>
+            <button class="signinButton" [routerLink]="['/signin']">Sign In</button>
+        </div>
+    </div>
+    <hr>
+    <div class="intro-container">
+        <p class="step">STEP 1 OF 3</p>
+        <p class="topText">Choose the plan that’s right for you</p>
+        <p class="midText">Watch all you want.</p>
+        <p class="midText">Recommendations just for you.</p>
+        <p class="midText">Change or cancel your plan anytime.</p>
+    </div>
+
+    <div class="plan-container">
+        <div class="button-display">
+            <button class="plan-button" (click)="redIt(1)">Standard with ads</button>
+            <button class="plan-button" (click)="redIt(2)">Standard</button>
+            <button class="plan-button" (click)="redIt(3)">Premium</button>
+        </div>
+        <div class="info-row" *ngFor="let text of plans">
+            <div class="text-display">
+                <p class="text">{{text.info[0]}}</p>
+                <p class="col1" [ngClass]="text.red == true? 'red' : 'black'">{{text.info[1]}}</p>
+                <p class="col2" [ngClass]="text.red == true? 'red' : 'black'">{{text.info[2]}}</p>
+                <p class="col3" [ngClass]="text.red == true? 'red' : 'black'">{{text.info[3]}}</p>
+            </div>
+            <div class="line-display">
+                <hr class="line">
+            </div>
+        </div>
+        <button class="NextButton" type="submit" [routerLink]="['/register2']">Next</button>
+    </div>
+
+    <div class="help-container">
+    </div>
+
+</body>

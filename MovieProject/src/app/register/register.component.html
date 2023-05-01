@@ -1,0 +1,23 @@
+<body>
+    <div class="Top-Bar">
+        <div class="Top-Bar-Elements">
+            <button class="Logo-Button" [routerLink]="['/homepage']">
+                <img class="Logo" src="../../assets/Logo_Fake.png" />
+            </button>
+            <button class="signinButton" [routerLink]="['/signin']">Sign In</button>
+        </div>
+    </div>
+    <hr>
+    <div class="user-container">
+        <p class="step">STEP 1 OF 3</p>
+        <p class="topText">Create a password to start your membership</p>
+        <p class="midText">Just a few more steps and you're done!</p>
+        <p class="midText">We hate paperwork, too.</p>
+        <form><input class="Form-Style" id="form1" type="text" placeholder="Email"></form>
+        <form><input class="Form-Style" id="form2" type="text" placeholder="Add a Password"></form>
+        <button class="NextButton" type="submit" [routerLink]="['/register2']">Next</button>
+    </div>
+
+    <div class="help-container"></div>
+
+</body>
