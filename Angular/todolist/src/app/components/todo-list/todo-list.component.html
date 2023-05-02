@@ -1,6 +1,6 @@
-<section class="todolist">
+<!-- <section class="todolist">
   <header class="todolist__header">todo list</header>
-  <input class="todolist__input" />
+  <input class="todolist__input" #inputbox [(ngModel)]="inputval" />
   <ul id="todolist_container">
     <app-todo-item
       *ngFor="let todo of todolist$ | async"
@@ -8,7 +8,7 @@
       (emitId)="dt($event)"
     />
   </ul>
-</section>
+</section> -->
 
 <!-- <button disabled></button> -->
 
@@ -28,3 +28,7 @@
 
 <!-- <input class="todolist__input" [(ngModel)]="name" />
 {{ name }} -->
+
+<div>from Todolist: {{ counter }}</div>
+<button (click)="add()">+</button>
+<button>-</button>
