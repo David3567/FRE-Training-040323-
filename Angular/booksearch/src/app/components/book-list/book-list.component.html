@@ -1,0 +1,16 @@
+<div>
+  <main>
+    <div
+      *ngFor="let book of books"
+      style="display: flex"
+      (click)="addToWishList(book.bookname)"
+    >
+      <img [src]="book.bookpickture" alt="" />
+      <div>
+        <p>{{ book.bookname }}</p>
+        <p>{{ book.publisher }}</p>
+        <p>{{ book.publishdate }}</p>
+      </div>
+    </div>
+  </main>
+</div>
