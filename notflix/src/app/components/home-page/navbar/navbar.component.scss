@@ -1,0 +1,16 @@
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+}
+
+.navbar__logo {
+  padding-top: .5rem;
+  fill: red;
+  height: 40px;
+}
+
+.navbar__signIn {
+  text-decoration: none;
+}

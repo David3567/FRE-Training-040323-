@@ -1,0 +1,19 @@
+<div class="content-container">
+  <section class="content-section1">
+    <h2 class="content-section1__h2">Unlimited movies, TV shows, and more</h2>
+    <h4 class="content-section1__h4">Watch anywhere. Cancel anytime.</h4>
+    <p class="content-section1__p">Ready to watch? Enter your email to create or restart your membership</p>
+    <div class="content-section1-form-container">
+        <input type="email" placeholder="Email">
+      <button mat-button extended style="background-color: red; color: white;">
+        Get Started
+        <mat-icon iconPositionEnd>
+          keyboard_arrow_right
+        </mat-icon>
+      </button>
+    </div>
+  </section>
+  <section class="content-section2">
+    <app-content-card *ngFor="let cardData of cardsData" [cardData]="cardData"></app-content-card>
+  </section>
+</div>
