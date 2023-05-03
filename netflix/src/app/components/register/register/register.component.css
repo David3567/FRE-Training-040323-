@@ -6,8 +6,5 @@
 }
 .main {
   height: 100vh;
-  background-image: url("https://miro.medium.com/v2/resize:fit:1400/1*5lyavS59mazOFnb55Z6znQ.png");
-  background-repeat: no-repeat;
-  background-size: cover;
-  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.5);
+  background-color: white;
 }

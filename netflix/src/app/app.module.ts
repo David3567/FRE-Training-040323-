@@ -19,7 +19,10 @@ import { LoginHeaderComponent } from './components/login/login-header/login-head
 import { LoginFormComponent } from './components/login/login-form/login-form.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-
+import { Step1Component } from './components/register/step1/step1.component';
+import { Step2Component } from './components/register/step2/step2.component';
+import { MatIconModule } from '@angular/material/icon';
+import { Step3Component } from './components/register/step3/step3.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,6 +35,9 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     LoginComponent,
     LoginHeaderComponent,
     LoginFormComponent,
+    Step1Component,
+    Step2Component,
+    Step3Component,
   ],
   imports: [
     BrowserModule,
@@ -42,6 +48,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     MatInputModule,
     MatFormFieldModule,
     MatCheckboxModule,
+    MatIconModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
