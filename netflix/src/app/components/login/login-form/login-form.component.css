@@ -1,0 +1,52 @@
+.form-login {
+  position: fixed;
+  top: 35%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.form-display {
+  display: flex;
+  flex-direction: column;
+
+  /* border-radius: 20px; */
+}
+
+form h3 {
+  font-size: 2rem;
+  text-align: center;
+}
+
+.form {
+  color: #fff;
+  width: 350px;
+  border: 1px solid white;
+  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.5);
+  padding: 2em;
+  border-radius: 5px;
+}
+
+.form input {
+  width: 100%;
+}
+
+.input-field {
+  width: 100%;
+}
+
+.btn {
+  width: 100%;
+  height: 50px;
+}
+.checkbox {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1.5rem;
+  align-items: center;
+}
+.checkbox p {
+  margin-top: 10px;
+}
+::ng-deep .mdc-form-field > label {
+  color: white;
+}
