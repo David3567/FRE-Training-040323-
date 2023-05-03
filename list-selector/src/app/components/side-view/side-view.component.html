@@ -1,0 +1,5 @@
+<div class="side-view-container" *ngIf="card !== null">
+  <h2 >{{card.name}}</h2>
+  <p>{{card.description}}</p>
+  <button [ngStyle]="{backgroundColor: card.color}">Save</button>
+</div>

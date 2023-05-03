@@ -1,0 +1,23 @@
+.side-view-container {
+  padding: 2rem 1rem;
+  display: flex;
+  flex-direction: column;
+
+  p {
+    padding: 1rem 0;
+  }
+
+  button {
+    color: white;
+    height: 1.75rem;
+    width: 4.25rem;
+    align-self: flex-end;
+    border-radius: .25rem;
+    border: none;
+
+    &:hover{
+      box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+      cursor: pointer;
+    }
+  }
+}

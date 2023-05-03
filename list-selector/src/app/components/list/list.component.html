@@ -1,0 +1,10 @@
+<h1>List</h1>
+<ul>
+  <li *ngFor="let card of cards; let i = index" class="li-container" (click)="onSelect(i)" [ngClass]="selectedElementIndex === i ? 'selected' : ''">
+    <div class="color" [ngStyle]="{backgroundColor: card.color}"></div>
+    <div class="content-container">
+      <h4>{{card.name}}</h4>
+      <p>{{card.description | ellipsis: 100}}</p>
+    </div>
+  </li>
+</ul>

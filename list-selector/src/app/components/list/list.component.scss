@@ -1,0 +1,51 @@
+h1 {
+  padding: 1rem 1rem;
+  font-size: 2rem;
+}
+
+.li-container {
+  display: flex;
+  border-top: solid .05rem rgb(196, 196, 196);
+
+  .color{
+    flex:1%;
+    max-width: 10px;
+  }
+
+  &:hover {
+    cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  }
+
+  hr{
+    height: .25rem;
+  }
+
+
+}
+
+.selected {
+  background-color: rgb(225, 225, 225);
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+  .color{
+    flex: 2%;
+    max-width: 15px;
+  }
+}
+
+.content-container {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  flex: 99%
+
+  h4 {
+    font-size: 1.25rem;
+    padding-bottom: .25rem;
+  }
+
+  p {
+    font-size: .8rem;
+  }
+}

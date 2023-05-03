@@ -1,0 +1,17 @@
+.container {
+  display: flex;
+
+  app-list {
+    flex: 49.99%
+  }
+
+  .vl {
+    flex: .02%;
+    background-color: rgb(196, 196, 196);
+    height: 100vh;
+  }
+
+  app-side-view {
+    flex: 49.99%
+  }
+}
