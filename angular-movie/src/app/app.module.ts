@@ -1,13 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HomepageComponent } from './components/homepage/homepage.component';
-import { LoginpageComponent } from './components/loginpage/loginpage.component';
-import { RegisterpageComponent } from './components/registerpage/registerpage.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NavbarComponent} from './components/navbar/navbar.component';
+
 
 // angular material
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
@@ -43,7 +39,18 @@ import { MatStepperModule } from '@angular/material/stepper';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatNativeDateModule, MatRippleModule } from '@angular/material/core';
 import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
-
+import { LayoutModule } from '@angular/cdk/layout';
+import { BackgroundComponent } from './components/background/background.component';
+import { ErrorStateMatcher } from '@angular/material/core';
+import { CustomErrorStateMatcher } from 'src/app/custom-error-state-matcher';
+import { HeroComponent } from './components/hero/hero.component';
+import { HomepageComponent } from './components/homepage/homepage.component';
+import { LoginpageComponent } from './components/loginpage/loginpage.component';
+import { RegisterpageComponent } from './components/registerpage/registerpage.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NavbarComponent} from './components/navbar/navbar.component';
+import { PasswordComponent } from './components/password/password.component';
+import { SelectplanComponent } from './components/selectplan/selectplan.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +59,10 @@ import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
     LoginpageComponent,
     RegisterpageComponent,
     NavbarComponent,
+    BackgroundComponent,
+    HeroComponent,
+    PasswordComponent,
+    SelectplanComponent,
 
   ],
   imports: [
@@ -92,8 +103,10 @@ import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
     MatNativeDateModule,
     MatRippleModule,
     MatBottomSheetModule,
+    LayoutModule,
+    ReactiveFormsModule
   ],
-  providers: [],
+  providers: [{ provide: ErrorStateMatcher, useClass: CustomErrorStateMatcher }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

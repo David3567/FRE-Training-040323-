@@ -1,0 +1,29 @@
+:host
+ {
+  width: 100%;
+  height: 400px;
+  color: white;
+ }
+
+ .hero{
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+ }
+ .hero-text{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+ }
+
+h1
+{
+  font-size: 60px;
+}
+
+p{
+  font-size: 20px;
+}

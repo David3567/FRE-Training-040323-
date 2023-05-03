@@ -1,0 +1,82 @@
+
+$color-black-hex-12: #e5e5e5;
+$color-blue-hex: #317ae2;
+
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+  justify-content: center;
+  gap: 20px;
+  align-items: center;
+}
+.pricing {
+  width: 720px;
+  height: 400px;
+  display: flex;
+
+  &__column {
+    position: relative;
+    overflow: hidden;
+    flex: 1 1 100%;
+    margin-left: 16px;
+    box-shadow: 0 0 0 1px $color-black-hex-12;
+    border-radius: 2px;
+    padding: 16px;
+    cursor: pointer;
+    transition: all 0.1s linear;
+    text-align: center;
+    display:flex;
+    align-items: center;
+    flex-direction: column;
+
+    &:first-child {
+      margin-left: 0;
+    }
+
+    &:hover {
+      box-shadow: 0 0 0 1px color($color-blue-hex a(64%));
+    }
+
+    &:active {
+      box-shadow: 0 0 0 1px $color-blue-hex;
+    }
+
+    &.selected {
+      box-shadow: 0 0 0 2px $color-blue-hex;
+    }
+
+    .check {
+      transform: rotate(-45deg);
+      height: 48px;
+      width: 48px;
+      position: absolute;
+      right: -64px;
+      top: -64px;
+      background: $color-blue-hex;
+      opacity: 0;
+      transition: all 0.1s 0.1s linear;
+
+      &.selected {
+        opacity: 1;
+        right: -24px;
+        top: -24px;
+      }
+    }
+  }
+  .button {
+    position: absolute;
+    bottom: 16px;
+    background-color: transparent;
+    color: white;
+  }
+}
+
+.card{
+  box-shadow: rgba(0, 0, 0, 0.178) 0px 5px 15px;
+  background: rgba(255, 255, 255, 0.436);
+	-webkit-backdrop-filter: blur(10px);
+	backdrop-filter: blur(10px);
+}
