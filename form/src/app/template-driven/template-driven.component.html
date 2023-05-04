@@ -5,13 +5,14 @@
     id="firstname" 
     name="firstname"
     placeholder="type your name"
+    #firstname="ngModel"
     ngModel
     required
     minlength="5"/>
   </div>
 
-  <div *ngIf="!contactForm.controls.firstname?.valid && 
-  (contactForm.controls.firstname?.dirty || contactForm.controls.firstname?.touched)">
+  <div *ngIf="!firstname?.valid && 
+  (firstname?.dirty || firstname?.touched)">
   The firstname is invalid
   </div>
   <div *ngIf="contactForm.controls.firstname.errors?.minlength">
