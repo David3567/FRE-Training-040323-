@@ -1,16 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-select-all',
   templateUrl: './select-all.component.html',
-  styleUrls: ['./select-all.component.css']
+  styleUrls: ['./select-all.component.css'],
 })
 export class SelectAllComponent implements OnInit {
 
   form!: FormGroup;
 
-  itemlist = [
+  itemlist: string[] = [
     'Changjinhu (2021)',
     'Dune (2021)',
     'Shang-Chi and the Legend of the Ten Rings (2021)',
@@ -22,11 +22,13 @@ export class SelectAllComponent implements OnInit {
     'Halloween Kills (2021)',
   ];
 
+  selectedValues: string[] = [];
   
-
-  constructor() { }
+  constructor() {}
 
   ngOnInit(): void {
   }
-
+  onSubmit() {
+    console.log(this.form);
+  }
 }
