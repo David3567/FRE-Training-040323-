@@ -1,17 +1,32 @@
 <form #contactForm="ngForm" (ngSubmit)="onSubmit(contactForm)">
-    <div>
-      <label for="name">Name:</label>
-      <input type="text" id="name" name="name" ngModel required minlength="5"/>
-    </div>
-    <div>
-      <label for="email">Email:</label>
-      <input
-        type="email"
-        id="email"
-        name="email"
-        ngModel
-      />
-    </div>
-    <button type="submit" [disabled]="!contactForm.valid">Submit</button>
-  </form>
-  
+  <div>
+    <label for="firstname">Name: </label>
+    <input type="text" 
+    id="firstname" 
+    name="firstname"
+    placeholder="type your name"
+    ngModel
+    required
+    minlength="5"/>
+  </div>
+
+  <div *ngIf="!contactForm.controls.firstname?.valid && 
+  (contactForm.controls.firstname?.dirty || contactForm.controls.firstname?.touched)">
+  The firstname is invalid
+  </div>
+  <div *ngIf="contactForm.controls.firstname.errors?.minlength">
+    The firstname is less than 5
+  </div>
+
+  <div>
+    <label for="email">Email: </label>
+    <input type="text" 
+    id="email" 
+    name="email"
+    placeholder="type your email"
+    email
+    ngModel />
+  </div>
+
+  <button type="submit" >Submit</button>
+</form>

@@ -2,4 +2,9 @@
 
 <!-- <app-template-driven></app-template-driven> -->
 
-<app-reactive></app-reactive>
+<app-reactive 
+[formData]="{name:'Daniel', email:'daniel@hotmail.com'}"
+(emitOnSubmit)="handleOnSubmit($event)" ></app-reactive>
+
+{{ formData.name }}
+{{ formData.email }}

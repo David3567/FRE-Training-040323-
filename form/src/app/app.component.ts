@@ -7,4 +7,13 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'form';
+
+  formData: any = {
+  };
+
+  handleOnSubmit(data: Object) {
+    console.log(data);
+    this.formData = data;
+    console.log(this.formData);
+  }
 }

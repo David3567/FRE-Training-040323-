@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-reactive',
@@ -7,16 +8,46 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ReactiveComponent implements OnInit {
 // Assignment 1
-// Create a component called address-form component and use it in app component
-// Add name, address, zipcode, state, country (4 options: Indian, England, Singapore, and USA), phone, email fields and add a submit button
-// On submit button, send the data back to the app parent component using output() and show it in the UI
+// 1.1Create a component called reactive(addreess-form) component and use it in app component
+// 1.2Add name, email fields and add a submit button
+// 1.3On submit button, send the data back to the app parent component using output() and show it in the UI
 // Assignment 2
-// Pass address data to address-form-componnet using input() and display it in the form
+// Pass the form data to reactive(addreess-form) component using input() and display it in the form
 // Make all the form fields required, and disable submit button if the form is invalid
+  @Output() emitOnSubmit = new EventEmitter<Object>();
+  @Input() formData!: any;
 
-  constructor() { }
+  form!: FormGroup
+
+  constructor(private fb: FormBuilder) { }
+
+  get name() {
+    return this.form.get('name');
+  }
+
+  get email() {
+    return this.form.get('email');
+  }
 
   ngOnInit(): void {
+    this.form = this.fb.group({
+      name: ['', Validators.required],
+      email: ['', Validators.required],
+
+    })
+    // this.form = new FormGroup({
+    //   name: new FormControl(this.formData.name),
+    //   email: new FormControl(this.formData.email),
+    // })
+
+  }
+
+  onSumbit() {
+    this.emitOnSubmit.emit({
+      name: this.form.value.name,
+      email: this.form.value.email
+    });
+    // console.log(this.form.value);
   }
 
 }
