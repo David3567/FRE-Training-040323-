@@ -11,7 +11,6 @@ export class TodoItemComponent {
   @Output() emitId = new EventEmitter();
 
   deleteTodo() {
-    // console.log(this.todo.id);
     this.emitId.emit(this.todo.id);
   }
 }

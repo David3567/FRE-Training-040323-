@@ -1,34 +1,14 @@
-<!-- <section class="todolist">
+<section class="todolist">
   <header class="todolist__header">todo list</header>
-  <input class="todolist__input" #inputbox [(ngModel)]="inputval" />
+  <!-- <input class="todolist__input" #inputbox [(ngModel)]="inputval" /> -->
+  <form [formGroup]="form">
+    <input class="todolist__input" formControlName="inputbox" />
+  </form>
   <ul id="todolist_container">
     <app-todo-item
       *ngFor="let todo of todolist$ | async"
       [item]="todo"
-      (emitId)="dt($event)"
+      (emitId)="deleteTodo($event)"
     />
   </ul>
-</section> -->
-
-<!-- <button disabled></button> -->
-
-<!-- <h1>{{ name }}</h1>
-
-<button
-  [ngStyle]="{
-    'background-color': color,
-    width: '50%',
-    hight: 'auto'
-  }"
-
-  (click)="switchColor()"
->
-  Submit
-</button> -->
-
-<!-- <input class="todolist__input" [(ngModel)]="name" />
-{{ name }} -->
-
-<div>from Todolist: {{ counter }}</div>
-<button (click)="add()">+</button>
-<button>-</button>
+</section>
