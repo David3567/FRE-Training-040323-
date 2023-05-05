@@ -1,0 +1,20 @@
+.book_card {
+    display: flex;
+    width: 100%;
+    
+    .book_info {
+        display: flex;
+        flex-direction: column;
+        padding: 5px;
+    }
+    .book_cover_img {
+        padding: 5px;
+        margin-top: 20px;
+    }
+}
+.book_card:hover {
+    box-shadow: 5px 5px 3px gray;
+    border-radius: 20px;
+    cursor: pointer;
+}
+

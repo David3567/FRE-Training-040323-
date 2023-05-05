@@ -1,0 +1,10 @@
+<div class="search_and_list">
+  <app-search-input></app-search-input>
+
+  <div *ngFor="let book of books">
+    <app-book-card 
+        [book]="book"
+        (click)="addBookToWishList(book)"
+    ></app-book-card>
+  </div>
+</div>

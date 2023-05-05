@@ -1,0 +1,13 @@
+<!-- <input 
+    #getname 
+    (keyup.enter)="getBookName(getname)"
+    class="book_search"
+> -->
+<mat-form-field appearance="fill">
+  <mat-label>Search Book</mat-label>
+  <input
+    matInput
+    [formControl]="searchBook"
+    class="book_search"
+  />
+</mat-form-field>

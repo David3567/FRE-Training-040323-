@@ -1,0 +1,22 @@
+<div class="book_card">
+  <div class="book_cover_img">
+    <img [src]="book.volumeInfo.imageLinks?.thumbnail" />
+  </div>
+  <div class="book_info">
+    <h2>
+      <strong>{{ book.volumeInfo.title }}</strong>
+    </h2>
+    <div *ngIf="book.volumeInfo.authors">
+      <strong>Author: </strong>P{{ book.volumeInfo.authors }}
+    </div>
+    <div *ngIf="book.volumeInfo.publisher">
+      <strong>Publisher: </strong>{{ book.volumeInfo.publisher }}
+    </div>
+    <div *ngIf="book.volumeInfo.publishedDate">
+      <strong>Published Date: </strong>{{ book.volumeInfo.publishedDate }}
+    </div>
+    <p *ngIf="book.volumeInfo.description">
+      <strong>Description: </strong>{{ book.volumeInfo.description }}
+    </p>
+  </div>
+</div>

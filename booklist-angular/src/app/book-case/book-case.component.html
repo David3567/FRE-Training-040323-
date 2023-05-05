@@ -1,0 +1,18 @@
+
+<mat-selection-list [multiple]="false">
+  <mat-list-option>
+    <div class="book_case_title">
+        <mat-icon>book </mat-icon>
+        My Reading Wishlist ({{ readingWishList.length }})
+      </div>
+  </mat-list-option>
+</mat-selection-list>
+
+<mat-selection-list [multiple]="false">
+  <mat-list-option *ngFor="let book of readingWishList">
+    <div class="reading_book_title">
+      <div>{{ book.volumeInfo.title }}</div>
+      <div class="delete_btn" (click)="deleteBookFromReadingList(book)">X</div>
+    </div>
+  </mat-list-option>
+</mat-selection-list>
