@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { Validators, FormBuilder } from '@angular/forms';
+import { Validators, FormBuilder, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-loginpage',
@@ -9,20 +10,21 @@ import { Validators, FormBuilder } from '@angular/forms';
 
 
 export class LoginpageComponent {
+  LoginForm: FormGroup;
   constructor(private formBuilder: FormBuilder,
-    ) { }
-  personForm = this.formBuilder.group({
-    username: ['', Validators.required],
-    password: ['', Validators.required],
-  });
+    private router: Router) {
+
+      this.LoginForm = this.formBuilder.group({
+        username: ['', Validators.required],
+        password: ['', Validators.required],
+      });
+    }
+
   onFormSubmit() {
-    console.log(this.personForm.value);
+    if (this.LoginForm.valid) {
+      this.router.navigate(['/home']);
+    }
   }
-  get username() {
-    return this.personForm.get('username');
-  }
-  get password() {
-    return this.personForm.get('password');
-  }
+
 
 }

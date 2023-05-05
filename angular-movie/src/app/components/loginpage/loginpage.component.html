@@ -1,33 +1,37 @@
 <mat-card class="card">
   <mat-card-header>
-    <h1 class="full-width" style="text-align: center;">Login</h1>
+    <h1 class="full-width">Login</h1>
   </mat-card-header>
   <mat-card-content>
-    <form [formGroup]="personForm" (ngSubmit)="onFormSubmit()">
+    <form [formGroup]="LoginForm" (ngSubmit)="onFormSubmit()">
       <div>
-        <mat-form-field>
+        <mat-form-field appearance="outline">
           <mat-label>Username</mat-label>
-          <input class="field" matInput formControlName="username" placeholder="Username">
-          <mat-error *ngIf="username?.hasError('required')">
+          <input matInput formControlName="username" name="username" required>
+          <mat-error
+            *ngIf="LoginForm.controls['username'].invalid && (LoginForm.controls['username'].dirty || LoginForm.controls['username'].touched)">
             Username is required.
           </mat-error>
         </mat-form-field>
       </div>
       <div>
-        <mat-form-field>
+        <mat-form-field appearance="outline">
           <mat-label>Password</mat-label>
           <input matInput type="password" formControlName="password" placeholder="Password">
-          <mat-error *ngIf="password?.hasError('required')">
+          <mat-error
+            *ngIf="LoginForm.controls['password'].invalid && (LoginForm.controls['password'].dirty || LoginForm.controls['password'].touched)">
             Password is required.
           </mat-error>
         </mat-form-field>
       </div>
       <div>
-        <button class="full-width" mat-raised-button >Login</button>
+        <button type="submit" class="full-width transparent" mat-raised-button>Login</button>
       </div>
     </form>
+
   </mat-card-content>
 
 </mat-card>
-<app-background />
 
+
+<app-background />

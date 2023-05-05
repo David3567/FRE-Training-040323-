@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { Validators, FormBuilder } from '@angular/forms';
+import { Validators, FormBuilder, Form, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-registerpage',
@@ -7,19 +8,19 @@ import { Validators, FormBuilder } from '@angular/forms';
   styleUrls: ['./registerpage.component.scss']
 })
 export class RegisterpageComponent {
-  constructor(private formBuilder: FormBuilder,
-    ) { }
-  personForm = this.formBuilder.group({
-    username: ['', Validators.required],
-    password: ['', Validators.required],
-  });
+  RegisterForm: FormGroup;
+  constructor(private formBuilder: FormBuilder, private router: Router
+  ) {
+    this.RegisterForm = this.formBuilder.group({
+      firstname: ['', Validators.required],
+      lastname: ['', Validators.required],
+      email: ['', Validators.required],
+    });
+  }
+
   onFormSubmit() {
-    console.log(this.personForm.value);
-  }
-  get username() {
-    return this.personForm.get('username');
-  }
-  get password() {
-    return this.personForm.get('password');
+    if (this.RegisterForm.valid) {
+      this.router.navigate(['/password']);
+    }
   }
 }

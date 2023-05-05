@@ -3,37 +3,44 @@
     <h1 class="full-width" style="text-align: center;">Register</h1>
   </mat-card-header>
   <mat-card-content>
-    <form>
+    <form [formGroup]="RegisterForm" (ngSubmit)="onFormSubmit()">
       <p>Please enter you first name and last name</p>
       <table cellspacing="3">
         <tr>
-          <td><mat-form-field >
+          <td><mat-form-field appearance="outline" >
               <mat-label>First name</mat-label>
-              <input matInput>
+              <input formControlName="firstname" name="firstname" matInput>
+              <mat-error
+            *ngIf="RegisterForm.controls['firstname'].invalid && (RegisterForm.controls['firstname'].dirty || RegisterForm.controls['firstname'].touched)">
+            Firstname is required.
+          </mat-error>
             </mat-form-field></td>
-          <td><mat-form-field >
+          <td><mat-form-field appearance="outline" >
               <mat-label>Last Name </mat-label>
-              <input matInput>
+              <input formControlName="lastname" name="lastname" matInput>
+              <mat-error
+            *ngIf="RegisterForm.controls['lastname'].invalid && (RegisterForm.controls['lastname'].dirty || RegisterForm.controls['lastname'].touched)">
+            Lastname is required.
+          </mat-error>
             </mat-form-field></td>
         </tr>
       </table>
 
 
-      <table cellspacing="3">
-        <tr>
-          <td><mat-form-field >
-              <mat-label>Email</mat-label>
-              <input matInput>
-            </mat-form-field></td>
-          <td><mat-form-field >
-              <mat-label>Password</mat-label>
-              <input matInput>
-            </mat-form-field></td>
-        </tr>
-      </table>
+      <div class="full-width">
+        <mat-form-field class="full-width" appearance="outline">
+          <mat-label>Email</mat-label>
+          <input formControlName="email" name="email" matInput>
+          <mat-error
+            *ngIf="RegisterForm.controls['email'].invalid && (RegisterForm.controls['email'].dirty || RegisterForm.controls['email'].touched)">
+            Email is required.
+          </mat-error>
+        </mat-form-field>
+      </div>
+
 
       <div>
-        <button class="full-width" mat-raised-button routerLink="/password">Continue</button>
+        <button type="submit" class="full-width transparent" mat-raised-button>Continue</button>
       </div>
     </form>
 
