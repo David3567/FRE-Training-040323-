@@ -1,0 +1,23 @@
+.form-container {
+  display: flex;
+  color: black;
+  flex-direction: column;
+
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  button {
+    background-color: red;
+    border: none;
+    height: 3rem;
+    color: white;
+    border-radius: .5rem;
+
+    &:hover {
+      cursor: pointer;
+      
+    }
+  }
+}

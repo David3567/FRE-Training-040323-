@@ -20,6 +20,11 @@ import {MatIconModule} from '@angular/material/icon';
 import { ContentCardComponent } from './components/home-page/content/content-card/content-card.component';
 import { SignInComponent } from './components/sign-in/sign-in.component';
 import { SignInFormComponent } from './components/sign-in/sign-in-form/sign-in-form.component';
+import { RegisterEmailComponent } from './components/register-page/register-email/register-email.component';
+import { RegisterUsernameComponent } from './components/register-page/register-username/register-username.component';
+import { RegisterPlanComponent } from './components/register-page/register-plan/register-plan.component';
+import {MatTableModule} from '@angular/material/table';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -34,7 +39,10 @@ import { SignInFormComponent } from './components/sign-in/sign-in-form/sign-in-f
     ContentComponent,
     ContentCardComponent,
     SignInComponent,
-    SignInFormComponent
+    SignInFormComponent,
+    RegisterEmailComponent,
+    RegisterUsernameComponent,
+    RegisterPlanComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +54,9 @@ import { SignInFormComponent } from './components/sign-in/sign-in-form/sign-in-f
     MatInputModule,
     MatFormFieldModule,
     MatIconModule,
-    MatRadioModule
+    MatRadioModule,
+    MatTableModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,47 @@
+* {
+  color: black;
+  padding: 0;
+}
+
+mat-icon {
+  padding-top: .7rem;
+  margin-right: -.5rem;
+}
+
+
+.plan-type-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.plan-type-box {
+  background-color: red;
+  width: 8rem;
+  height: 8rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+.plan-type-triangle {
+  width: 0;
+  height: 0;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+
+  border-top: 20px solid #f00;
+
+
+}
+
+.plan-type-triangle2 {
+  width:0px;
+            height:0px;
+            border:10px solid;
+            border-top-color: red;
+            border-left-color: transparent;
+            border-right-color: transparent;
+            border-bottom-color: transparent;
+            background-color: red;
+}
