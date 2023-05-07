@@ -49,6 +49,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavbarComponent} from './components/navbar/navbar.component';
 import { PasswordComponent } from './components/password/password.component';
 import { SelectplanComponent } from './components/selectplan/selectplan.component';
+import { MovielistComponent } from './components/movielist/movielist.component';
+import { MoviecardComponent } from './components/moviecard/moviecard.component';
+import { HttpClientModule } from '@angular/common/http';
+import { TruncatePipe } from './pipes/truncate/truncate.pipe';
+import { DateToYearPipe } from './pipes/date_to_year/date-to-year.pipe';
 
 @NgModule({
   declarations: [
@@ -61,6 +66,10 @@ import { SelectplanComponent } from './components/selectplan/selectplan.componen
     HeroComponent,
     PasswordComponent,
     SelectplanComponent,
+    MovielistComponent,
+    MoviecardComponent,
+    TruncatePipe,
+    DateToYearPipe,
 
   ],
   imports: [
@@ -102,7 +111,8 @@ import { SelectplanComponent } from './components/selectplan/selectplan.componen
     MatRippleModule,
     MatBottomSheetModule,
     LayoutModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

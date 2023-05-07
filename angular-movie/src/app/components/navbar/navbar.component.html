@@ -1,14 +1,27 @@
-<mat-toolbar color="primary">
-  <mat-toolbar-row>
-    <button mat-mini-fab [routerLink]="''" color="accent" aria-label="Example icon button with a home icon">
+<mat-toolbar *ngIf="!BackButton" color="accent">
+  <mat-toolbar-row >
+    <button mat-mini-fab [routerLink]="''" color="primary" aria-label="Example icon button with a home icon">
       <mat-icon>home</mat-icon>
     </button>
-    <button mat-button [routerLink]="''" color="accent" style="font-size: large;">Movie Site</button>
+    <button mat-button [routerLink]="''" color="primary" style="font-size: large;">Movie Site</button>
     <span class="example-spacer"></span>
-    <button color="accent" [routerLink]="'/login'" mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+    <button color="primary" [routerLink]="'/login'" mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
       <mat-icon>login</mat-icon>
     </button>
-    <button color="accent" [routerLink]="'/register'" mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+    <button color="primary" [routerLink]="'/register'" mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
       <mat-icon>person_add</mat-icon>
     </button>
   </mat-toolbar-row>
+</mat-toolbar>
+<mat-toolbar *ngIf="BackButton" style="background: transparent;">
+  <mat-toolbar-row >
+    <button mat-mini-fab [routerLink]="''" color="primary" aria-label="Example icon button with a home icon">
+      <mat-icon>home</mat-icon>
+    </button>
+    <button mat-button [routerLink]="''" color="primary" style="font-size: large;">Movie Site</button>
+    <span class="example-spacer"></span>
+    <button color="primary" (click)="goBack() "mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+  </mat-toolbar-row>
+</mat-toolbar>

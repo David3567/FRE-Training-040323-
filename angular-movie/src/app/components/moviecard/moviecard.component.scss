@@ -1,0 +1,24 @@
+:host {
+  width: 300px;
+
+  .card {
+    box-shadow: rgba(0, 0, 0, 0.178) 0px 5px 15px;
+    background: rgba(255, 255, 255, 0.436);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+
+    mat-card-title {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    mat-card-content {
+      height: 100px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+
+
+}
