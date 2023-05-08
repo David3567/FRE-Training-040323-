@@ -1,0 +1,16 @@
+<body>
+    <div *ngFor="let index of movieList">
+        <div class="movie-container">
+            <div class="image-container">
+                <img class="background" src="{{index.poster_path}}">
+                <div class="each-movie">
+                    <img class="poster" src="{{index.poster_path}}">
+                    <div class="title">{{index.title}}</div>
+                    <div class="context">{{index.overview}}</div>
+                    <button class="button">More Details</button>
+                </div>
+            </div>
+            <!-- [ngStyle]="{'background-image':'url('+index.poster_path+')' -->
+        </div>
+    </div>
+</body>
