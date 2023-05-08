@@ -1,0 +1,11 @@
+<form action="" class="form-container" [formGroup]="reactiveForm">
+  <label>
+    <input type="checkbox" formControlName="selectAll" (change)="onSelectAllChange()">Select All
+  </label>
+  <br>
+  <div formArrayName="items" class="checkbox-container">
+    <label *ngFor="let item of itemsList; let i = index">
+      <input type="checkbox" [formControlName]="i" [value]="i" (click)="onCheckboxChange(i)"> {{item}}
+    </label>
+  </div>
+</form>
