@@ -1,0 +1,15 @@
+<div class="container">
+  <p>STEP 2 OF 3</p>
+  <h2 class="title"> Create a Useranem && Add your Tmdb Apt_Key</h2>
+  <p> Just a few more steps and you're done!</p>
+  <p> We hate paperwork, too. </p>
+
+  <form [formGroup]="secondForm" (ngSubmit)="onSubmit()">
+    <label>Create your username *</label>
+    <input type="text" id="form2Example1" class="form-control" formControlName = "username" />
+    <label>Add your Tmdb Api_key *</label>
+    <input type="key" id="form2Example1" class="form-control" formControlName = "key" />
+    <button type="submit"> Next</button>
+  </form>
+</div>
+

@@ -1,0 +1,41 @@
+<div class="background"></div>
+<div class="container">
+  <p class="text">Sign In</p>
+  <form (ngSubmit)="onSubmit()">
+    <!-- Email input -->
+    <div class="form-outline mb-4">
+      <input type="email" id="form2Example1" class="form-control" placeholder="Email or phone number"
+        [(ngModel)]="email" name="email" />
+    </div>
+
+    <!-- Password input -->
+    <div class="form-outline mb-4">
+      <input type="password" id="form2Example2" class="form-control" placeholder="Password" [(ngModel)]="password"
+        name="password" />
+    </div>
+
+    <!-- 2 column grid layout for inline styling -->
+    <div class="row mb-4">
+      <div class="col d-flex justify-content-center">
+        <!-- Checkbox -->
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="form2Example31" checked />
+          <label class="form-check-label" for="form2Example31"> Remember me </label>
+        </div>
+      </div>
+
+      <div class="col">
+        <!-- Simple link -->
+        <a href="#!">Forgot password?</a>
+      </div>
+    </div>
+
+    <!-- Submit button -->
+    <button type="submit" class="submitBut btn btn-primary btn-block mb-4">Sign in</button>
+
+    <!-- Register buttons -->
+    <div class="text-center">
+      <p>New to Netflix? <a href="#!" routerLink="/step1" routerLinkActive="active" style="font: 16px bold white">Sign up now</a></p>
+    </div>
+  </form>
+</div>
