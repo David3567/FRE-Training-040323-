@@ -1,0 +1,13 @@
+<div class="item-container" [ngStyle]="{background: 'linear-gradient(to top left,#191a1a1b,#080100), url(http://image.tmdb.org/t/p//w1280' + movieInfo.poster_path + ')'}">
+  <img [src]="'http://image.tmdb.org/t/p//w1280' + movieInfo.poster_path" alt="movie image">
+  <div class="content-container">
+    <h3>{{movieInfo.original_title}}</h3>
+    <div class="stats-container">
+      <div class="date"></div>
+      <div class="language"></div>
+      <div class="rating"></div>
+    </div>
+    <p><em>{{movieOverview}}</em></p>
+    <button>More Details</button>
+  </div>
+</div>

@@ -6,6 +6,7 @@ import { RegisterPageComponent } from './components/register-page/register-page.
 import { RegisterEmailComponent } from './components/register-page/register-email/register-email.component';
 import { RegisterUsernameComponent } from './components/register-page/register-username/register-username.component';
 import { RegisterPlanComponent } from './components/register-page/register-plan/register-plan.component';
+import { MovieListPageComponent } from './components/movie-list-page/movie-list-page.component';
 
 const routes: Routes = [
   {path: '', component: HomePageComponent},
@@ -14,7 +15,8 @@ const routes: Routes = [
     {path: '', component: RegisterEmailComponent},
     {path: 'username', component: RegisterUsernameComponent},
     {path: 'plan', component: RegisterPlanComponent}
-  ]}
+  ]},
+  {path: 'movies', component: MovieListPageComponent}
 ];
 
 @NgModule({

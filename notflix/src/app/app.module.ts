@@ -25,6 +25,9 @@ import { RegisterUsernameComponent } from './components/register-page/register-u
 import { RegisterPlanComponent } from './components/register-page/register-plan/register-plan.component';
 import {MatTableModule} from '@angular/material/table';
 import { HttpClientModule } from '@angular/common/http';
+import { MovieListPageComponent } from './components/movie-list-page/movie-list-page.component';
+import { MovieItemComponent } from './components/movie-list-page/movie-item/movie-item.component';
+import { TruncatePipe } from './truncate.pipe';
 
 
 
@@ -42,7 +45,10 @@ import { HttpClientModule } from '@angular/common/http';
     SignInFormComponent,
     RegisterEmailComponent,
     RegisterUsernameComponent,
-    RegisterPlanComponent
+    RegisterPlanComponent,
+    MovieListPageComponent,
+    MovieItemComponent,
+    TruncatePipe
   ],
   imports: [
     BrowserModule,
@@ -58,7 +64,7 @@ import { HttpClientModule } from '@angular/common/http';
     MatTableModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [TruncatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
