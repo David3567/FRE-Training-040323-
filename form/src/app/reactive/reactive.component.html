@@ -1,22 +1,41 @@
 <form [formGroup]="form" (ngSubmit)="onSumbit()">
-    <div>
-        <label for="name">Name: </label>
-        <input type="text" id="name" formControlName="name">
+  <div>
+    <label for="name">Name: </label>
+    <input type="text" id="name" formControlName="name" />
+  </div>
+  <div *ngIf="!form.get('name')?.valid && (name?.dirty || name?.touched)">
+    <div *ngIf="name?.errors?.required">The name is required</div>
+    <!-- <div *ngIf="name?.errors?.maxlength">
+            The name should be less than 10
+        </div > -->
+    <!-- <div *ngIf="name?.errors?.twoWordsValidator">
+        The name should have at least two words</div>
+  </div> -->
+    <div *ngIf="name?.errors?.gte">
+      The name should have at least {{ name?.errors?.requiredValue }}
     </div>
-    <div *ngIf="!name?.valid && (name?.dirty || name?.touched)">
-        <div *ngIf="name?.errors?.required">
-            The name is required
-        </div>
-    </div>
+  </div>
 
+  <!-- <div>
+    <label for="email">Email:</label>
+    <input type="text" id="email" formControlName="email" />
+  </div>
+  <div *ngIf="!email?.valid && (email?.dirty || email?.touched)">
+    <div *ngIf="email?.errors?.required">The email is required</div>
+  </div> -->
+  <div formGroupName="pwd">
     <div>
-        <label for="email">Email:</label>
-        <input type="text" id="email" formControlName="email">
+      <label for="passwd">Password: </label>
+      <input type="text" id="passwd" formControlName="passwd" />
     </div>
-    <div *ngIf="!email?.valid && (email?.dirty || email?.touched)">
-        <div *ngIf="email?.errors?.required">
-            The email is required
-        </div>
+    <div>
+      <label for="confirm">Name: </label>
+      <input type="text" id="confirm" formControlName="confirm" />
     </div>
-    <button [disabled]="!form.valid">Submit</button>
+    <div *ngIf="!pwd?.valid && (pwd?.dirty || pwd?.touched)">
+      <div *ngIf="pwd?.errors?.passwordNoMatch">The passwords do not match</div>
+    </div>
+  </div>
+
+  <button [disabled]="!form.valid">Submit</button>
 </form>
