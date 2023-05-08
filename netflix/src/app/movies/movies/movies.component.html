@@ -1,0 +1,16 @@
+<div class="main">
+  <div class="container">
+    <app-register-header></app-register-header>
+    <!-- Movie List -->
+    <!-- {{ movies$ | async | json }} -->
+    <section class="movie-lists">
+      <mat-grid-list cols="4" [gutterSize]="'20px'" rowHeight="500px">
+        <mat-grid-tile *ngFor="let movie of movies$ | async">
+          <app-movie [movieDetails]="movie"></app-movie>
+        </mat-grid-tile>
+      </mat-grid-list>
+    </section>
+  </div>
+</div>
+
+<!-- https://image.tmdb.org/t/p/w500/9JBEPLTPSm0d1mbEcLxULjJq9Eh.jpg -->

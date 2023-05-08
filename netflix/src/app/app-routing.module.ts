@@ -6,6 +6,7 @@ import { LoginComponent } from './components/login/login/login.component';
 import { Step1Component } from './components/register/step1/step1.component';
 import { Step2Component } from './components/register/step2/step2.component';
 import { Step3Component } from './components/register/step3/step3.component';
+import { MoviesComponent } from './movies/movies/movies.component';
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'login', component: LoginComponent },
@@ -27,6 +28,7 @@ const routes: Routes = [
       },
     ],
   },
+  { path: 'movies', component: MoviesComponent },
 ]; // sets up routes constant where you define your routes
 
 // configures NgModule imports and exports

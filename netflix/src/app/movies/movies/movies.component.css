@@ -1,0 +1,14 @@
+.container {
+  max-width: 1600px;
+  width: 90%;
+  margin: auto;
+  padding: 2em;
+  color: white;
+}
+.main {
+  height: 100vh;
+}
+
+.movie-lists {
+  margin-top: 50px;
+}

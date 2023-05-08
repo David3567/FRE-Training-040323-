@@ -23,6 +23,12 @@ import { Step1Component } from './components/register/step1/step1.component';
 import { Step2Component } from './components/register/step2/step2.component';
 import { MatIconModule } from '@angular/material/icon';
 import { Step3Component } from './components/register/step3/step3.component';
+import { MoviesComponent } from './movies/movies/movies.component';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { HttpClientModule } from '@angular/common/http';
+import { MovieComponent } from './movies/movie/movie.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,6 +44,8 @@ import { Step3Component } from './components/register/step3/step3.component';
     Step1Component,
     Step2Component,
     Step3Component,
+    MoviesComponent,
+    MovieComponent,
   ],
   imports: [
     BrowserModule,
@@ -49,6 +57,9 @@ import { Step3Component } from './components/register/step3/step3.component';
     MatFormFieldModule,
     MatCheckboxModule,
     MatIconModule,
+    HttpClientModule,
+    MatChipsModule,
+    MatGridListModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

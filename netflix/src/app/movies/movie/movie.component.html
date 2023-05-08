@@ -1,0 +1,30 @@
+<div class="card">
+  <div class="poster-img">
+    <img
+      src="https://image.tmdb.org/t/p/w500/{{ movieDetails.backdrop_path }}"
+      alt=""
+    />
+  </div>
+  <div class="content">
+    <h3>{{ movieDetails.original_title }}</h3>
+    <div class="chips">
+      <mat-chip-listbox>
+        <mat-chip-option disabled color="accent">{{
+          movieDetails.release_date | date : "yyyy"
+        }}</mat-chip-option>
+        <mat-chip-option disabled color="accent">{{
+          movieDetails.original_language
+        }}</mat-chip-option>
+        <mat-chip-option disabled color="accent">{{
+          movieDetails.vote_average
+        }}</mat-chip-option>
+      </mat-chip-listbox>
+    </div>
+    <p class="overview">{{ movieDetails.overview | slice : 0 : 120 }} ...</p>
+    <div>
+      <button mat-raised-button color="accent">Details</button>
+    </div>
+  </div>
+</div>
+
+<!-- https://image.tmdb.org/t/p/w500/$(movieDetails.backdrop_path) -->
