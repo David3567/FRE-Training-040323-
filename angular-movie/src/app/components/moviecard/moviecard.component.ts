@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import {ThemePalette} from '@angular/material/core';
 import { Movie } from 'src/app/model/Movie';
-import { MovieDataService } from 'src/app/service/movie-data.service';
+import { MovieDataService } from 'src/app/service/moviedata/movie-data.service';
 
 export interface ChipColor {
   name: string;

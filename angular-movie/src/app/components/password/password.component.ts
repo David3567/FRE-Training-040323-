@@ -22,7 +22,12 @@ export class PasswordComponent {
         Validators.required,
         Validators.minLength(8),
         Validators.maxLength(100),
-    ])]
+    ])],
+    tmdb_key:['', Validators.compose([
+      Validators.required,
+      Validators.minLength(8),
+      Validators.maxLength(100)
+  ])]
     },{ validator: this.passwordMatchValidator })
   }
 

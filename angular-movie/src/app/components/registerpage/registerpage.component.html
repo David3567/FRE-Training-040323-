@@ -33,8 +33,12 @@
           <mat-label>Email</mat-label>
           <input formControlName="email" name="email" matInput>
           <mat-error
-            *ngIf="RegisterForm.controls['email'].invalid && (RegisterForm.controls['email'].dirty || RegisterForm.controls['email'].touched)">
+            *ngIf="RegisterForm.controls['email'].invalid && (RegisterForm.controls['email'].dirty || RegisterForm.controls['email'].touched) && !RegisterForm.controls['email'].hasError('exist')">
             Email is required.
+          </mat-error>
+          <mat-error
+            *ngIf="RegisterForm.controls['email'].hasError('exist')">
+            Email exist
           </mat-error>
         </mat-form-field>
       </div>
