@@ -28,6 +28,7 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { HttpClientModule } from '@angular/common/http';
 import { MovieComponent } from './movies/movie/movie.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -60,6 +61,7 @@ import { MovieComponent } from './movies/movie/movie.component';
     HttpClientModule,
     MatChipsModule,
     MatGridListModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

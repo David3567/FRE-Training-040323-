@@ -1,19 +1,21 @@
-<div class="step1">
+<form class="form-login form-display form step1" [formGroup]="registerForm">
   <p>STEP 1 OF 3</p>
   <h1>Create a password to start your membership</h1>
   <p>Just a few more steps and you're done!</p>
   <p>We hate paperwork, too.</p>
   <mat-form-field appearance="fill" class="input-field">
     <mat-label>Email or Phone Number</mat-label>
-    <input matInput />
+    <input matInput formControlName="email" />
+    <mat-error *ngIf="email?.invalid">{{ getEmailErrorMessage() }}</mat-error>
+    <mat-error *ngIf="email?.hasError('emailAlreadyExists')">Email already exist</mat-error>
   </mat-form-field>
 
   <mat-form-field appearance="fill" class="input-field">
     <mat-label>Enter your password</mat-label>
-    <input matInput />
+    <input matInput formControlName="password" />
   </mat-form-field>
 
   <button mat-flat-button color="warn" class="btn" routerLink="/register/2">
     Next
   </button>
-</div>
+</form>

@@ -1,17 +1,21 @@
-<form action="" class="form-login form-display form">
+<form action="" class="form-login form-display form" [formGroup]="loginForm">
   <h3 class="title">Sign In</h3>
   <div>
     <mat-form-field appearance="fill" class="input-field">
-      <mat-label>Email or Phone Number</mat-label>
-      <input matInput />
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="email" />
+      <mat-error *ngIf="email?.invalid">{{ getEmailErrorMessage() }}</mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="fill" class="input-field">
       <mat-label>Enter your password</mat-label>
-      <input matInput />
+      <input matInput formControlName="password" type="password" />
+      <mat-error *ngIf="password?.invalid">{{
+        getPasswordErrorMessage()
+      }}</mat-error>
     </mat-form-field>
 
-    <button mat-flat-button color="warn" class="btn">Sign In</button>
+    <button type="submit" color="warn" mat-flat-button>Sign In</button>
     <div class="checkbox">
       <mat-checkbox class="example-margin">Remember Me?</mat-checkbox>
       <p>Need Help?</p>
