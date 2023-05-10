@@ -21,6 +21,7 @@
 
 .Logo {
     width: 100%;
+    min-width: 200px;
     background-color: transparent;
     border: none;
 }
@@ -39,6 +40,7 @@
     margin-left: auto;
     margin-right: auto;
     width: 20vw;
+    min-width: 500px;
     height: auto;
     justify-content: center;
     align-items: left;
@@ -63,6 +65,17 @@
     margin-top: 8px;
     margin-bottom: 8px;
     font-size: 25px;
+}
+
+.formFormat {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.message {
+    color: black;
+    font-size: 16px;
 }
 
 .Form-Style {

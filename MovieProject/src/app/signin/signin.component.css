@@ -1,4 +1,11 @@
+html {
+    padding: 0;
+    margin: 0;
+}
+
 body {
+    padding: 0;
+    margin: 0;
     background-image: url("../../assets/Marvel.jpg");
     height: 100%;
     background-position: center;
@@ -16,6 +23,7 @@ body {
 .Logo-Button,
 .Logo {
     width: 100%;
+    min-width: 250px;
     height: 100%;
     background-color: transparent;
     border: none;
@@ -26,11 +34,12 @@ body {
     flex-direction: column;
     margin: auto;
     width: 30vw;
+    min-width: 700px;
     height: auto;
     justify-content: center;
     align-items: center;
     color: white;
-    gap: 20px;
+    gap: 40px;
     padding-bottom: 150px;
     background-color: rgba(0,0,0,.8);
     border-radius: 20px;
@@ -40,8 +49,20 @@ body {
     font-size: 60px;
 }
 
+.formFormat {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.message {
+    color: white;
+    font-size: 16px;
+}
+
 .Form-Style {
     width: 18vw;
+    min-width: 450px;
     height: 70px;
     font-size: 20px;
     box-sizing: border-box;
@@ -56,6 +77,7 @@ body {
     margin-top: 30px;
     font-size: 30px;
     width: 18vw;
+    min-width: 450px;
     height: 70px;
     border-radius: 10px;
     background-color: red;

@@ -1,14 +1,32 @@
+<html></html>
 <body>
     <div class="Top-Bar">
         <button class="Logo-Button" [routerLink]="['/homepage']">
             <img class="Logo" src="../../assets/Logo_Fake.png" />
         </button>
     </div>
+
     <div class="Signin-Box">
         <p class="Box-Text">Sign In</p>
-        <form><input class="Form-Style" id="form1" type="text" placeholder="Email or phone number"></form>
-        <form><input class="Form-Style" id="form2" type="text" placeholder="Password"></form>
-        <button class="SignInButton" type="submit">Sign In</button>
+        <form class="formFormat" [formGroup]="storeData" (ngSubmit)="onSubmit()">
+            <div>
+                <label for="userId"></label>
+                <input class="Form-Style" id="userId" type="text" placeholder="Email or phone number" formControlName="userId">
+                <div class="message" *ngIf="storeData.controls['userId'].invalid && (storeData.controls['userId'].dirty || storeData.controls['userId'].touched)">
+                    Email is Required
+                </div>
+            </div>
+
+            <div>
+                <label for="userPw"></label>
+                <input class="Form-Style" id="userPw" type="password" placeholder="Password" formControlName="userPw">
+                <div class="message" *ngIf="storeData.controls['userPw'].invalid && (storeData.controls['userPw'].dirty || storeData.controls['userPw'].touched)">
+                    Password is Required
+                </div>
+            </div>
+
+            <div><button class="SignInButton" type="submit">Sign In</button></div>
+        </form>
         <div class="Preference">
             <div class="boxDivider">
                 <input class="checkbox" type="checkbox" id="remember" name="remember" checked>
@@ -17,6 +35,7 @@
             <button class="Help">Need help?</button>
         </div>
     </div>
+
     <div class="Information-Box"></div>
 
 </body>

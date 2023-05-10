@@ -19,7 +19,7 @@ body {
     align-items: center;
     align-content: space-between;
     justify-content: flex-start;
-    gap: 70vw;
+    gap: 60vw;
     margin: auto;
 }
 
@@ -30,12 +30,14 @@ body {
 
 .Logo {
     width : 10%;
+    min-width: 200px;
     height : 10%;
     margin-left: 40px;
 }
 
 #dropList {
-    width : 200px;
+    width : 10vw;
+    min-width: 200px;
     height : 60px;
     font-size: 20px;
     font-weight: bold;
@@ -46,7 +48,8 @@ body {
 }
 
 .signinButton {
-    width: 120px;
+    width: 8vw;
+    min-width: 150px;
     height: 60px;
     font-size: 20px;
     font-weight: bold;
@@ -90,7 +93,8 @@ body {
 
 .Top-EmailForm {
     margin-left: 100px;
-    width: 400px;
+    width: 15vw;
+    min-width: 350px;
     height: 80px;
     font-size: 30px;
     box-sizing: border-box;
@@ -99,9 +103,11 @@ body {
     color: white;
     text-align: center;
 }
+
 .Top-EmailButton {
     font-size: 30px;
-    width: 300px;
+    width: 10vw;
+    min-width: 300px;
     height: 80px;
     border-radius: 10px;
     background-color: red;
