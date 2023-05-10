@@ -1,13 +1,61 @@
 import { Slogan } from 'src/app/interface/slogan';
 import { MovieService } from './../../services/movie.service';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  ValidationErrors,
+  Validators,
+} from '@angular/forms';
+import { Router } from '@angular/router';
+import { Observable, map } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.scss'],
 })
-export class MainComponent {
+export class MainComponent implements OnInit {
+  tempUrl = 'https://jsonplaceholder.typicode.com/users';
+  url = 'http://127.0.0.1:4231/auth/check-email';
+
+  form: FormGroup = new FormGroup({});
+  constructor(
+    private fb: FormBuilder,
+    private router: Router,
+    private http: HttpClient
+  ) {}
+
+  get email(): FormControl {
+    return this.form.get('email') as FormControl;
+  }
+  ngOnInit() {
+    this.form = this.fb.group({
+      email: ['', Validators.required, this.checkEmail()],
+    });
+  }
+
+  checkEmail = () => {
+    return (control: FormControl): Observable<ValidationErrors | null> => {
+      return this.http.post(this.url, { email: control.value }).pipe(
+        map((result: any) => {
+          console.log(result);
+          if (result === true) {
+            return { emilexist: true };
+          } else {
+            return null;
+          }
+        })
+      );
+    };
+  };
+
+  register = () => {
+    this.router.navigate(['./step1']);
+  };
+
   slogans: Slogan[] = [
     {
       title: 'Enjoy on your TV.',

@@ -3,22 +3,34 @@ import { UserService } from 'src/app/services/user-service.service';
 import { User } from 'src/app/interface/user';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import {
+  FormGroup,
+  FormBuilder,
+  Validators,
+  FormControl,
+} from '@angular/forms';
 @Component({
   selector: 'app-add-key',
   templateUrl: './add-key.component.html',
   styleUrls: ['./add-key.component.scss'],
 })
 export class AddKeyComponent implements OnDestroy, OnInit {
-  currentUser: User | null = null;
-
+  secondForm: FormGroup = new FormGroup({});
+  currentUser: User = { email: '' };
   constructor(
     private readonly userService: UserService,
     private router: Router,
     private readonly fb: FormBuilder
   ) {}
 
-  secondForm: FormGroup = new FormGroup({});
+  get username() {
+    return this.secondForm.get('username') as FormControl;
+  }
+
+  get key(): FormControl {
+    return this.secondForm.get('key') as FormControl;
+  }
+
   ngOnInit(): void {
     this.secondForm = this.fb.group({
       username: ['litongz', Validators.required],
@@ -35,8 +47,8 @@ export class AddKeyComponent implements OnDestroy, OnInit {
   onSubmit(): void {
     const newUser: User = {
       ...(this.currentUser as User),
-      username: this.secondForm.value.username,
-      tmdb_key: this.secondForm.value.key,
+      username: this.username.value,
+      tmdb_key: this.key.value,
     };
     console.log('step2 onsubmit', newUser);
     this.userService.update(newUser);

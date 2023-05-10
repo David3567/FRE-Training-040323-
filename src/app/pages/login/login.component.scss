@@ -3,6 +3,7 @@
 }
 
 .container {
+  margin-top: 40px;
   width: 450px;
   background-color: rgba(0, 0, 0, .75);
   border-radius: 4px;
@@ -52,3 +53,55 @@ a {
   color: White;
   /* Replace "red" with the desired color */
 }
+
+
+.form-control{
+  background-color: grey;
+
+}
+
+.form-floating > * {
+  color: white;
+}
+
+
+input:focus {
+  color: white;
+}
+
+input {
+  color: white;
+}
+
+input:-webkit-autofill {
+  background-color: rgba(0, 0, 0, 0.2);
+  color: white;
+}
+
+.form-control:-webkit-autofill {
+  -webkit-text-fill-color: white !important;
+  background-color: rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 0 0 0 50px black inset !important;
+}
+
+.form-control:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0 50px black inset !important;
+}
+
+.form-floating {
+  display: flex;
+
+  color: white;
+  flex-direction: row;
+
+
+}
+
+#floatingInput {
+  background-color: rgba(0, 0, 0, 0.2);
+
+}
+
+
+
+
