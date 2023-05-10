@@ -5,6 +5,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class AuthService {
+  
   private currentUser$: BehaviorSubject<User> = new BehaviorSubject(
     new User('Tom', Role.User, 'Tom@gmail.com')
   );
