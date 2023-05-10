@@ -20,5 +20,6 @@ export class ProductGuard implements CanActivate {
   ): boolean {
     const { role } = this.authService.user;
     return role === Role.Admin;
+
   }
 }

@@ -3,14 +3,16 @@ import { RouterModule, Routes } from '@angular/router';
 import { UserComponent } from './components/user/user.component';
 import { AuthGuard } from './guards/auth.guard';
 import { HomeComponent } from './home/home.component';
+import { ChildModule } from './child/child.module';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
 
   {
     path: 'lazyloadproduct',
-    loadChildren: () =>
-      import('./child/child.module').then((m) => m.ChildModule),
+    component: ChildModule
+    // loadChildren: () =>
+    //   import('./child/child.module').then((m) => m.ChildModule),
   },
 
   {
