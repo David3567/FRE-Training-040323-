@@ -1,9 +1,15 @@
-*{
+* {
   color: #737373;
 }
 
 .container {
-  margin-top: 40px;
+  padding-top: 50px;
+
+
+}
+
+.loginBox {
+
   width: 450px;
   background-color: rgba(0, 0, 0, .75);
   border-radius: 4px;
@@ -15,7 +21,6 @@
   color: white;
   min-width: 380px;
   min-height: 660px;
-
 }
 
 .text {
@@ -41,7 +46,7 @@
 
 }
 
-.submitBut{
+.submitBut {
   display: block;
   margin: 0 auto;
   color: white;
@@ -55,12 +60,12 @@ a {
 }
 
 
-.form-control{
+.form-control {
   background-color: grey;
 
 }
 
-.form-floating > * {
+.form-floating>* {
   color: white;
 }
 
@@ -101,7 +106,3 @@ input:-webkit-autofill {
   background-color: rgba(0, 0, 0, 0.2);
 
 }
-
-
-
-
