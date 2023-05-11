@@ -21,7 +21,8 @@ export class Step1Component {
     email: [
       '',
       [Validators.required, Validators.email],
-      
+      this.emailAlreadyExists.bind(this),
+      ,
     ],
     password: ['', Validators.required],
   });
@@ -37,12 +38,11 @@ export class Step1Component {
   emailAlreadyExists(
     control: AbstractControl
   ): Observable<ValidationErrors | null> {
-    const url = `localhost:4231/auth-c/check-email`;
-
-    return this.http.post<any>(url, { email: this.email?.value }).pipe(
-      debounceTime(500),
+    // const url = `localhost:4231/auth-c/check-email`;
+    const url = 'https://jsonplaceholder.typicode.com/users';
+    return this.http.get<any>(url).pipe(
       map((res) => {
-        if (res) {
+        if (res[0].email === control.value) {
           return { emailAlreadyExists: true };
         } else {
           return null;
@@ -56,5 +56,11 @@ export class Step1Component {
       return 'You must enter a value';
     }
     return this.email?.hasError('email') ? 'Not a valid email' : '';
+  }
+
+  posting() {
+    return this.http
+      .get<any>('https://jsonplaceholder.typicode.com/users')
+      .subscribe((data) => console.log(data[0].username));
   }
 }
