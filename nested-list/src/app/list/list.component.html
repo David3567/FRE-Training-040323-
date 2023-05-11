@@ -1,0 +1,20 @@
+<ul>
+  <li *ngFor="let menuItem of menuData">
+    name: {{menuItem.name}}
+    <ul *ngIf="menuItem.child.length">
+      <ng-container *ngTemplateOutlet="nestedList; context: {$implicit: menuItem.child}"></ng-container>
+    </ul>
+  </li>
+</ul>
+
+<ng-template #nestedList let-child>
+  <li *ngFor="let item of child">
+    -child:
+    <br>name: {{item.name}}
+    <ul *ngIf="item.child.length">
+      <ng-container *ngTemplateOutlet="nestedList; context: {$implicit: item.child}">
+
+      </ng-container>
+    </ul>
+  </li>
+</ng-template>
