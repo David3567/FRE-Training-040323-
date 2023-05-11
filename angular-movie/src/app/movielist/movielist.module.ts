@@ -41,7 +41,6 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { SharedModule } from '../shared/shared.module';
 import { HttpClientModule } from '@angular/common/http';
-import { MovieDataService } from '../shared/service/moviedata/movie-data.service';
 
 
 @NgModule({
@@ -90,9 +89,6 @@ import { MovieDataService } from '../shared/service/moviedata/movie-data.service
     CommonModule,
     SharedModule,
     MovielistRoutingModule
-  ],
-  providers: [
-    MovieDataService
   ]
 })
 export class MovielistModule { }

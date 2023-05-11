@@ -42,8 +42,6 @@ import { SharedModule } from '../shared/shared.module';
 import { PasswordComponent } from './components/password/password.component';
 import { SelectplanComponent } from './components/selectplan/selectplan.component';
 import { HttpClientModule } from '@angular/common/http';
-import { AuthService } from '../shared/service/auth/auth.service';
-
 
 @NgModule({
   declarations: [
@@ -93,8 +91,5 @@ import { AuthService } from '../shared/service/auth/auth.service';
     SharedModule,
     HttpClientModule,
   ],
-  providers: [
-    AuthService
-  ]
 })
 export class RegisterModule { }
