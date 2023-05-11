@@ -15,7 +15,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ContentComponent } from './components/home-page/content/content.component';
 import {MatCardModule} from '@angular/material/card';
 import {MatInputModule} from '@angular/material/input';
-import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatError, MatFormFieldModule} from '@angular/material/form-field';
 import {MatIconModule} from '@angular/material/icon';
 import { ContentCardComponent } from './components/home-page/content/content-card/content-card.component';
 import { SignInComponent } from './components/sign-in/sign-in.component';
@@ -28,6 +28,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { MovieListPageComponent } from './components/movie-list-page/movie-list-page.component';
 import { MovieItemComponent } from './components/movie-list-page/movie-item/movie-item.component';
 import { TruncatePipe } from './truncate.pipe';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -62,7 +63,8 @@ import { TruncatePipe } from './truncate.pipe';
     MatIconModule,
     MatRadioModule,
     MatTableModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule,
   ],
   providers: [TruncatePipe],
   bootstrap: [AppComponent]

@@ -1,15 +1,22 @@
 <div class="form-container">
   <h3>Sign In</h3>
-  <form action="" class="form-container__form">
+  <form action="" class="form-container__form" [formGroup]="loginForm" (submit)="submit()">
     <mat-form-field >
       <mat-label>Email</mat-label>
-      <input type="email" matInput>
+      <input type="email" matInput formControlName="email" required>
+      <mat-error *ngIf="loginForm.get('email').touched && loginForm.controls['email'].invalid">
+        <span *ngIf="loginForm.controls['email'].errors['required']">This field is mandatory</span>
+        <span *ngIf="loginForm.get('email').hasError('email')">This field is invalid</span>
+      </mat-error>
     </mat-form-field>
     <mat-form-field >
       <mat-label>Password</mat-label>
-      <input type="password" matInput>
+      <input type="password" matInput formControlName="password" >
+      <mat-error *ngIf="loginForm.controls['password'].touched && loginForm.controls['password'].invalid">
+        <span *ngIf="loginForm.controls['password'].errors['required']">This field is mandatory</span>
+      </mat-error>
     </mat-form-field>
-    <button mat-button style="background-color: red; color: white">Sign In</button>
+    <button mat-button type="submit" style="background-color: red; color: white">Sign In</button>
     <div class="form-container__form-radio-container">
       <input type="radio" value="Remember me">
       <label for="">Remember me</label>
