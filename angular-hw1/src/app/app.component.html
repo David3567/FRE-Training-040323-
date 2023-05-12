@@ -1,0 +1,9 @@
+<div class ="header">
+  <p class = "textTop" [ngStyle]="{'color': this.textlist[this.id-1].color}"> The planet, but a station on the path, A new age, forged with each breath. The journey, danger more than mere dismay, Yet stars, are an arm's length away.</p>
+</div>
+
+<div class="container">
+  <div *ngFor="let block of textlist;">
+    <app-block [id]="block.id" [title]="block.title" [text] = "block.text" [color] = "block.color" [selected] = "block.selected" (valueChanged)="onValueChanged($event)"></app-block>
+  </div>
+</div>

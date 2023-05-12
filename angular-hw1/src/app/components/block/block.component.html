@@ -1,0 +1,9 @@
+<div [ngStyle]="{
+  'border-color': this.id === this.selected ? this.color: 'white',
+  'box-shadow':this.id === this.selected ? '10px 5px 5px ' + color : 'none'
+}">
+  <p class = "title">{{this.title}}</p>
+  <p class ="description"> {{this.text}}</p>
+  <button [ngStyle] ="buttonColor()" (click)="onClickButton(id)">Button</button>
+</div>
+
