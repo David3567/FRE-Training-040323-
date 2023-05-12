@@ -11,6 +11,8 @@ import { TodoService } from './services/todo.service';
 import { StoreModule } from '@ngrx/store';
 import { todoReducer } from './ngrx/todo.reducers';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { EffectsModule } from '@ngrx/effects';
+import { TodoEffects } from './ngrx/todo.effects';
 
 @NgModule({
   declarations: [AppComponent, TodoListComponent, TodoItemComponent],
@@ -25,6 +27,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
       maxAge: 25,
       name: 'TodoList',
     }),
+    EffectsModule.forRoot([TodoEffects]),
   ],
   providers: [TodoService],
   bootstrap: [AppComponent],

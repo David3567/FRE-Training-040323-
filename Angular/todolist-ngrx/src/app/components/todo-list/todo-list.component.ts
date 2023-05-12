@@ -47,6 +47,8 @@ export class TodoListComponent implements OnInit, OnDestroy {
       this.todolist = todos;
     });
 
+    this.store.dispatch(TodoActions.loadTodolist());
+
     // this.todoService.todolist$.subscribe((todos) => {
     //   this.todolist = todos;
     // });

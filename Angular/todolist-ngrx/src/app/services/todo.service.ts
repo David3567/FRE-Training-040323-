@@ -5,7 +5,7 @@ import { BehaviorSubject, Subject, debounceTime, tap } from 'rxjs';
 
 @Injectable()
 export class TodoService {
-  private url = 'https://jsonplaceholder.typicode.com/todos';
+  url = 'https://jsonplaceholder.typicode.com/todos';
 
   todos: Todo[] = []; // store
 
