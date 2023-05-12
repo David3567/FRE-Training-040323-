@@ -6,7 +6,7 @@
   </form>
   <ul id="todolist_container">
     <app-todo-item
-      *ngFor="let todo of todolist$ | async"
+      *ngFor="let todo of todolist"
       [item]="todo"
       (emitId)="deleteTodo($event)"
     />

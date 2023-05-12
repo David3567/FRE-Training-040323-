@@ -1,5 +1,5 @@
 import { TodoService } from 'src/app/services/todo.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import {
   Observable,
   Subject,
@@ -16,6 +16,7 @@ import {
   tap,
   catchError,
 } from 'rxjs/operators';
+import { TodoListComponent } from './components/todo-list/todo-list.component';
 
 @Component({
   selector: 'app-root',
