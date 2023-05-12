@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { debounceTime, map } from 'rxjs/operators';
 import {
@@ -59,8 +59,15 @@ export class Step1Component {
   }
 
   posting() {
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+    });
+    let options = { headers: headers };
     return this.http
-      .get<any>('https://jsonplaceholder.typicode.com/users')
-      .subscribe((data) => console.log(data[0].username));
+      .post<any>('localhost:4231/auth-c/check-email', {
+        email: 'david@gmail.com',
+        options,
+      })
+      .subscribe((data) => console.log(data));
   }
 }
