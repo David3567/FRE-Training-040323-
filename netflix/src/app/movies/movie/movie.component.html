@@ -22,12 +22,7 @@
     </div>
     <p class="overview">{{ movieDetails.overview | slice : 0 : 120 }} ...</p>
     <div>
-      <button
-        mat-raised-button
-        color="accent"
-        [routerLink]="['/movies', movieDetails.id]"
-        (click)="onButtonClick()"
-      >
+      <button mat-raised-button color="accent" (click)="getDataAndNavigate()">
         Details
       </button>
     </div>
