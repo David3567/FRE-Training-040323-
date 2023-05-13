@@ -1,0 +1,13 @@
+<div  mat-dialog-content style="display: flex
+; justify-content:center; align-items:center; gap: 1rem; padding: 0;overflow: visible; ">
+  <button mat-fab color="primary" (click)="changeVideo(-1)">
+    <mat-icon>arrow_back_ios</mat-icon>
+  </button>
+  <app-videoplayer *ngIf="videos && videos.length > 0" [videoId] = "videos[index]" />
+  <button mat-fab color="primary" (click)="changeVideo(1)">
+    <mat-icon>arrow_forward_ios</mat-icon>
+  </button>
+</div>
+<div mat-dialog-actions>
+  <button mat-button mat-dialog-close>Close</button>
+</div>

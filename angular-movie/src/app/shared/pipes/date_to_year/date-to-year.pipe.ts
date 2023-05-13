@@ -5,9 +5,12 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class DateToYearPipe implements PipeTransform {
 
-  transform(value: string): string {
-    const year = new Date(value).getFullYear();
+  transform(value: string | Date | undefined): string | null {
+    if(value){
+      const year = new Date(value).getFullYear();
     return year.toString();
+    }
+    return null;
   }
 
 }

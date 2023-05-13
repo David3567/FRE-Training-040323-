@@ -1,0 +1,76 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: whitesmoke;
+
+  .left {
+    width: 50%;
+    height: 100%;
+    padding-left: 5%;
+    padding-right: 5%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .card {
+      background-color: transparent;
+      border: none;
+      box-shadow: none;
+      overflow: visible;
+    }
+
+  }
+
+  .right {
+    display: flex;
+    width: 50%;
+    height: 100%;
+    padding-left: 5%;
+    padding-right: 5%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+
+    /* width */
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+
+    /* Track */
+    ::-webkit-scrollbar-track {
+      background: #f1f1f100;
+    }
+
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+      box-shadow: rgba(0, 0, 0, 0.178) 0px 5px 15px;
+      background: rgba(255, 255, 255, 0.436);
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+    }
+
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+      background: rgba(255, 255, 255, 0.568);
+    }
+
+
+    .rightcontent {
+      display: flex;
+      max-width: 100%;
+      flex-direction: row;
+      overflow-x: scroll;
+      overflow-y: hidden;
+      .cast{
+        padding: 5px;
+
+      }
+    }
+  }
+}

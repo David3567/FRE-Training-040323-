@@ -1,6 +1,6 @@
 :host {
   width: 300px;
-
+  transition: transform 0.15s ease-in-out;
   .card {
     box-shadow: rgba(0, 0, 0, 0.178) 0px 5px 15px;
     background: rgba(255, 255, 255, 0.436);
@@ -21,4 +21,8 @@
   }
 
 
+}
+:host:hover {
+  transform: scale(1.1);
+  cursor: pointer;
 }
