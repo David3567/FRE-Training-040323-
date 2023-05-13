@@ -9,8 +9,9 @@ import { MatChipsModule } from '@angular/material/chips';
 import { HttpClientModule } from '@angular/common/http';
 import { MatButtonModule } from '@angular/material/button';
 import { MoviesRoutingModule } from './movies-routing.module';
+import { MovieDetailComponent } from './movie-detail/movie-detail.component';
 @NgModule({
-  declarations: [MoviesComponent, MovieComponent],
+  declarations: [MoviesComponent, MovieComponent, MovieDetailComponent],
   imports: [
     CommonModule,
     SharedModule,
