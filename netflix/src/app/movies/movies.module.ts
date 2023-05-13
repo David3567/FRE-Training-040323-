@@ -6,6 +6,7 @@ import { MovieComponent } from './movie/movie.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatChipsModule } from '@angular/material/chips';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [MoviesComponent, MovieComponent],
@@ -15,6 +16,7 @@ import { MatChipsModule } from '@angular/material/chips';
     MatFormFieldModule,
     MatGridListModule,
     MatChipsModule,
+    HttpClientModule,
   ],
 })
 export class MoviesModule {}
