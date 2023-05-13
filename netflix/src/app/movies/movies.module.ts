@@ -7,7 +7,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatChipsModule } from '@angular/material/chips';
 import { HttpClientModule } from '@angular/common/http';
-
+import { MatButtonModule } from '@angular/material/button';
+import { MoviesRoutingModule } from './movies-routing.module';
 @NgModule({
   declarations: [MoviesComponent, MovieComponent],
   imports: [
@@ -17,6 +18,8 @@ import { HttpClientModule } from '@angular/common/http';
     MatGridListModule,
     MatChipsModule,
     HttpClientModule,
+    MatButtonModule,
+    MoviesRoutingModule,
   ],
 })
 export class MoviesModule {}

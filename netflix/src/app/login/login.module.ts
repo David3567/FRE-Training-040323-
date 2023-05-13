@@ -8,6 +8,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
+import { LoginRoutingModule } from './login-routing.module';
 @NgModule({
   declarations: [LoginComponent, LoginFormComponent],
   imports: [
@@ -18,6 +19,7 @@ import { MatInputModule } from '@angular/material/input';
     MatCheckboxModule,
     MatButtonModule,
     MatInputModule,
+    LoginRoutingModule,
   ],
 })
 export class LoginModule {}

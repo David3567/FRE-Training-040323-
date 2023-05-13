@@ -21,13 +21,13 @@ import { MatInputModule } from '@angular/material/input';
   ],
   imports: [
     CommonModule,
-    RegisterRoutingModule,
     ReactiveFormsModule,
     SharedModule,
     MatIconModule,
     MatFormFieldModule,
     MatButtonModule,
     MatInputModule,
+    RegisterRoutingModule,
   ],
 })
 export class RegisterModule {}

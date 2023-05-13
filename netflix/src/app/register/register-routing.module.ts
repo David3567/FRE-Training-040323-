@@ -7,7 +7,7 @@ import { Step3Component } from './step3/step3.component';
 
 const routes: Routes = [
   {
-    path: 'register',
+    path: '',
     component: RegisterComponent,
     children: [
       {
@@ -28,6 +28,6 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class RegisterRoutingModule { }
+export class RegisterRoutingModule {}
