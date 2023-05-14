@@ -1,54 +1,68 @@
 body {
     margin: 0;
     padding: 0;
-    /* background-color: rgb(12, 10, 32); */
+    background-color: rgb(33, 34, 70);
 }
 
 .movie-container {
+    width: 100%;
     display: flex;
     flex-direction: row;
-    width: 100%;
+    flex-wrap: wrap;
     align-items: center;
+    justify-content: center;
 }
 
 .image-container {
-    width: 15vw;
-    height: 50vh;
-    max-height: 100%;
+    padding: 30px;
+    margin-bottom: 30px;
     display: flex;
     flex-direction: row;
+    position: relative;
 }
 
 .background {
     width: 15vw;
-    height: 50vh;
-    background-size: cover;
-}
-
-.image-container::after {
-    content: "";
-    width: 15vw;
-    height: 50vh;
-    max-height: 100%;
-    display: flex;
-    flex-direction: column;
-    background-size: cover;
-    filter: brightness(25%);
+    min-width: 300px;
+    filter: brightness(0.3);
 }
 
 .poster {
-    max-width: 40%;
-    max-height: 40%;
+    position: absolute;
+    width: 6vw;
+    min-width: 120px;
+    top: 50px;
+    left: 55%;
 }
 
-.title {
+.title { 
+    position: absolute;
+    width: 80%;
+    min-width: 120px;
+    top: 45%;
+    left: 15%;
+    font-size: 20px;
     color: white;
 }
 
 .context {
-    width: 300px;
+    position: absolute;
+    width: 70%;
+    min-width: 120px;
+    top: 55%;
+    left: 15%;
+    font-size: 15px;
     color: white;
 }
 
 .button {
+    position: absolute;
+    width: 120px;
+    height: 40px;
+    min-width: 120px;
+    bottom: 10%;
+    left: 15%;
+    color: white;
+    background-color: transparent;
+    border-color: white;
 }

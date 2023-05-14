@@ -9,6 +9,7 @@ import { SigninComponent } from './signin/signin.component';
 import { RegisterComponent } from './register/register.component';
 import { Register2Component } from './register/register2/register2.component';
 import { MovielistComponent } from './movielist/movielist.component';
+import { MovieDetailsComponent } from './movie-details/movie-details.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { MovielistComponent } from './movielist/movielist.component';
     RegisterComponent,
     Register2Component,
     MovielistComponent,
+    MovieDetailsComponent,
   ],
   imports: [
     BrowserModule,
