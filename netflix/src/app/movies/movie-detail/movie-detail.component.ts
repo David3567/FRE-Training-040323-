@@ -9,12 +9,14 @@ import { map, Observable } from 'rxjs';
 })
 export class MovieDetailComponent implements OnInit {
   constructor(private route: ActivatedRoute) {}
-  id!: string | null;
-  data: any;
+  actors!: any[];
   imageUrl: string = '';
+  movieInfo: any;
   ngOnInit(): void {
-    this.id = this.route.snapshot.paramMap.get('id');
-    this.data = history.state.data;
-    this.imageUrl = `https://image.tmdb.org/t/p/original/${this.data.backdrop_path}`;
+    // const id = this.route.snapshot.paramMap.get('id');
+    const data = history.state.data;
+    this.actors = data.actors;
+    this.movieInfo = data.movieInfo;
+    this.imageUrl = `https://image.tmdb.org/t/p/original/${this.movieInfo.poster_path}`;
   }
 }

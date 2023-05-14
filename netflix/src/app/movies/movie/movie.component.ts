@@ -17,9 +17,14 @@ export class MovieComponent {
   }
 
   getDataAndNavigate(id: number) {
-    this.movieService.getDataAndNavigate(id).subscribe((data: any) => {
-      const id = data.id;
-      this.router.navigate(['/movies', id], { state: { data } });
+    this.movieService.getActors(id).subscribe((actors: any[]) => {
+      this.movieService.getMovieGeneralInfo(id).subscribe((movieInfo: any) => {
+        const data = {
+          actors,
+          movieInfo,
+        };
+        this.router.navigate(['/movies', id], { state: { data } });
+      });
     });
   }
 }

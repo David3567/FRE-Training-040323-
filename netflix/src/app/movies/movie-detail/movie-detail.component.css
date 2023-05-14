@@ -22,10 +22,16 @@
 }
 
 .content {
-  position: relative;
   z-index: 1;
   /* Add any additional styling for the content */
   padding: 2em;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 16px;
+  box-sizing: border-box;
+  color: white;
 }
 
 .movie-detail {
@@ -50,7 +56,7 @@
 }
 
 .movie-title {
-  font-size: 24px;
+  font-size: 36px;
   font-weight: bold;
 }
 
@@ -68,6 +74,16 @@
 
 .data {
   color: white;
+}
+
+.mat-mdc-card {
+  background-color: transparent;
+  color: white;
+  box-shadow: none;
+}
+
+.header {
+  padding: 2em;
 }
 /* Additional styles for the movie-poster section */
 @media (min-width: 768px) {

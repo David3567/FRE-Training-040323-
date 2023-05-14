@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Movie } from './movie/movie.interface';
 import { MovieList } from './movies/movieList.interface';
 import { Router } from '@angular/router';
+import { Observable, map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -17,7 +18,49 @@ export class MovieService {
 
   getDataAndNavigate(id: number) {
     return this.http.get(
-      `https://api.themoviedb.org/3/movie/${id}?api_key=9f7b20416809f982ba3dd585db30907b&language=en-US`
+      `https://api.themoviedb.org/3/movie/${id}?api_key=9f7b20416809f982ba3dd585db30907b&language=en-US&append_to_response=credits`
+    );
+  }
+
+  getMovieDetails(movieId: number): Observable<any> {
+    const url = `https://api.themoviedb.org/3/movie/${movieId}?api_key=9f7b20416809f982ba3dd585db30907b&append_to_response=credits`;
+    return this.http.get(url);
+  }
+
+  getActors(movieId: number): Observable<any[]> {
+    return this.getMovieDetails(movieId).pipe(
+      map((response: any) => {
+        const cast = response.credits.cast;
+        return cast.map((actor: any) => ({
+          name: actor.name,
+          character: actor.character,
+          profileImage: this.getProfileImageUrl(actor.profile_path),
+        }));
+      })
+    );
+  }
+
+  private getProfileImageUrl(path: string): string {
+    if (!path) {
+      return '';
+    }
+    const imageSize = 'w500';
+    return `https://image.tmdb.org/t/p/${imageSize}${path}`;
+  }
+
+  getMovieGeneralInfo(movieId: number): Observable<any> {
+    return this.getMovieDetails(movieId).pipe(
+      map((response: any) => {
+        return {
+          title: response.original_title,
+          poster_path: response.backdrop_path,
+          overview: response.overview,
+          release_date: response.release_date,
+          runtime: response.runtime,
+          original_language: response.original_language,
+          genres: response.genres.map((genre: any) => genre.name),
+        };
+      })
     );
   }
 }
