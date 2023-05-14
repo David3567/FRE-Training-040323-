@@ -1,6 +1,46 @@
-<div class="main">
-  <div class="container">
-    <app-header></app-header>
-    <pre>Data: {{ data | json }}</pre>
+<!-- <div
+  class="poster-background"
+  [style.backgroundImage]="'url(' + imageUrl + ')'"
+  [ngStyle]="{
+    'background-size': 'cover',
+    'background-position': 'center',
+    'background-repeat': 'no-repeat'
+  }"
+></div> -->
+
+<div
+  class="backdrop"
+  [style.backgroundImage]="'url(' + imageUrl + ')'"
+  [ngStyle]="{
+    'background-size': 'cover',
+    'background-position': 'center',
+    'background-repeat': 'no-repeat'
+  }"
+>
+  <div class="content">
+    <!-- Content goes here -->
+    <div class="">
+      <app-header></app-header>
+      <mat-card class="movie-detail">
+        <div class="movie-info">
+          <h1 class="movie-title">Movie Title</h1>
+          <p class="movie-release-year">Release Year: 2023</p>
+          <p class="movie-genre">Genre: Action, Adventure, Sci-Fi</p>
+          <p class="movie-description">
+            Movie description goes here. This is a brief overview of the movie
+            plot and details.
+          </p>
+          <p class="movie-director">Director: John Doe</p>
+          <p class="movie-cast">Cast: Actor 1, Actor 2, Actor 3</p>
+        </div>
+        <div class="movie-poster">
+          <img src="movie-poster.jpg" alt="Movie Poster" />
+        </div>
+      </mat-card>
+    </div>
+
+    <div class="data">
+      {{ data | json }}
+    </div>
   </div>
 </div>

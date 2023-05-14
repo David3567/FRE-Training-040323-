@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Movie } from './movie.interface';
-import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { MovieService } from '../movie.service';
 
 @Component({
   selector: 'app-movie',
@@ -11,19 +11,15 @@ import { Router } from '@angular/router';
 export class MovieComponent {
   @Input() movieDetails!: Movie;
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(private router: Router, private movieService: MovieService) {}
   onButtonClick() {
     console.log(this.movieDetails.id);
   }
 
-  getDataAndNavigate() {
-    this.http
-      .get(
-        `https://api.themoviedb.org/3/movie/${this.movieDetails.id}?api_key=9f7b20416809f982ba3dd585db30907b&language=en-US`
-      )
-      .subscribe((data: any) => {
-        const id = data.id;
-        this.router.navigate(['/movies', id], { state: { data } });
-      });
+  getDataAndNavigate(id: number) {
+    this.movieService.getDataAndNavigate(id).subscribe((data: any) => {
+      const id = data.id;
+      this.router.navigate(['/movies', id], { state: { data } });
+    });
   }
 }

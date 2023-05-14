@@ -22,7 +22,11 @@
     </div>
     <p class="overview">{{ movieDetails.overview | slice : 0 : 120 }} ...</p>
     <div>
-      <button mat-raised-button color="accent" (click)="getDataAndNavigate()">
+      <button
+        mat-raised-button
+        color="accent"
+        (click)="getDataAndNavigate(movieDetails.id)"
+      >
         Details
       </button>
     </div>

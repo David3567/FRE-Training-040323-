@@ -1,9 +1,87 @@
-.container {
-  max-width: 1600px;
-  width: 90%;
-  margin: auto;
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.backdrop::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(
+    0,
+    0,
+    0,
+    0.5
+  ); /* Adjust the opacity (0.5) as desired */
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+  /* Add any additional styling for the content */
   padding: 2em;
 }
-.main {
-  height: 100vh;
+
+.movie-detail {
+  display: flex;
+  margin: 20px;
+}
+
+.movie-info {
+  flex: 1;
+  padding-right: 20px;
+}
+
+.movie-poster {
+  flex: 1;
+  position: relative;
+  background-size: cover;
+  background-position: center;
+}
+
+.movie-poster img {
+  display: none; /* Hide the image tag when the background image is present */
+}
+
+.movie-title {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.movie-release-year,
+.movie-genre,
+.movie-director,
+.movie-cast {
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.movie-description {
+  margin-bottom: 20px;
+}
+
+.data {
+  color: white;
+}
+/* Additional styles for the movie-poster section */
+@media (min-width: 768px) {
+  .movie-detail {
+    align-items: flex-start;
+  }
+
+  .movie-info {
+    width: 50%;
+  }
+
+  .movie-poster {
+    width: 50%;
+    height: 300px; /* Adjust the desired height for the movie poster section */
+    /* background-image: url("movie-poster.jpg"); */
+  }
 }
