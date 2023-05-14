@@ -19,11 +19,16 @@ export class MovieComponent {
   getDataAndNavigate(id: number) {
     this.movieService.getActors(id).subscribe((actors: any[]) => {
       this.movieService.getMovieGeneralInfo(id).subscribe((movieInfo: any) => {
-        const data = {
-          actors,
-          movieInfo,
-        };
-        this.router.navigate(['/movies', id], { state: { data } });
+        this.movieService
+          .getMoviePostersLimited(id, 3)
+          .subscribe((moviePosters: any) => {
+            const data = {
+              actors,
+              movieInfo,
+              moviePosters,
+            };
+            this.router.navigate(['/movies', id], { state: { data } });
+          });
       });
     });
   }

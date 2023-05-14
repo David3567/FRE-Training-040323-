@@ -12,11 +12,14 @@ export class MovieDetailComponent implements OnInit {
   actors!: any[];
   imageUrl: string = '';
   movieInfo: any;
+  moviePosters!: any[];
   ngOnInit(): void {
     // const id = this.route.snapshot.paramMap.get('id');
     const data = history.state.data;
     this.actors = data.actors;
+    console.log(this.actors);
     this.movieInfo = data.movieInfo;
+    this.moviePosters = data.moviePosters;
     this.imageUrl = `https://image.tmdb.org/t/p/original/${this.movieInfo.poster_path}`;
   }
 }

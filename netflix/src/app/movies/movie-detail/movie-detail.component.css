@@ -20,13 +20,18 @@
     0.5
   ); /* Adjust the opacity (0.5) as desired */
 }
-
+.mat-mdc-button-base {
+  margin: 8px 20px 8px 0;
+}
+.example-button-row {
+  display: table-cell;
+  max-width: 600px;
+}
 .content {
   z-index: 1;
   /* Add any additional styling for the content */
-  padding: 2em;
   position: absolute;
-  bottom: 0;
+  bottom: 50px;
   left: 0;
   width: 100%;
   padding: 16px;
@@ -36,25 +41,29 @@
 
 .movie-detail {
   display: flex;
+  flex-direction: row;
   margin: 20px;
 }
 
 .movie-info {
   flex: 1;
   padding-right: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .movie-poster {
   flex: 1;
-  position: relative;
-  background-size: cover;
-  background-position: center;
 }
-
-.movie-poster img {
-  display: none; /* Hide the image tag when the background image is present */
+.posters {
+  display: flex;
+  gap: 20px;
 }
-
+.actor-posters {
+  display: flex;
+  gap: 10px;
+}
 .movie-title {
   font-size: 36px;
   font-weight: bold;
@@ -84,6 +93,10 @@
 
 .header {
   padding: 2em;
+}
+
+.poster-title {
+  margin-bottom: 8px;
 }
 /* Additional styles for the movie-poster section */
 @media (min-width: 768px) {

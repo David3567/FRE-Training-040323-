@@ -18,7 +18,7 @@ export class MovieService {
 
   getDataAndNavigate(id: number) {
     return this.http.get(
-      `https://api.themoviedb.org/3/movie/${id}?api_key=9f7b20416809f982ba3dd585db30907b&language=en-US&append_to_response=credits`
+      `https://api.themoviedb.org/3/movie/${id}?api_key=9f7b20416809f982ba3dd585db30907b&language=en-US&append_to_response=credits,images`
     );
   }
 
@@ -34,17 +34,17 @@ export class MovieService {
         return cast.map((actor: any) => ({
           name: actor.name,
           character: actor.character,
-          profileImage: this.getProfileImageUrl(actor.profile_path),
+          profileImage: this.getPosterImageUrl(actor.profile_path, 'w92'),
         }));
       })
     );
-  }
+  } 
 
-  private getProfileImageUrl(path: string): string {
+  private getPosterImageUrl(path: string, size: string): string {
     if (!path) {
       return '';
     }
-    const imageSize = 'w500';
+    const imageSize = size;
     return `https://image.tmdb.org/t/p/${imageSize}${path}`;
   }
 
@@ -62,5 +62,20 @@ export class MovieService {
         };
       })
     );
+  }
+
+  getMoviePostersLimited(movieId: number, limit: number) {
+    const url = `https://api.themoviedb.org/3/movie/${movieId}/images?api_key=9f7b20416809f982ba3dd585db30907b`;
+    return this.http
+      .get(url)
+      .pipe(
+        map((data: any) =>
+          data.backdrops
+            .slice(0, limit)
+            .map((poster: any) =>
+              this.getPosterImageUrl(poster.file_path, 'w185')
+            )
+        )
+      );
   }
 }
