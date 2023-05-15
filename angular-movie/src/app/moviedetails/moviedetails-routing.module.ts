@@ -1,8 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { MoviedetailsComponent } from './moviedetails.component';
-
-const routes: Routes = [{ path: ':id', component: MoviedetailsComponent }];
+import { ResolveDetailsService } from '../shared/service/resolvers/resolve-details.service';
+const routes: Routes = [{ path: ':id', component: MoviedetailsComponent, resolve:{
+  detailObject: ResolveDetailsService
+} }];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

@@ -41,9 +41,12 @@ import { MatStepperModule } from '@angular/material/stepper';
 import { MatTableModule } from '@angular/material/table';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { YouTubePlayerModule } from '@angular/youtube-player';
+import { ResolveDetailsService } from './service/resolvers/resolve-details.service';
+import { InterceptorService } from './service/auth/interceptor.service';
+import { GuardService } from './service/auth/guard.service';
 
 
 
@@ -130,6 +133,6 @@ import { YouTubePlayerModule } from '@angular/youtube-player';
     HttpClientModule,
     ReactiveFormsModule,
     YouTubePlayerModule],
-  providers: [MovieDataService, AuthService]
+  providers: [MovieDataService, AuthService, ResolveDetailsService, GuardService]
 })
 export class SharedModule { }

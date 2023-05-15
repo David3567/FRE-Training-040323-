@@ -10,17 +10,19 @@ import { AuthService } from '../shared/service/auth/auth.service';
 })
 export class RegisterComponent {
   RegisterForm: FormGroup;
-  constructor(private formBuilder: FormBuilder, private router: Router, private authService: AuthService,private route: ActivatedRoute,
+  constructor(private formBuilder: FormBuilder, private router: Router, private authService: AuthService, private route: ActivatedRoute,
   ) {
     this.RegisterForm = this.formBuilder.group({
-      firstname: ['', Validators.required],
-      lastname: ['', Validators.required],
+      username: ['', Validators.compose([
+        Validators.required,
+        Validators.minLength(4)])],
       email: ['', [Validators.required], [this.authService.isEmailExists()]],
     });
   }
   onFormSubmit() {
     if (this.RegisterForm.valid) {
-      console.log(this.RegisterForm.value)
+      this.authService.setRegisterEmail(this.RegisterForm.value.email);
+      this.authService.setUserName(this.RegisterForm.value.firstname, this.RegisterForm.value.lastname);
       this.router.navigate(['password'], { relativeTo: this.route });
     }
   }

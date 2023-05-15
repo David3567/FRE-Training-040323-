@@ -19,6 +19,7 @@
 
   </mat-card-header>
   <img mat-card-image src={{movieInfo.poster_path}} width="300px" height="400px" alt="Photo of a Shiba Inu">
-  <mat-card-actions>
-  </mat-card-actions>
+    <div class="spinner" *ngIf="isLoading">
+      <mat-progress-spinner  mode="indeterminate" diameter="70"></mat-progress-spinner>
+    </div>
 </mat-card>

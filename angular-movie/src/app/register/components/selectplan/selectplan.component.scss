@@ -32,11 +32,21 @@ $color-blue-hex: #317ae2;
     align-items: center;
     flex-direction: column;
 
+    h1{
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      margin: auto;
+      padding-top: 75%;
+      color: white;
+    }
     &:first-child {
       margin-left: 0;
     }
 
-    &:hover {
+    .pricing:hover {
       box-shadow: 0 0 0 1px color($color-blue-hex a(64%));
     }
 

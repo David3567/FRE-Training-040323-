@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Location } from '@angular/common';
+import { AuthService } from '../../service/auth/auth.service';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -7,7 +8,10 @@ import { Location } from '@angular/common';
 })
 export class NavbarComponent {
   @Input() BackButton: boolean = false;
-  constructor(private location: Location) {}
+  isLoggedIn = false;
+  constructor(private location: Location, public auth: AuthService) {
+    this.isLoggedIn = this.auth.isLoggedIn;
+  }
   goBack() {
     this.location.back();
   }
