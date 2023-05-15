@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { ApiserviceService } from '../service/service';
+import { Router } from '@angular/router';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-movielist',
@@ -7,9 +9,19 @@ import { ApiserviceService } from '../service/service';
   styleUrls: ['./movielist.component.css']
 })
 export class MovielistComponent {
+  id : any;
   baseUrl = "https://image.tmdb.org/t/p/original";
   movieList : any;
-  constructor(private _apiservice: ApiserviceService) {}
+  
+  constructor(private _apiservice: ApiserviceService, private router: Router) {}
+
+  setId(movieId: number) {
+    console.log(movieId)
+    this.id = movieId.toString();
+    this._apiservice.setId(movieId.toString());
+    console.log(this.id);
+    this.router.navigate(['/movie-details']);
+  }
 
   ngOnInit() {
     this._apiservice.getdata().subscribe(res => {

@@ -1,0 +1,35 @@
+.Top-Bar {
+    width: 100%;
+    height: 10vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.Top-Bar-Elements {
+    width: 95%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.Logo-Button {
+    width: 15%;
+    background-color: transparent;
+    border: none;
+}
+
+.Logo {
+    width: 100%;
+    min-width: 200px;
+    background-color: transparent;
+    border: none;
+}
+
+.signinButton {
+    background-color: transparent;
+    border: none; 
+    font-size: 30px;
+    font-family: Sans-Serif;
+    font-weight: bold;
+}

@@ -4,6 +4,10 @@ body {
     background-color: rgb(33, 34, 70);
 }
 
+app-movie-details {
+    display: none;
+}
+
 .movie-container {
     width: 100%;
     display: flex;
