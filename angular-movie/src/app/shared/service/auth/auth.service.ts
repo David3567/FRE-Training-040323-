@@ -4,17 +4,20 @@ import { AbstractControl, AsyncValidatorFn, ValidationErrors } from '@angular/fo
 import { Router } from '@angular/router';
 import { BehaviorSubject, Observable, map, of, tap } from 'rxjs';
 import { User } from 'src/app/core/model/user';
-
+import jwt_decode from 'jwt-decode';
+interface Decoded {
+  id: string;
+  username: string;
+  email: string;
+  tmdb_key: string;
+  iat: number;
+  exp: number;
+}
 @Injectable()
+
 export class AuthService {
-  private isLoggedInSub = new BehaviorSubject<boolean>(false);
   url = `http://localhost:4231/`;
-  currentUser : {accessToken: string, role: string} = {
-    accessToken: '',
-    role: ''
-  };
   constructor(private http: HttpClient, private router: Router ) {
-    this.isLoggedInSub.next(this.isLoggedIn);
   }
   registerEmail = '';
   registerPassword = '';
@@ -30,8 +33,8 @@ export class AuthService {
       )
     };
   }
-  setUserName(firstname: string, lastname: string){
-    this.registerUserName = firstname +'' + lastname;
+  setUserName(username: string){
+    this.registerUserName = username;
   }
   handleSignUp(plan: string){
     if (this.registerEmail.length === 0 || this.registerPassword.length === 0 || this.registerKey.length === 0 || this.registerUserName.length === 0){
@@ -49,10 +52,7 @@ export class AuthService {
 
   handleSignIn(email: string, password: string){
     return this.http.post<{email: string, password: string}>(this.url + `auth/signin`, {email, password}).subscribe(((res: any) =>{
-      this.currentUser = res;
-      console.log(this.currentUser)
       localStorage.setItem('access_token', res.accessToken);
-      this.isLoggedInSub.next(true);
       this.router.navigate(['/home']);
     })
     );
@@ -73,11 +73,17 @@ export class AuthService {
   get isLoggedIn(): boolean{
     return localStorage.getItem('access_token')!== null;
   }
-  get isLoggedIn$(): Observable<boolean>{
-    return this.isLoggedInSub.asObservable();
+
+  get username(): string{
+    let token = localStorage.getItem('access_token')
+    if(token){
+      let decoded:Decoded = jwt_decode(token)
+      return decoded.username;
+    }
+    return '';
+
   }
   logout(){
-    this.isLoggedInSub.next(false);
     localStorage.removeItem('access_token');
     this.router.navigate(['/login']);
   }

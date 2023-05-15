@@ -19,7 +19,7 @@ export class SelectplanComponent {
       this.auth.handleSignUp(this.selectedPlan).subscribe(res => console.log(res), err => console.log(err.error))
     } catch (error) {
       console.log("invalid user informations")
-      this.router.navigate(['']);
+      this.router.navigate(['/login']);
     }
   }
   }

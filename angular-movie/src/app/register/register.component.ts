@@ -22,7 +22,7 @@ export class RegisterComponent {
   onFormSubmit() {
     if (this.RegisterForm.valid) {
       this.authService.setRegisterEmail(this.RegisterForm.value.email);
-      this.authService.setUserName(this.RegisterForm.value.firstname, this.RegisterForm.value.lastname);
+      this.authService.setUserName(this.RegisterForm.value.username);
       this.router.navigate(['password'], { relativeTo: this.route });
     }
   }

@@ -19,7 +19,7 @@ import { AuthService } from './shared/service/auth/auth.service';
     AppRoutingModule,
     BrowserAnimationsModule,
   ],
-  providers: [MovieDataService, AuthService],
+  providers: [MovieDataService, AuthService,],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

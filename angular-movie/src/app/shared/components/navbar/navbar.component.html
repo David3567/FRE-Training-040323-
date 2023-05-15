@@ -5,7 +5,7 @@
     </button>
     <button mat-button [routerLink]="''" color="primary" style="font-size: large;">Movie Site</button>
     <span class="example-spacer"></span>
-    <div *ngIf=" !(auth.isLoggedIn$ | async);">
+    <div *ngIf="!auth.isLoggedIn" >
       <button color="primary" matTooltip="Login" [routerLink]="'/login'" mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
         <mat-icon>login</mat-icon>
       </button>
@@ -13,8 +13,8 @@
         <mat-icon>person_add</mat-icon>
       </button>
     </div>
-    <div *ngIf="(auth.isLoggedIn$ | async);">
-      <button mat-button>Is Loggedin</button>
+    <div *ngIf="auth.isLoggedIn " style="display: flex; align-items: center;">
+      <button mat-button disabled style="color: white;">{{username}}</button>
       <button color="primary" matTooltip="Logout" (click)="auth.logout()"mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
         <mat-icon>logout</mat-icon>
       </button>
