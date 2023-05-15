@@ -1,5 +1,6 @@
+import { UrlService } from '../../services/url.service';
+
 import { Slogan } from 'src/app/interface/slogan';
-import { MovieService } from './../../services/movie.service';
 import { Component, OnInit } from '@angular/core';
 import {
   FormBuilder,
@@ -18,14 +19,18 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./main.component.scss'],
 })
 export class MainComponent implements OnInit {
-  tempUrl = 'https://jsonplaceholder.typicode.com/users';
-  url = 'http://127.0.0.1:4231/auth/check-email';
+  url = this.UrlService.getUrl({
+    domain: 'localhost',
+    port: 4231,
+    path: '/auth/check-email',
+  });
 
   form: FormGroup = new FormGroup({});
   constructor(
     private fb: FormBuilder,
     private router: Router,
-    private http: HttpClient
+    private http: HttpClient,
+    private UrlService: UrlService
   ) {}
 
   get email(): FormControl {

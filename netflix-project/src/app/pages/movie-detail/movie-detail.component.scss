@@ -1,0 +1,45 @@
+* {
+  margin: 0;
+  padding:0;
+  color:white;
+}
+
+.container {
+  position: flex;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-size: 100% auto;
+  background-position: center;
+  max-width: 2160px;
+  padding-top: 90px;
+  display: flex;
+  flex-direction: row;
+}
+
+.container > div {
+  height: 100%;
+  flex-basis: 50%;
+  // background-color: white;
+}
+
+.posters{
+  display: flex;
+  flex-direction:row;
+}
+
+.credits{
+  display: flex;
+  flex: row;
+}
+
+.posters > img{
+  width: 160px;
+  height: 90px;
+}
+
+.credit-box > img{
+  width: 90px;
+    height: 160px;
+}

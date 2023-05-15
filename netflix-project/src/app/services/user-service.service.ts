@@ -11,6 +11,25 @@ export class UserService {
   constructor() {}
 
   update(data: User): void {
+    console.log('In user-service, new user updated', data);
     this.userSubject$.next(data);
+  }
+
+  get(): User {
+    return this.userSubject$.value;
+  }
+
+  get empty(): Boolean {
+    const data = this.userSubject$.value;
+    for (const [key, value] of Object.entries(data)) {
+      if (value === undefined || value === '') {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  clear(): void {
+    this.update({ email: '' });
   }
 }

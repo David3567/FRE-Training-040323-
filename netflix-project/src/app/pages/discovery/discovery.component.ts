@@ -13,7 +13,7 @@ export class DiscoveryComponent implements OnInit {
 
   movies: MovieItem[] = [];
   ngOnInit(): void {
-    this.movieService.retrieveData().subscribe((data) => {
+    this.movieService.retrieveList().subscribe((data) => {
       this.movies = data;
       console.log('current movie list', this.movies);
     });

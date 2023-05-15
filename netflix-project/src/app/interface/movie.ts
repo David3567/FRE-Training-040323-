@@ -16,6 +16,7 @@ export interface MovieItemComplete {
 }
 
 export interface MovieItem {
+  id: number;
   title: string;
   poster: string;
   year: string;
@@ -30,3 +31,26 @@ export interface Response {
   total_pages: number;
   total_results: number;
 }
+
+export interface Actor {
+  adult: boolean;
+  gender: number;
+  id: number;
+  known_for_department: string;
+  name: string;
+  original_name: string;
+  popularity: number;
+  profile_path: string;
+  cast_id: number;
+  character: string;
+  credit_id: string;
+  order: number;
+}
+
+export interface ActorInfo {
+  name: string;
+  char: string;
+  profile: string;
+}
+
+export interface MovieDetail {}

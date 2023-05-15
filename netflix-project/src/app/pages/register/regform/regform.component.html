@@ -26,6 +26,9 @@
       </div>
     </div>
 
+
+
+
     <!-- Password input -->
     <div class="row g-2">
       <div class=col-lg->
@@ -44,7 +47,7 @@
       </div>
     </div>
     <div style="display: flex; justify-content: center; margin-top: 10px;">
-      <button class="btn btn-danger" type="submit"> Next</button>
+      <button class="btn btn-danger" type="submit" [disabled]="firstForm.invalid"> Next</button>
     </div>
   </form>
 </div>

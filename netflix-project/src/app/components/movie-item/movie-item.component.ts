@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { MovieItem } from 'src/app/interface/movie';
 
 @Component({
@@ -9,9 +10,17 @@ import { MovieItem } from 'src/app/interface/movie';
 export class MovieItemComponent implements OnInit {
   @Input() InputMovie?: MovieItem;
 
-  constructor() {}
+  constructor(private router: Router) {}
 
   ngOnInit() {
     console.log('for individual', this.InputMovie);
+  }
+
+  toDetail(id: number | undefined) {
+    // click effect, not useful before resolver
+    // const container: any = document.querySelector('.Container');
+    // container.classList.toggle('clicked');
+    console.log('to detail', id);
+    this.router.navigate(['movieList', id]);
   }
 }

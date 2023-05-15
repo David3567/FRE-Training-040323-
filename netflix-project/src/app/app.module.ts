@@ -15,6 +15,8 @@ import { DiscoveryComponent } from './pages/discovery/discovery.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { MovieItemComponent } from './components/movie-item/movie-item.component';
 import { DisplayBoxComponent } from './components/display-box/display-box.component';
+import { MovieDetailComponent } from './pages/movie-detail/movie-detail.component';
+import { StoreModule } from '@ngrx/store';
 
 export const movieUrl = new InjectionToken<string>('');
 export const discoverPath = new InjectionToken<string>('');
@@ -30,6 +32,7 @@ export const discoverPath = new InjectionToken<string>('');
     DiscoveryComponent,
     MovieItemComponent,
     DisplayBoxComponent,
+    MovieDetailComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,16 +40,17 @@ export const discoverPath = new InjectionToken<string>('');
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    StoreModule.forRoot({}, {}),
   ],
   providers: [
     { provide: UserService, useClass: UserService },
     {
       provide: movieUrl,
-      useValue: 'https://api.themoviedb.org/',
+      useValue: 'api.themoviedb.org',
     },
     {
       provide: discoverPath,
-      useValue: '3/discover/movie',
+      useValue: '/3/discover/movie',
     },
   ],
   bootstrap: [AppComponent],

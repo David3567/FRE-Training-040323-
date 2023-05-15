@@ -58,6 +58,8 @@ export class PlanComponent implements OnInit {
 
   OnFinishRegister() {
     //this.http.post(this.url, this.currentUser).subscribe();
+    // to be improved because the role definition is not clear right now
     console.log('finishRegister', this.currentUser);
+    this.router.navigate(['./main']);
   }
 }

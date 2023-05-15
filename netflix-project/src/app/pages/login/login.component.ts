@@ -1,3 +1,4 @@
+import { UserService } from 'src/app/services/user-service.service';
 import { Component, OnInit } from '@angular/core';
 import { User } from '../../interface/user';
 import { Observable, map, tap } from 'rxjs';
@@ -10,6 +11,7 @@ import {
 } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import jwt_decode from 'jwt-decode';
 
 @Component({
   selector: 'app-login',
@@ -24,8 +26,9 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private rooter: Router,
-    private http: HttpClient
+    private router: Router,
+    private http: HttpClient,
+    private UserService: UserService
   ) {}
 
   get email(): FormControl {
@@ -51,9 +54,31 @@ export class LoginComponent implements OnInit {
 
     console.log(userData);
 
-    this.http.post(this.localhost, userData).subscribe((data) => {
-      console.log(data);
-    });
+    this.http.post(this.localhost, userData).subscribe(
+      (data: any) => {
+        const token: any = jwt_decode(data.accessToken);
+        const role = data.role;
+
+        const user: User = {
+          email: token.email,
+          username: token.username,
+          password: this.password.value,
+          role: role,
+          tmdb_key: token.tmdb_key,
+        };
+
+        console.log(user);
+
+        this.UserService.update(user);
+
+        this.router.navigate(['./main']);
+      },
+      (error) => {
+        if (error.status === 401) {
+          alert('Unauthorized User, please sign in first');
+        }
+      }
+    );
     // const dataStream$: Observable<User> = new Observable<User>((observer) => {
     //   observer.next(userData);
     //   observer.complete();
