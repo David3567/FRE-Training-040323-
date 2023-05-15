@@ -12,8 +12,15 @@ import { MatButtonModule } from '@angular/material/button';
 import { MoviesRoutingModule } from './movies-routing.module';
 import { MovieDetailComponent } from './movie-detail/movie-detail.component';
 import { MatIconModule } from '@angular/material/icon';
+import { YoutubePlayerComponent } from './youtube-player/youtube-player.component';
+import { YouTubePlayerModule } from '@angular/youtube-player';
 @NgModule({
-  declarations: [MoviesComponent, MovieComponent, MovieDetailComponent],
+  declarations: [
+    MoviesComponent,
+    MovieComponent,
+    MovieDetailComponent,
+    YoutubePlayerComponent,
+  ],
   imports: [
     CommonModule,
     SharedModule,
@@ -25,6 +32,7 @@ import { MatIconModule } from '@angular/material/icon';
     MoviesRoutingModule,
     MatCardModule,
     MatIconModule,
+    YouTubePlayerModule,
   ],
 })
 export class MoviesModule {}

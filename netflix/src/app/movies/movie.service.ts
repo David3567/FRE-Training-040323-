@@ -38,7 +38,7 @@ export class MovieService {
         }));
       })
     );
-  } 
+  }
 
   private getPosterImageUrl(path: string, size: string): string {
     if (!path) {
@@ -77,5 +77,13 @@ export class MovieService {
             )
         )
       );
+  }
+
+  getMovieTrailers(movieId: string | null) {
+    return this.http
+      .get(
+        `https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=9f7b20416809f982ba3dd585db30907b`
+      )
+      .pipe(map((data: any) => data.results.map((video: any) => video.key)));
   }
 }

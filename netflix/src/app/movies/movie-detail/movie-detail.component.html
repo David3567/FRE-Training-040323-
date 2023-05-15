@@ -29,7 +29,12 @@
             <mat-icon>airplay</mat-icon>
             Watch Now
           </button>
-          <button mat-flat-button extended color="primary">
+          <button
+            mat-flat-button
+            extended
+            color="primary"
+            (click)="getMovieTrailers()"
+          >
             <mat-icon>theaters</mat-icon>
             Watch Trailer
           </button>
@@ -65,5 +70,10 @@
     <!-- <div class="data">
       {{ movieInfo | json }}
     </div> -->
+
+    <app-youtube-player
+      *ngIf="videosLoaded"
+      [videos]="movieTrailers"
+    ></app-youtube-player>
   </div>
 </div>

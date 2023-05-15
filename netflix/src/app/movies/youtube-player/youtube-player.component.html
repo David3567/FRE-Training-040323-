@@ -1,0 +1,32 @@
+<div class="slider">
+  <div class="video-container">
+    <div class="video-wrapper">
+      <youtube-player [videoId]="videos[currentVideoIndex]"></youtube-player>
+    </div>
+  </div>
+  <!-- <button class="">Previous</button> -->
+  <div class="example-button-container prev-button">
+    <button
+      mat-mini-fab
+      color="accent"
+      aria-label="Example icon button with a menu icon"
+      (click)="prevVideo()"
+    >
+      <mat-icon>skip_previous</mat-icon>
+    </button>
+  </div>
+  <!-- <button class="">Next</button> -->
+  <div class="example-button-container next-button">
+    <button
+      mat-mini-fab
+      color="accent"
+      aria-label="Example icon button with a menu icon"
+      (click)="nextVideo()"
+    >
+      <mat-icon>skip_next</mat-icon>
+    </button>
+  </div>
+</div>
+
+<!-- *ngFor="let video of videos | slice : 0 : 3; let i = index"
+      [hidden]="i !== currentVideoIndex" -->

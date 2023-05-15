@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { map, Observable } from 'rxjs';
+import { MovieService } from '../movie.service';
 
 @Component({
   selector: 'app-movie-detail',
@@ -8,18 +9,34 @@ import { map, Observable } from 'rxjs';
   styleUrls: ['./movie-detail.component.css'],
 })
 export class MovieDetailComponent implements OnInit {
-  constructor(private route: ActivatedRoute) {}
+  constructor(
+    private route: ActivatedRoute,
+    private movieService: MovieService
+  ) {}
   actors!: any[];
   imageUrl: string = '';
   movieInfo: any;
   moviePosters!: any[];
+  id: string | null = '';
+  movieTrailers: any[] = [];
+  videosLoaded = false;
+
   ngOnInit(): void {
-    // const id = this.route.snapshot.paramMap.get('id');
+    this.id = this.route.snapshot.paramMap.get('id');
     const data = history.state.data;
     this.actors = data.actors;
     console.log(this.actors);
     this.movieInfo = data.movieInfo;
     this.moviePosters = data.moviePosters;
     this.imageUrl = `https://image.tmdb.org/t/p/original/${this.movieInfo.poster_path}`;
+  }
+
+  getMovieTrailers() {
+    this.movieService
+      .getMovieTrailers(this.id)
+      .subscribe((trailers: string[]) => {
+        this.movieTrailers = trailers;
+        this.videosLoaded = true;
+      });
   }
 }

@@ -1,0 +1,40 @@
+.slider {
+  position: absolute;
+  /* width: 100%; */
+  top: 25%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.video-container {
+  display: flex;
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+}
+
+.video-wrapper {
+  width: 100%;
+  flex: 0 0 100%;
+  scroll-snap-align: start;
+}
+
+.prev-button,
+.next-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 10px;
+  color: #fff;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.prev-button {
+  left: -60px;
+}
+
+.next-button {
+  right: -60px;
+}
