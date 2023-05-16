@@ -1,14 +1,14 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component } from '@angular/core';
 import { ApiserviceService } from '../service/service';
 import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 
 @Component({
-  selector: 'app-movielist',
-  templateUrl: './movielist.component.html',
-  styleUrls: ['./movielist.component.css']
+  selector: 'app-movie-list',
+  templateUrl: './movie-list.component.html',
+  styleUrls: ['./movie-list.component.scss']
 })
-export class MovielistComponent {
+export class MovieListComponent {
   id : any;
   baseUrl = "https://image.tmdb.org/t/p/original";
   movieList : any;

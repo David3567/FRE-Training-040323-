@@ -2,11 +2,11 @@ import { Component } from '@angular/core';
 import { plans } from './interface';
 
 @Component({
-  selector: 'app-register2',
-  templateUrl: './register2.component.html',
-  styleUrls: ['./register2.component.css']
+  selector: 'app-step2',
+  templateUrl: './step2.component.html',
+  styleUrls: ['./step2.component.scss']
 })
-export class Register2Component {
+export class Step2Component {
   plans : plans[] = [
     {
       info: ["Monthly price", "$6.99", "$15.49", "19.99"],

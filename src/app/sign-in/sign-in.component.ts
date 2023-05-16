@@ -1,12 +1,15 @@
 import { Component } from '@angular/core';
+import { userData } from './interface';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  selector: 'app-sign-in',
+  templateUrl: './sign-in.component.html',
+  styleUrls: ['./sign-in.component.scss']
 })
-export class RegisterComponent {
+export class SignInComponent {
+  input : userData[] = [];
+
   storeData = new FormGroup({
     userId: new FormControl('', [Validators.required, Validators.email]),
     userPw: new FormControl('', Validators.required),

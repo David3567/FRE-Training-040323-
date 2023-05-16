@@ -1,18 +1,20 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomePageComponent } from '../app/home-page/home-page.component';
-import { SigninComponent } from '../app/signin/signin.component';
-import { RegisterComponent } from './register/register.component';
-import { Register2Component } from './register/register2/register2.component';
-import { MovielistComponent } from './movielist/movielist.component';
-import { MovieDetailsComponent } from './movielist/movie-details/movie-details.component';
+import { HomepageComponent } from './homepage/homepage.component';
+import { SignInComponent } from './sign-in/sign-in.component';
+import { Step1Component } from './register/step1/step1.component';
+import { Step2Component } from './register/step2/step2.component';
+import { Step3Component } from './register/step3/step3.component';
+import { MovieListComponent } from './movie-list/movie-list.component';
+import { MovieDetailsComponent } from './movie-details/movie-details.component';
 
 const routes: Routes = [
-  { path : 'homepage', component : HomePageComponent },
-  { path : 'signin', component : SigninComponent },
-  { path : 'register', component : RegisterComponent },
-  { path : 'register2', component : Register2Component },
-  { path : 'movielist', component : MovielistComponent },
+  { path : 'homepage', component : HomepageComponent },
+  { path : 'sign-in', component : SignInComponent },
+  { path : 'step1', component : Step1Component },
+  { path : 'step2', component : Step2Component },
+  { path : 'step3', component : Step3Component },
+  { path : 'movie-list', component : MovieListComponent },
   { path : 'movie-details', component : MovieDetailsComponent},
   { path : '', redirectTo : '/homepage', pathMatch : 'full' },
 ];
@@ -22,3 +24,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
+

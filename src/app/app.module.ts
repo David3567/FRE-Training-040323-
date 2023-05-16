@@ -3,24 +3,26 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
-import { ApiserviceService } from './service/service';
+
 import { AppComponent } from './app.component';
-import { HomePageComponent } from './home-page/home-page.component';
-import { SigninComponent } from './signin/signin.component';
-import { RegisterComponent } from './register/register.component';
-import { Register2Component } from './register/register2/register2.component';
-import { MovielistComponent } from './movielist/movielist.component';
-import { MovieDetailsComponent } from './movielist/movie-details/movie-details.component';
+import { HomepageComponent } from './homepage/homepage.component';
+import { Step1Component } from './register/step1/step1.component';
+import { Step2Component } from './register/step2/step2.component';
+import { Step3Component } from './register/step3/step3.component';
+import { MovieDetailsComponent } from './movie-details/movie-details.component';
+import { MovieListComponent } from './movie-list/movie-list.component';
+import { SignInComponent } from './sign-in/sign-in.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomePageComponent,
-    SigninComponent,
-    RegisterComponent,
-    Register2Component,
-    MovielistComponent,
+    HomepageComponent,
+    Step1Component,
+    Step2Component,
+    Step3Component,
     MovieDetailsComponent,
+    MovieListComponent,
+    SignInComponent
   ],
   imports: [
     BrowserModule,
@@ -29,7 +31,7 @@ import { MovieDetailsComponent } from './movielist/movie-details/movie-details.c
     FormsModule,
     ReactiveFormsModule,
   ],
-  providers: [ApiserviceService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

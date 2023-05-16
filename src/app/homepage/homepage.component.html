@@ -6,7 +6,7 @@
             <select id="dropList" onchange="">
                 <option *ngFor="let lang of langList" [value]="langList">{{lang}}</option>
             </select>
-            <button class="signinButton" [routerLink]="['/signin']">Sign In</button>
+            <button class="signinButton" [routerLink]="['/sign-in']">Sign In</button>
         </div>
     </div>
     
@@ -20,7 +20,7 @@
             <form>
                 <input class="Top-EmailForm" type="text" placeholder="Email address">
             </form>
-            <button class="Top-EmailButton" [routerLink]="['/register']">Get Started ></button>
+            <button class="Top-EmailButton" [routerLink]="['/step1']">Get Started ></button>
         </div>
     </div>
     

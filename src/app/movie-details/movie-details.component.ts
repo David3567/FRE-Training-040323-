@@ -1,11 +1,10 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ApiserviceService } from 'src/app/service/service';
-import { YouTubePlayer } from '@angular/youtube-player';
 
 @Component({
   selector: 'app-movie-details',
   templateUrl: './movie-details.component.html',
-  styleUrls: ['./movie-details.component.css']
+  styleUrls: ['./movie-details.component.scss']
 })
 export class MovieDetailsComponent {
   @Input() getId: any;
@@ -14,18 +13,18 @@ export class MovieDetailsComponent {
   movieList : any;
   movieInfo : any;
 
-  constructor(private apiservice: ApiserviceService, private youtube: YouTubePlayer) {}
+  constructor(private apiservice: ApiserviceService) {}
 
-  getMovieVideo(id: number) {
-    this.apiservice.getMovieVideo(id).subscribe((response: any) => {
-      this.videoId = response.results[0].key;
-      this.playVideo();
-    });
-  }
+  // getMovieVideo(id: number) {
+  //   this.apiservice.getMovieVideo(id).subscribe((response: any) => {
+  //     this.videoId = response.results[0].key;
+  //     this.playVideo();
+  //   });
+  // }
 
-  private playVideo() {
-    this.youtube.playVideo();
-  }
+  // private playVideo() {
+  //   this.youtube.playVideo();
+  // }
 
   ngOnInit() {
     this.apiservice.id$.subscribe(id => { this.getId = id; });

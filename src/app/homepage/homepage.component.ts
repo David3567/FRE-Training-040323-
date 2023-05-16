@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
-import { eachBox } from "./interface";
+import { eachBox } from './interface';
 
 @Component({
-  selector: 'app-home-page',
-  templateUrl: './home-page.component.html',
-  styleUrls: ['./home-page.component.css']
+  selector: 'app-homepage',
+  templateUrl: './homepage.component.html',
+  styleUrls: ['./homepage.component.scss']
 })
-export class HomePageComponent {
+export class HomepageComponent {
   langList : string[] = ['🌐 English'];
   bigImage : string[] = [
     "Unlimited movies, TV shows, and more", "Watch anywhere. Cancel anytime.",
