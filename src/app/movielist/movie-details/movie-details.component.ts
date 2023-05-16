@@ -1,5 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ApiserviceService } from 'src/app/service/service';
+import { YouTubePlayer } from '@angular/youtube-player';
 
 @Component({
   selector: 'app-movie-details',
@@ -8,18 +9,27 @@ import { ApiserviceService } from 'src/app/service/service';
 })
 export class MovieDetailsComponent {
   @Input() getId: any;
+  videoId: any;
   baseUrl = "https://image.tmdb.org/t/p/original";
   movieList : any;
   movieInfo : any;
 
-  constructor(private _apiservice: ApiserviceService) {}
+  constructor(private apiservice: ApiserviceService, private youtube: YouTubePlayer) {}
+
+  getMovieVideo(id: number) {
+    this.apiservice.getMovieVideo(id).subscribe((response: any) => {
+      this.videoId = response.results[0].key;
+      this.playVideo();
+    });
+  }
+
+  private playVideo() {
+    this.youtube.playVideo();
+  }
 
   ngOnInit() {
-    this._apiservice.id$.subscribe(id => {
-      this.getId = id;
-      //console.log(this.getId);
-    });
-    this._apiservice.getdata().subscribe(res => {
+    this.apiservice.id$.subscribe(id => { this.getId = id; });
+    this.apiservice.getdata().subscribe(res => {
       this.movieList = res;
       this.movieList = this.movieList.results;
       this.movieList.forEach((ele : any) => {
