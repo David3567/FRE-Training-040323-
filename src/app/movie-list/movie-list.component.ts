@@ -19,7 +19,6 @@ export class MovieListComponent {
     console.log(movieId)
     this.id = movieId.toString();
     this._apiservice.setId(movieId.toString());
-    console.log(this.id);
     this.router.navigate(['/movie-details']);
   }
 
