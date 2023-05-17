@@ -5,7 +5,7 @@
   justify-content: space-between;
   font-size: .75rem;
   padding: 1rem;
-  height: 300px;
+  min-height: 340px;
   border-radius: .25rem;
   position: relative;
   box-shadow:
@@ -19,5 +19,25 @@
 
   .content-container {
     max-height: 50%;
+
+    button{
+      color: white;
+      border: white 1px solid;
+    }
+  }
+
+
+}
+
+.stats-container {
+  display: flex;
+  justify-content: space-between;
+  div {
+    background-color: rgb(183, 74, 92);
+    border-radius: 1rem;
+    flex: 25%;
+    display: flex;
+    justify-content: center;
+    max-width: 30%;
   }
 }

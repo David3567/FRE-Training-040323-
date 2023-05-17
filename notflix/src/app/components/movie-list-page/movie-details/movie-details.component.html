@@ -1,0 +1,48 @@
+<div class="details-container" *ngIf="movieData" [ngStyle]="{background: 'linear-gradient(to top left,#191a1a1b,#080100), url(http://image.tmdb.org/t/p//w1280' + movieData.poster_path + ')'}">
+  <app-navbar></app-navbar>
+  <div class="details-body-container">
+    <div class="details-content-container">
+      <div class="details-content-text">
+        <h1 class="title">{{movieData.title}}</h1>
+        <div class="ratings-container">
+          <div class="ratings">
+            <mat-icon>star</mat-icon>
+            <p>{{movieData.vote_average}}</p>
+            <div class="vl"></div>
+            <p>{{movieData.vote_count}}</p>
+          </div>
+          <p>{{movieData.runtime}} min</p>
+          <p><span *ngFor="let genre of movieData.genres">{{genre.name}}, </span></p>
+          <p>{{movieData.release_date.substring(0, 4)}}</p>
+        </div>
+        <p>{{movieData.overview}}</p>
+        <div class="trademark-container">
+          <p>Home Page &reg;</p>
+          <p>{{movieData.homepage}}</p>
+        </div>
+        <div class="button-container">
+          <button mat-button><mat-icon>play_arrow</mat-icon> Play Now</button>
+          <button mat-button class="trailer" (click)="openVideoModal()">Trailer</button>
+        </div>
+      </div>
+
+    </div>
+    <div class="details-content-images">
+      <div class="poster-container">
+        <p>Poster</p>
+        <div class="poster-images-container">
+          <img *ngFor="let images of movieImages;" [src]="'http://image.tmdb.org/t/p//w1280' + images.file_path" alt="" width='150px'>
+        </div>
+      </div>
+      <div class="actors-container">
+        <p>Actors</p>
+        <div class="actor-card-container">
+          <div class="actor-card" *ngFor="let actor of movieActors">
+            <img [src]="'http://image.tmdb.org/t/p//w1280' + actor.profile_path" width="60px">
+            <p>{{actor.name}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

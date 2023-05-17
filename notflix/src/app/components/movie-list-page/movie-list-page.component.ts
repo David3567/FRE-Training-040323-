@@ -20,7 +20,7 @@ export class MovieListPageComponent implements OnInit {
     //   console.log(response)
     // })
 
-    this.movieDataService.getMovieData().subscribe(data => {
+    this.movieDataService.getMoviesData().subscribe(data => {
       console.log(data)
       this.movieData = data;
     })

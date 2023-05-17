@@ -29,6 +29,11 @@ import { MovieListPageComponent } from './components/movie-list-page/movie-list-
 import { MovieItemComponent } from './components/movie-list-page/movie-item/movie-item.component';
 import { TruncatePipe } from './truncate.pipe';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MovieDetailsComponent } from './components/movie-list-page/movie-details/movie-details.component';
+import {YouTubePlayerModule} from '@angular/youtube-player';
+import { TrailerComponent } from './components/trailer/trailer.component'
+import {MatDialogModule} from '@angular/material/dialog';
+import { VideoModalComponent } from './video-modal/video-modal.component'
 
 
 
@@ -49,7 +54,10 @@ import { ReactiveFormsModule } from '@angular/forms';
     RegisterPlanComponent,
     MovieListPageComponent,
     MovieItemComponent,
-    TruncatePipe
+    TruncatePipe,
+    MovieDetailsComponent,
+    TrailerComponent,
+    VideoModalComponent
   ],
   imports: [
     BrowserModule,
@@ -65,6 +73,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatTableModule,
     HttpClientModule,
     ReactiveFormsModule,
+    YouTubePlayerModule,
+    MatDialogModule,
   ],
   providers: [TruncatePipe],
   bootstrap: [AppComponent]
