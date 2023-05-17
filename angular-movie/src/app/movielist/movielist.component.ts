@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Movie } from '../core/model/Movie';
 import { MovieDataService } from '../shared/service/moviedata/movie-data.service';
+import { BehaviorSubject, Observable, map, scan, switchMap, tap } from 'rxjs';
 
 @Component({
   selector: 'app-movielist',
@@ -8,14 +9,32 @@ import { MovieDataService } from '../shared/service/moviedata/movie-data.service
   styleUrls: ['./movielist.component.scss']
 })
 export class MovielistComponent {
-  movieData: Movie[] = [];
+
+  page: number = 1;
+  loading: boolean = false;
+  movieData$: BehaviorSubject<Movie[]> = new BehaviorSubject<Movie[]>([]);
   constructor(private dataservice: MovieDataService) {
 
   }
   ngOnInit(): void {
-    this.dataservice.fetchApiData().subscribe(data => {
-      this.movieData = data;
-    });
+    this.fetchMovieData();
+  }
 
+  onScroll(){
+    if (!this.loading) {
+      this.page++;
+      this.fetchMovieData();
+    }
+  }
+
+
+  fetchMovieData(): void {
+    this.loading = true;
+    this.dataservice.fetchApiData(this.page).pipe(
+      tap((newData: Movie[]) => {
+        this.movieData$.next(this.movieData$.getValue().concat(newData));
+        this.loading = false;
+      })
+    ).subscribe();
   }
 }

@@ -5,19 +5,16 @@ import { Router } from '@angular/router';
 import { BehaviorSubject, Observable, map, of, tap } from 'rxjs';
 import { User } from 'src/app/core/model/user';
 import jwt_decode from 'jwt-decode';
-interface Decoded {
-  id: string;
-  username: string;
-  email: string;
-  tmdb_key: string;
-  iat: number;
-  exp: number;
-}
-@Injectable()
+import { Decoded } from 'src/app/core/model/Decoded';
+@Injectable({providedIn: 'root'})
 
 export class AuthService {
   url = `http://localhost:4231/`;
+  private userProfileSubject = new BehaviorSubject<Decoded | null>(null);
+  userProfile$ = this.userProfileSubject.asObservable();
   constructor(private http: HttpClient, private router: Router ) {
+    this.userProfileSubject.next(this.getUserFromToken());
+    console.log('service init')
   }
   registerEmail = '';
   registerPassword = '';
@@ -53,7 +50,11 @@ export class AuthService {
   handleSignIn(email: string, password: string){
     return this.http.post<{email: string, password: string}>(this.url + `auth/signin`, {email, password}).subscribe(((res: any) =>{
       localStorage.setItem('access_token', res.accessToken);
-      this.router.navigate(['/home']);
+      let profile = this.getUserFromToken();
+      if (profile){
+        this.updateUserProfile(profile);
+        this.router.navigate(['/home']);
+      }
     })
     );
   }
@@ -70,21 +71,23 @@ export class AuthService {
     this.registerKey = key;
   }
 
-  get isLoggedIn(): boolean{
-    return localStorage.getItem('access_token')!== null;
-  }
-
-  get username(): string{
+  getUserFromToken(): Decoded | null{
     let token = localStorage.getItem('access_token')
     if(token){
       let decoded:Decoded = jwt_decode(token)
-      return decoded.username;
+      return decoded;
     }
-    return '';
-
+    return null;
   }
+
   logout(){
     localStorage.removeItem('access_token');
+    this.updateUserProfile(null)
     this.router.navigate(['/login']);
   }
+  updateUserProfile(userProfile: Decoded | null): void {
+    console.log("update")
+    this.userProfileSubject.next(userProfile);
+  }
+
 }

@@ -5,7 +5,7 @@
     </button>
     <button mat-button [routerLink]="''" color="primary" style="font-size: large;">Movie Site</button>
     <span class="example-spacer"></span>
-    <div *ngIf="!auth.isLoggedIn" >
+    <div *ngIf="!user" >
       <button color="primary" matTooltip="Login" [routerLink]="'/login'" mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
         <mat-icon>login</mat-icon>
       </button>
@@ -13,15 +13,12 @@
         <mat-icon>person_add</mat-icon>
       </button>
     </div>
-    <div *ngIf="auth.isLoggedIn " style="display: flex; align-items: center;">
-      <button mat-button disabled style="color: white;">{{username}}</button>
-      <button color="primary" matTooltip="Logout" (click)="auth.logout()"mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+    <div *ngIf="user != null " style="display: flex; align-items: center;">
+      <button mat-button disabled style="color: white;">{{user.username}}</button>
+      <button color="primary" matTooltip="Logout" (click)="logout()"mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
         <mat-icon>logout</mat-icon>
       </button>
     </div>
-    <button *ngIf="BackButton" matTooltip="Back" color="primary" (click)="goBack() "mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
-      <mat-icon>arrow_back</mat-icon>
-    </button>
   </mat-toolbar-row>
 </mat-toolbar>
 

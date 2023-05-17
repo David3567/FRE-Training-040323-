@@ -3,11 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-
-
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MovieDataService } from './shared/service/moviedata/movie-data.service';
-import { AuthService } from './shared/service/auth/auth.service';
+import { SharedModule } from './shared/shared.module';
 
 
 @NgModule({
@@ -18,8 +15,9 @@ import { AuthService } from './shared/service/auth/auth.service';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    SharedModule
   ],
-  providers: [MovieDataService, AuthService,],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

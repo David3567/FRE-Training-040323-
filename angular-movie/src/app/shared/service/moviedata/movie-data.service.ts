@@ -15,8 +15,8 @@ export class MovieDataService {
   get img_url(): string {
     return `https://image.tmdb.org/t/p/w1280`;
   }
-  fetchApiData(): Observable<Movie[]> {
-    return this.http.get<ApiResponse>(`https://api.themoviedb.org/3/discover/movie?${this.api_key}`).pipe(
+  fetchApiData(page: number = 1): Observable<Movie[]> {
+    return this.http.get<ApiResponse>(`https://api.themoviedb.org/3/discover/movie?${this.api_key}&page=${page}`).pipe(
       map(res => res.results)
     );
   }

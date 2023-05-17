@@ -1,18 +1,30 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { Location } from '@angular/common';
 import { AuthService } from '../../service/auth/auth.service';
+import { Decoded } from 'src/app/core/model/Decoded';
+import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent {
-  @Input() BackButton: boolean = false;
-  username = '';
-  constructor(private location: Location, public auth: AuthService) {
-    this.username = this.auth.username;
+
+  user: Decoded | null = null;
+  private userProfileSubscription: Subscription | null = null;
+  constructor(private location: Location, private auth: AuthService) {
   }
-  goBack() {
-    this.location.back();
+  ngOnInit(){
+    this.userProfileSubscription = this.auth.userProfile$.subscribe(userProfile => {
+      this.user = userProfile;
+    });
+  }
+  ngOnDestroy() {
+    if (this.userProfileSubscription) {
+      this.userProfileSubscription.unsubscribe();
+    }
+  }
+  logout(){
+    this.auth.logout();
   }
 }

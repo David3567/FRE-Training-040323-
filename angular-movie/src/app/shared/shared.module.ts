@@ -133,6 +133,6 @@ import { GuardService } from './service/auth/guard.service';
     HttpClientModule,
     ReactiveFormsModule,
     YouTubePlayerModule],
-  providers: [MovieDataService, AuthService, ResolveDetailsService, GuardService]
+  providers: [MovieDataService, ResolveDetailsService, GuardService]
 })
 export class SharedModule { }

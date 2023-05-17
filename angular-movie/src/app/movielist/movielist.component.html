@@ -1,6 +1,5 @@
-<app-navbar [BackButton]="true"/>
-<div class="container" >
-  <app-moviecard *ngFor="let item of movieData" [movieInfo] = item/>
+<div infinite-scroll (scrolled)="onScroll()" [infiniteScrollDistance]="1" [infiniteScrollThrottle]="3"
+class="container">
+  <app-moviecard *ngFor="let item of movieData$ | async" [movieInfo]=item />
 
 </div>
-<app-background />
