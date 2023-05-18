@@ -1,0 +1,13 @@
+.container {
+  display: flex;
+  height: 100vh;
+
+  app-notes {
+    width: 50vw;
+    background-color: gray;
+  }
+
+  app-note {
+    width: 50vw;
+  }
+}

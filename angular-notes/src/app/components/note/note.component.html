@@ -1,0 +1,14 @@
+<div class="note-container">
+  <form [formGroup]="myForm" (ngSubmit)="submitForm()">
+    <div class="input-field">
+      <label for="title">Title: </label>
+      <input type="text" id="title" formControlName="title" [value]="selectedNote ? selectedNote.title: ''">
+    </div>
+    <div class="input-field">
+      <label for="content">Content: </label>
+      <textarea type="text-area" id="content" formControlName="content" [value]="selectedNote ? selectedNote.content:''"></textarea>
+    </div>
+    <button mat-button (click)="setFormValues()" [disabled]="isDisabled">Revert</button>
+    <button type="submit" [disabled]="isDisabled" mat-button>Save</button>
+  </form>
+</div>

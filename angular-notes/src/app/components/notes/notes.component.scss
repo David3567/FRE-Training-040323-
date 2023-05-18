@@ -1,0 +1,11 @@
+.notes-container {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+
+  .notes-section {
+    display: flex;
+    justify-content: space-between;
+    padding:.25rem;
+  }
+}

@@ -1,0 +1,10 @@
+<div class="notes-container">
+  <div class="notes-section">
+    <h3>Notes</h3>
+    <button mat-button><mat-icon>add</mat-icon></button>
+  </div>
+  <div class="notes-section" *ngFor="let note of notes" (click)="editNote(note)">
+    <h3>{{note.title}}</h3>
+    <button (click)="deleteNote(note)"><mat-icon>clear</mat-icon></button>
+  </div>
+</div>
