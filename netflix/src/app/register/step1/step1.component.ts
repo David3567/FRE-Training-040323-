@@ -8,6 +8,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { Observable } from 'rxjs';
+import { AuthService } from 'src/app/core/auth.service';
 
 @Component({
   selector: 'app-step1',
@@ -15,7 +16,11 @@ import { Observable } from 'rxjs';
   styleUrls: ['./step1.component.css'],
 })
 export class Step1Component {
-  constructor(private fb: FormBuilder, private http: HttpClient) {}
+  constructor(
+    private fb: FormBuilder,
+    private http: HttpClient,
+    private authService: AuthService
+  ) {}
 
   registerForm = this.fb.group({
     email: [
@@ -38,11 +43,9 @@ export class Step1Component {
   emailAlreadyExists(
     control: AbstractControl
   ): Observable<ValidationErrors | null> {
-    // const url = `localhost:4231/auth-c/check-email`;
-    const url = 'https://jsonplaceholder.typicode.com/users';
-    return this.http.get<any>(url).pipe(
+    return this.authService.checkEmail(control.value).pipe(
       map((res) => {
-        if (res[0].email === control.value) {
+        if (res) {
           return { emailAlreadyExists: true };
         } else {
           return null;
@@ -64,9 +67,9 @@ export class Step1Component {
     });
     let options = { headers: headers };
     return this.http
-      .post<any>('localhost:4231/auth-c/check-email', {
+      .post<any>('localhost:4231/auth/check-email', {
         email: 'david@gmail.com',
-        options,
+        // options,
       })
       .subscribe((data) => console.log(data));
   }
