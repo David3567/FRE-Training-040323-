@@ -9,6 +9,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { LoginRoutingModule } from './login-routing.module';
+import { AuthService } from '../core/auth.service';
 @NgModule({
   declarations: [LoginComponent, LoginFormComponent],
   imports: [
