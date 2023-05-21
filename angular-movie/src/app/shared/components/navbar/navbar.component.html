@@ -14,7 +14,7 @@
       </button>
     </div>
     <div *ngIf="user != null " style="display: flex; align-items: center;">
-      <button mat-button disabled style="color: white;">{{user.username}}</button>
+      <button mat-button (click)="openDialog()" style="color: white;" matTooltip="Profile">{{user.username}}</button>
       <button color="primary" matTooltip="Logout" (click)="logout()"mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
         <mat-icon>logout</mat-icon>
       </button>

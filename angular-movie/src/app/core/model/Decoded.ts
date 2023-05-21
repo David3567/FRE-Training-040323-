@@ -5,4 +5,5 @@ export interface Decoded {
   tmdb_key: string;
   iat: number;
   exp: number;
+  role: string;
 }

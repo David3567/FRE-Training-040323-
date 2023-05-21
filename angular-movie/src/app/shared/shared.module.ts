@@ -47,11 +47,13 @@ import { YouTubePlayerModule } from '@angular/youtube-player';
 import { ResolveDetailsService } from './service/resolvers/resolve-details.service';
 import { InterceptorService } from './service/auth/interceptor.service';
 import { GuardService } from './service/auth/guard.service';
+import { ProfiledialogComponent } from './components/profiledialog/profiledialog.component';
+import { roleGuard } from './service/auth/roleguard.guard';
 
 
 
 @NgModule({
-  declarations: [BackgroundComponent, NavbarComponent, DateToYearPipe, TruncatePipe],
+  declarations: [BackgroundComponent, NavbarComponent, DateToYearPipe, TruncatePipe, ProfiledialogComponent],
   imports: [
     MatButtonToggleModule,
     MatCardModule,
@@ -133,6 +135,6 @@ import { GuardService } from './service/auth/guard.service';
     HttpClientModule,
     ReactiveFormsModule,
     YouTubePlayerModule],
-  providers: [MovieDataService, ResolveDetailsService, GuardService]
+  providers: [MovieDataService, ResolveDetailsService, GuardService, {provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true},roleGuard]
 })
 export class SharedModule { }

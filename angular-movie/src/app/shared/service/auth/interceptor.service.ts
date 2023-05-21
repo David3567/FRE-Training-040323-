@@ -7,7 +7,13 @@ export class InterceptorService implements HttpInterceptor {
 
   constructor() { }
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    console.log(req);
+    if (req.method === 'PATCH'){
+      let token = localStorage.getItem('access_token')
+      req = req.clone({
+        headers: req.headers.set('Authorization', `Bearer ${token}`)
+      })
+      console.log(req);
+    }
     return next.handle(req);
   }
 }
