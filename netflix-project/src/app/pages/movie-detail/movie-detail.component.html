@@ -1,34 +1,35 @@
-<div class ="container bg-image" [style.backgroundImage]="'url(' + backgroundImage + ')'" >
+<div class="container bg-image" [style.backgroundImage]="'url(' + backgroundImage + ')'">
+  <app-video-modal [movieId] ="movieID"></app-video-modal>
   <div class="left-container">
     <h1> {{data?.title}}</h1>
     <div class="informLine">
-      <span>{{data?.rating}}</span>
-      <span>{{data?.year}}</span>
+      <span>{{data?.rating}} | </span>
+      <span> Year: {{data?.year}}</span>
     </div>
     <div class="Overview">
       <p>{{data?.overview}}</p>
     </div>
-    <div class ="hpContainer">
-      <a [attr.href]="data?.homepage" [attr.src]="data?.homepage">{{data?.homepage}}</a>
+    <div class="hpContainer">
+      <span>Homepage: </span><a [attr.href]="data?.homepage" [attr.src]="data?.homepage">{{data?.homepage}}</a>
     </div>
-    <div class ="buttons">
-      <button class="btn btn-primary">PLAY NOW</button>
-      <button class="btn btn-primary">TRAILER</button>
+    <div class="buttons">
+      <button class="btn btn-secondary">PLAY NOW</button>
+      <button class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">TRAILER</button>
     </div>
   </div>
   <div class="right-container">
-    <div class="posters" >
-      <img  *ngFor="let poster of imageList | slice:0:5;" [src] = "poster">
+    <p>Poster:</p>
+    <div class="posters">
+      <img *ngFor="let poster of imageList | slice:0:5;" [src]="poster">
     </div>
-  <div class="credits">
-    <div class="credit-box" *ngFor="let actor of credits | slice:0:9">
-      <img [src]="actor.profile">
-      <p class="character">{{ actor.char }}</p>
-      <p class="name">{{ actor.name }}</p>
+    <p>Credits:</p>
+    <div class="credits">
+      <div class="credit-box" *ngFor="let actor of credits | slice:0:9">
+        <img [src]="actor.profile">
+        <p class="character">{{ actor.char }}</p>
+        <p class="name">{{ actor.name }}</p>
 
+      </div>
     </div>
-  </div>
   </div>
 </div>
-
-

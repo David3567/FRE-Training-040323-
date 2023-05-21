@@ -24,13 +24,13 @@ const routes: Routes = [
   {
     path: 'movieList',
     component: DiscoveryComponent,
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
   },
   {
     path: 'movieList/:id',
     component: MovieDetailComponent,
     resolve: { detailResolver: MovieDetailResolver },
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
   },
   {
     path: 'step1',

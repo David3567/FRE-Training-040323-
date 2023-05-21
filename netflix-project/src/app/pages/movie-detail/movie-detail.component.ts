@@ -12,7 +12,7 @@ import { Observable } from 'rxjs';
   styleUrls: ['./movie-detail.component.scss'],
 })
 export class MovieDetailComponent implements OnInit {
-  movieID?: string | null;
+  movieID?: any;
   sub: any;
   data?: any;
   imageList?: string[];

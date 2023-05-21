@@ -17,6 +17,8 @@ import { MovieItemComponent } from './components/movie-item/movie-item.component
 import { DisplayBoxComponent } from './components/display-box/display-box.component';
 import { MovieDetailComponent } from './pages/movie-detail/movie-detail.component';
 import { StoreModule } from '@ngrx/store';
+import { VideoModalComponent } from './components/video-modal/video-modal.component';
+import { YouTubePlayerModule } from '@angular/youtube-player';
 
 export const movieUrl = new InjectionToken<string>('');
 export const discoverPath = new InjectionToken<string>('');
@@ -33,6 +35,7 @@ export const discoverPath = new InjectionToken<string>('');
     MovieItemComponent,
     DisplayBoxComponent,
     MovieDetailComponent,
+    VideoModalComponent,
   ],
   imports: [
     BrowserModule,
@@ -41,6 +44,7 @@ export const discoverPath = new InjectionToken<string>('');
     ReactiveFormsModule,
     HttpClientModule,
     StoreModule.forRoot({}, {}),
+    YouTubePlayerModule,
   ],
   providers: [
     { provide: UserService, useClass: UserService },

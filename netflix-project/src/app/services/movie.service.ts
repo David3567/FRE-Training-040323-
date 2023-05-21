@@ -16,6 +16,7 @@ import {
   combineLatest,
   delay,
   map,
+  take,
   tap,
 } from 'rxjs';
 import { ResolveData } from '@angular/router';
@@ -136,6 +137,22 @@ export class MovieService implements OnInit {
         });
       }),
       delay(3000)
+    );
+  }
+
+  getMovieTrailer(id: any): any {
+    const url = this.UrlService.getUrl({
+      protocal: 'https',
+      domain: this.movieUrl,
+      path: '/3/movie/' + `${id}` + '/videos',
+      query: 'api_key=9b4d0b3f81f6c163aac86be798191447',
+    });
+    return this.http.get<any>(url).pipe(
+      map((response: any) => {
+        return response.results.map((result: any) => {
+          return result.key;
+        });
+      })
     );
   }
 }
