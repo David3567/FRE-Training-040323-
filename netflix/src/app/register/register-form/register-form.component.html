@@ -1,0 +1,84 @@
+<div class="flex justify-center mt-[10%]">
+  <form [formGroup]="registerForm">
+    <mat-stepper formArrayName="formArray" linear>
+      <mat-step formGroupName="0" [stepControl]="formArray.controls[0]">
+        <!-- <form
+          class="form-login form-display form step1"
+          [formGroup]="registerForm"
+        > -->
+        <div class="flex flex-col">
+          <p>STEP 1 OF 3</p>
+          <h1>Create a password to start your membership</h1>
+          <p>Just a few more steps and you're done!</p>
+          <p>We hate paperwork, too.</p>
+          <mat-form-field appearance="fill" class="input-field">
+            <mat-label>Email or Phone Number</mat-label>
+            <input matInput formControlName="email" />
+            <!-- <mat-error *ngIf="email?.invalid">{{ getEmailErrorMessage() }}</mat-error> -->
+            <mat-error *ngIf="email?.hasError('required')"
+              >This field is required</mat-error
+            >
+            <mat-error *ngIf="email?.hasError('email')"
+              >Invalid email</mat-error
+            >
+            <mat-error *ngIf="email?.hasError('emailAlreadyExists')"
+              >Email already exists</mat-error
+            >
+          </mat-form-field>
+
+          <mat-form-field appearance="fill" class="input-field">
+            <mat-label>Enter your password</mat-label>
+            <input matInput formControlName="password" type="password" />
+          </mat-form-field>
+
+          <button mat-flat-button color="warn" class="btn" matStepperNext>
+            Next
+          </button>
+        </div>
+        <!-- <button mat-flat-button color="warn" class="btn" routerLink="/register/2">
+    Next
+  </button> -->
+        <!-- </form> -->
+      </mat-step>
+      <mat-step formGroupName="1" [stepControl]="formArray.controls[1]">
+        <div class="flex flex-col items-center text-center text-lg">
+          <div class="flex gap-2">
+            <mat-icon class="text-red-400">check_circle_outline</mat-icon>
+            <p>STEP 2 OF 3</p>
+          </div>
+          <h1>Choose your plan</h1>
+          <div class="space-y-5">
+            <div class="flex items-center gap-2">
+              <mat-icon class="text-red-400">check</mat-icon>
+              No commitments, cancel anytime.
+            </div>
+            <div class="flex items-center gap-2">
+              <mat-icon class="text-red-400">check</mat-icon>
+              Endless entertainment for one low price.
+            </div>
+            <div class="flex items-center gap-2">
+              <mat-icon class="text-red-400">check</mat-icon>
+              Unlimited viewing on all your devices.
+            </div>
+            <button
+              mat-button
+              matStepperNext
+              mat-flat-button
+              color="warn"
+              class="w-full"
+            >
+              Next
+            </button>
+          </div>
+        </div>
+      </mat-step>
+      <mat-step formGroupName="2" [stepControl]="formArray.controls[2]">
+        <ng-template matStepLabel>Fill out your name</ng-template>
+        hello3
+        <div>
+          <button mat-button matStepperPrevious>Previous</button>
+        </div>
+      </mat-step>
+    </mat-stepper>
+  </form>
+</div>
