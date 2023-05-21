@@ -140,6 +140,12 @@
               [ngClass]="{ highlight: isSelected(row) }"
             ></tr>
           </table>
+          <mat-error *ngIf="role?.hasError('required')"
+            >Please select your membership type</mat-error
+          >
+          <div *ngIf="roleError" class="text-red-400">
+            Please select your membership type
+          </div>
         </div>
         <div class="flex justify-center mt-6">
           <button
@@ -147,7 +153,7 @@
             matStepperNext
             color="warn"
             class="w-[80%]"
-            (click)="logFormValue()"
+            (click)="register()"
           >
             Next
           </button>

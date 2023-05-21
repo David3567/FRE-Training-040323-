@@ -16,4 +16,13 @@ export class AuthService {
   login(userCredential: { email: string; password: string }) {
     return this.http.post<any>(`${this.url}/auth/signin`, userCredential);
   }
+  signup(userCredential: {
+    email: string;
+    username: string;
+    password: string;
+    role: string;
+    tmdb_key: string;
+  }) {
+    return this.http.post<any>(`${this.url}/auth/signup`, userCredential);
+  }
 }

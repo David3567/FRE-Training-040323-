@@ -7,7 +7,7 @@ import {
   ValidationErrors,
   Validators,
 } from '@angular/forms';
-import { Observable, map } from 'rxjs';
+import { Observable, catchError, map, throwError } from 'rxjs';
 import { AuthService } from 'src/app/core/auth.service';
 
 @Component({
@@ -19,6 +19,7 @@ export class RegisterFormComponent implements OnInit {
   constructor(private fb: FormBuilder, private authService: AuthService) {}
   registerForm!: FormGroup;
   formArray!: FormArray;
+  roleError: boolean = false;
   plans: {
     name: string;
     price: number;
@@ -78,6 +79,7 @@ export class RegisterFormComponent implements OnInit {
   }): void {
     this.selectedRow = row;
     this.formArray.controls[1].get('role')?.setValue(row.role);
+    this.roleError = false;
   }
 
   isSelected(row: {
@@ -88,6 +90,18 @@ export class RegisterFormComponent implements OnInit {
     download: string;
   }): boolean {
     return this.selectedRow === row;
+  }
+
+  randomString(length: number) {
+    var randomChars =
+      'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    var result = '';
+    for (var i = 0; i < length; i++) {
+      result += randomChars.charAt(
+        Math.floor(Math.random() * randomChars.length)
+      );
+    }
+    return result;
   }
 
   ngOnInit() {
@@ -125,8 +139,36 @@ export class RegisterFormComponent implements OnInit {
   get username() {
     return this.formArray.at(0).get('username');
   }
+  get role() {
+    return this.formArray.at(1).get('role');
+  }
+
   logFormValue() {
-    console.log(this.registerForm.value);
+    if (!this.role?.value) {
+      this.roleError = true;
+    } else {
+      console.log(this.registerForm.value);
+    }
+  }
+  register() {
+    if (!this.role?.value) {
+      this.roleError = true;
+    } else {
+      const tmdb_key = this.randomString(20);
+      const userCredential = {
+        ...this.registerForm.value.formArray[0],
+        ...this.registerForm.value.formArray[1],
+        tmdb_key: tmdb_key,
+      };
+      this.authService
+        .signup(userCredential)
+        .pipe(
+          catchError((error) => {
+            return throwError(() => new Error(error));
+          })
+        )
+        .subscribe((res) => console.log('user signup with: ', res.accessToken));
+    }
   }
   emailAlreadyExists(
     control: AbstractControl
