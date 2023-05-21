@@ -1,3 +1,9 @@
 :host ::ng-deep .mat-horizontal-stepper-header-container {
   display: none;
 }
+.highlight {
+  cursor: pointer;
+}
+.highlight td {
+  color: red;
+}

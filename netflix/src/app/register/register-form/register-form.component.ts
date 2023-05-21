@@ -19,6 +19,77 @@ export class RegisterFormComponent implements OnInit {
   constructor(private fb: FormBuilder, private authService: AuthService) {}
   registerForm!: FormGroup;
   formArray!: FormArray;
+  plans: {
+    name: string;
+    price: number;
+    features: string;
+    resolution: string;
+    download: string;
+    role: 'USER' | 'SUPERUSER' | 'ADMIN';
+  }[] = [
+    {
+      name: 'Basic',
+      price: 9.99,
+      features: 'Great',
+      resolution: '1080p',
+      download: 'minimize',
+      role: 'USER',
+    },
+    {
+      name: 'Standard',
+      price: 13.99,
+      features: 'Great',
+      resolution: '1080p',
+      download: 'minimize',
+      role: 'SUPERUSER',
+    },
+    {
+      name: 'Premium',
+      price: 17.99,
+      features: 'Best',
+      resolution: '4K+HDR',
+      download: 'check',
+      role: 'ADMIN',
+    },
+  ];
+  displayedColumns: string[] = [
+    'name',
+    'price',
+    'features',
+    'resolution',
+    'download',
+  ];
+
+  selectedRow!: {
+    name: string;
+    price: number;
+    features: string;
+    resolution: string;
+    download: string;
+  };
+
+  selectRow(row: {
+    name: string;
+    price: number;
+    features: string;
+    resolution: string;
+    download: string;
+    role: string;
+  }): void {
+    this.selectedRow = row;
+    this.formArray.controls[1].get('role')?.setValue(row.role);
+  }
+
+  isSelected(row: {
+    name: string;
+    price: number;
+    features: string;
+    resolution: string;
+    download: string;
+  }): boolean {
+    return this.selectedRow === row;
+  }
+
   ngOnInit() {
     this.registerForm = this.fb.group({
       formArray: this.fb.array([
@@ -31,16 +102,12 @@ export class RegisterFormComponent implements OnInit {
             this.emailAlreadyExists.bind(this),
           ],
           password: ['', Validators.required],
+          username: ['', Validators.required],
         }),
         this.fb.group({
           // Define the controls for step 2
           // Example: emailFormCtrl
-          emailFormCtrl: ['', Validators.email],
-        }),
-        this.fb.group({
-          // Define the controls for step 2
-          // Example: emailFormCtrl
-          emailFormCtrl: ['', Validators.email],
+          role: [''],
         }),
         // Add more form groups for additional steps if needed
       ]),
@@ -55,7 +122,12 @@ export class RegisterFormComponent implements OnInit {
   get password() {
     return this.formArray.at(0).get('password');
   }
-
+  get username() {
+    return this.formArray.at(0).get('username');
+  }
+  logFormValue() {
+    console.log(this.registerForm.value);
+  }
   emailAlreadyExists(
     control: AbstractControl
   ): Observable<ValidationErrors | null> {

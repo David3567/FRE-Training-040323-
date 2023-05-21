@@ -10,12 +10,10 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatStepperModule } from '@angular/material/stepper';
+import { MatTableModule } from '@angular/material/table';
 import { RegisterFormComponent } from './register-form/register-form.component';
 @NgModule({
-  declarations: [
-    RegisterComponent,
-    RegisterFormComponent,
-  ],
+  declarations: [RegisterComponent, RegisterFormComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,
@@ -26,6 +24,7 @@ import { RegisterFormComponent } from './register-form/register-form.component';
     MatInputModule,
     RegisterRoutingModule,
     MatStepperModule,
+    MatTableModule,
   ],
 })
 export class RegisterModule {}
