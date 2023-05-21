@@ -1,10 +1,5 @@
 import { Injectable, OnInit } from '@angular/core';
-import {
-  CanActivate,
-  ActivatedRouteSnapshot,
-  RouterStateSnapshot,
-  UrlTree,
-} from '@angular/router';
+import { ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable, BehaviorSubject, of } from 'rxjs';
 import { UserService } from '../services/user-service.service';
 import { User } from '../interface/user';
@@ -12,7 +7,7 @@ import { User } from '../interface/user';
 @Injectable({
   providedIn: 'root',
 })
-export class AuthGuard implements CanActivate, OnInit {
+export class AuthGuard  implements OnInit {
   private role$ = new BehaviorSubject<string | undefined>(undefined);
 
   constructor(private userService: UserService) {
