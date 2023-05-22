@@ -6,6 +6,7 @@ import {
   MovieItem,
   Actor,
   ActorInfo,
+  MoviePage,
 } from '../interface/movie';
 import { HttpClient } from '@angular/common/http';
 import { discoverPath, movieUrl } from '../app.module';
@@ -29,6 +30,8 @@ export class MovieService implements OnInit {
   private api_key: string = '?api_key=' + '9b4d0b3f81f6c163aac86be798191447';
   private url: string = 'https://image.tmdb.org/t/p/';
 
+  private currentMovieList: MoviePage[] = [];
+
   constructor(
     private http: HttpClient,
     private UrlService: UrlService,
@@ -37,14 +40,24 @@ export class MovieService implements OnInit {
   ) {}
   ngOnInit(): void {}
 
-  retrieveList(): Observable<MovieItem[]> {
+  getPreviosListByGoingback(): any {
+    const sortedObjects = this.currentMovieList.sort((a, b) => a.page - b.page);
+    const movies: MovieItem[] = [];
+
+    for (const obj of sortedObjects) {
+      movies.push(...obj.movies);
+    }
+    return movies;
+  }
+
+  retrieveList(page: number = 1): Observable<MovieItem[]> {
     console.log('retrieving data');
 
     const list_url = this.UrlService.getUrl({
       protocal: 'https',
       domain: this.movieUrl,
       path: this.dicssoverPath,
-      query: 'api_key=9b4d0b3f81f6c163aac86be798191447',
+      query: 'api_key=9b4d0b3f81f6c163aac86be798191447&page=' + `${page}`,
     });
     console.log(list_url);
     return this.http.get<Response>(list_url).pipe(
@@ -62,7 +75,17 @@ export class MovieService implements OnInit {
         });
       }),
       tap((data) => {
-        //console.log('tap!', data);
+        if (
+          !this.currentMovieList.find((moviePage: MoviePage) => {
+            return moviePage.page === page;
+          })
+        ) {
+          this.currentMovieList.push({ page: page, movies: data });
+          console.log(
+            'current movie list in movie service',
+            this.currentMovieList
+          );
+        }
       })
     );
   }

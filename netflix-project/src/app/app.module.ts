@@ -19,6 +19,7 @@ import { MovieDetailComponent } from './pages/movie-detail/movie-detail.componen
 import { StoreModule } from '@ngrx/store';
 import { VideoModalComponent } from './components/video-modal/video-modal.component';
 import { YouTubePlayerModule } from '@angular/youtube-player';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 export const movieUrl = new InjectionToken<string>('');
 export const discoverPath = new InjectionToken<string>('');
@@ -45,6 +46,7 @@ export const discoverPath = new InjectionToken<string>('');
     HttpClientModule,
     StoreModule.forRoot({}, {}),
     YouTubePlayerModule,
+    InfiniteScrollModule,
   ],
   providers: [
     { provide: UserService, useClass: UserService },

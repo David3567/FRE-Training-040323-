@@ -54,3 +54,8 @@ export interface ActorInfo {
 }
 
 export interface MovieDetail {}
+
+export interface MoviePage {
+  page: number;
+  movies: MovieItem[];
+}

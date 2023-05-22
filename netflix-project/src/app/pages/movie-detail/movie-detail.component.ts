@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { UrlService } from './../../services/url.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ActorInfo, MovieItem } from 'src/app/interface/movie';
 import { MovieService } from 'src/app/services/movie.service';
@@ -66,4 +66,6 @@ export class MovieDetailComponent implements OnInit {
       // Use the individual data as needed
     });
   }
+
+  controlModal() {}
 }

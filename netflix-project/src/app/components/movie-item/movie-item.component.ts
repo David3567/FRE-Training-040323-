@@ -1,3 +1,4 @@
+import { NaviService } from './../../services/navi.service';
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MovieItem } from 'src/app/interface/movie';
@@ -10,7 +11,7 @@ import { MovieItem } from 'src/app/interface/movie';
 export class MovieItemComponent implements OnInit {
   @Input() InputMovie?: MovieItem;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private navi: NaviService) {}
 
   ngOnInit() {
     console.log('for individual', this.InputMovie);
@@ -21,6 +22,9 @@ export class MovieItemComponent implements OnInit {
     // const container: any = document.querySelector('.Container');
     // container.classList.toggle('clicked');
     console.log('to detail', id);
+    const currentScroll = window.scrollY;
+    console.log('Current scroll position:', currentScroll);
+    this.navi.setScrollY(currentScroll);
     this.router.navigate(['movieList', id]);
   }
 }
