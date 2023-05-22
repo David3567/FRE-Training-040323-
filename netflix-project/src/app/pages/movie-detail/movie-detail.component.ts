@@ -17,6 +17,7 @@ export class MovieDetailComponent implements OnInit {
   data?: any;
   imageList?: string[];
   credits?: ActorInfo[];
+  showModal = false;
 
   get backgroundImage(): string | undefined {
     return this.data.backdrop;
@@ -60,12 +61,20 @@ export class MovieDetailComponent implements OnInit {
 
   getMovieDetails() {
     this._Activatedroute.data.subscribe((lists: any) => {
+      console.log(lists);
       this.data = lists.detailResolver[0];
       this.imageList = lists.detailResolver[1];
       this.credits = lists.detailResolver[2];
+      this.movieID = this.data.id;
       // Use the individual data as needed
     });
   }
 
-  controlModal() {}
+  openModal() {
+    this.showModal = true;
+  }
+
+  closeModal() {
+    this.showModal = false;
+  }
 }

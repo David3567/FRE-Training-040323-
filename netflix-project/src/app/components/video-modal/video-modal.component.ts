@@ -1,5 +1,5 @@
 import { MovieService } from './../../services/movie.service';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-video-modal',
@@ -8,13 +8,18 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class VideoModalComponent implements OnInit {
   @Input() movieId!: string;
-  videoId!: string;
+  @Output() closeModalEvent = new EventEmitter();
+  videoId?: string;
   constructor(private movie: MovieService) {}
 
+  closeModal() {
+    this.closeModalEvent.emit();
+  }
+
   ngOnInit(): void {
-    this.movie.getMovieTrailer(this.movieId).subscribe((data: any) => {
-      console.log(data);
-      this.videoId = data;
+    this.movie.getMovieTrailer(this.movieId).subscribe((data: string[]) => {
+      console.log('get movie url', data);
+      this.videoId = data[0];
     });
   }
 }

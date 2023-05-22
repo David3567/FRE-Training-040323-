@@ -1,13 +1,18 @@
 import { MovieService } from 'src/app/services/movie.service';
 import { Injectable, OnInit } from '@angular/core';
 
-import { Router, RouterStateSnapshot, ActivatedRouteSnapshot, ActivatedRoute } from '@angular/router';
+import {
+  Router,
+  RouterStateSnapshot,
+  ActivatedRouteSnapshot,
+  ActivatedRoute,
+} from '@angular/router';
 import { Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
-export class MovieDetailResolver  {
+export class MovieDetailResolver {
   movieID?: any;
 
   constructor(private mService: MovieService) {}
@@ -17,7 +22,6 @@ export class MovieDetailResolver  {
     state: RouterStateSnapshot
   ): Observable<any> {
     const id = route.paramMap.get('id');
-    console.log(id);
     if (!id) return of(null);
     return this.mService.retrieveMovieDetails(id);
   }

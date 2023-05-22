@@ -91,11 +91,12 @@ export class MovieService implements OnInit {
   }
 
   retrieveMovieDetails(id: any): any {
-    return combineLatest(
+    const result = combineLatest(
       this.getMovieDetails(id),
       this.getImagesInDetail(id),
       this.getCredits(id)
     );
+    return result;
   }
 
   // a method to get home page from individual url, can be used later to get whole data;

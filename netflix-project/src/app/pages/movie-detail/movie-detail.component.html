@@ -1,5 +1,6 @@
 <div class="container bg-image" [style.backgroundImage]="'url(' + backgroundImage + ')'">
-  <!-- <app-video-modal [movieId] ="movieID"></app-video-modal> -->
+  <app-video-modal *ngIf="showModal" (closeModalEvent)="closeModal()" [movieId]="movieID"></app-video-modal>
+
   <div class="left-container">
     <h1> {{data?.title}}</h1>
     <div class="informLine">
@@ -14,7 +15,7 @@
     </div>
     <div class="buttons">
       <button class="btn btn-secondary">PLAY NOW</button>
-      <button class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg" (click)="controlModal()">TRAILER</button>
+      <button class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg" (click)="openModal()">TRAILER</button>
     </div>
   </div>
   <div class="right-container">

@@ -1,8 +1,9 @@
-<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
-  aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-      <youtube-player [videoId]="videoId"></youtube-player>
-    </div>
+
+<div class="modal">
+  <div class="modal-content">
+    <h2>Movie Trailer</h2>
+    <youtube-player [videoId]="videoId" suggestedQuality="highres" [height]="250" [width]="500"></youtube-player>
+
+    <button (click)="closeModal()">Close</button>
   </div>
 </div>
