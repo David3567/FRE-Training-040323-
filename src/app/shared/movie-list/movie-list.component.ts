@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ApiserviceService } from '../service/service';
+import { ApiserviceService } from '../../core/service';
 import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 
@@ -11,6 +11,7 @@ import { BehaviorSubject } from 'rxjs';
 export class MovieListComponent {
   id : any;
   baseUrl = "https://image.tmdb.org/t/p/original";
+  tempUrl = "https://image.tmdb.org/t/p/w200/";
   movieList : any;
   
   constructor(private _apiservice: ApiserviceService, private router: Router) {}
@@ -27,7 +28,7 @@ export class MovieListComponent {
       this.movieList = res;
       this.movieList = this.movieList.results;
       this.movieList.forEach((ele : any) => {
-        ele.poster_path = this.baseUrl + ele.poster_path;
+        ele.poster_path = this.tempUrl + ele.poster_path;
       })
       console.log(this.movieList);
     })

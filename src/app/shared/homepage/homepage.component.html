@@ -1,7 +1,7 @@
 <html></html>
 <body>
     <div class="TopBar">
-        <img class="Logo" src="../../assets/Logo_Fake.png" />
+        <img class="Logo" src="../../../assets/Logo_Fake.png" />
         <div class="TopBarDivider">
             <select id="dropList" onchange="">
                 <option *ngFor="let lang of langList" [value]="langList">{{lang}}</option>
@@ -31,7 +31,6 @@
                     <div class="Middle-BigText">{{block.bigText}}</div>
                     <div class="Middle-SmallText">{{block.smallText}}</div>
                 </div>
-                <div *ngIf="block.even == true" [ngStyle]="{'flex-direction': -1}"></div>
                 <img class="Middle-Image" src={{block.image}}>
             </div>
             <div *ngIf="block.id != smallBox.length">

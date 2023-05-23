@@ -1,7 +1,7 @@
 import { Component, Input, ViewChild } from '@angular/core';
-import { ApiserviceService } from 'src/app/service/service';
+import { ApiserviceService } from 'src/app/core/service';
 import { YouTubePlayer } from '@angular/youtube-player';
-import { LocalStorageService } from '../service/localStorage';
+import { LocalStorageService } from '../../core/localStorage';
 
 @Component({
   selector: 'app-movie-details',

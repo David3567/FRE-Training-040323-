@@ -57,6 +57,12 @@ app-movie-details {
     left: 15%;
     font-size: 15px;
     color: white;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 10;
 }
 
 .button {

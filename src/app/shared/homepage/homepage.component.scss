@@ -17,9 +17,9 @@ body {
     display: flex;
     flex-direction: row;
     align-items: center;
-    align-content: space-between;
+    align-content: space-around;
     justify-content: flex-start;
-    gap: 60vw;
+    gap: 50vw;
     margin: auto;
 }
 
@@ -32,14 +32,14 @@ body {
     width : 10%;
     min-width: 200px;
     height : 10%;
-    margin-left: 40px;
+    margin-left: 8vw;
 }
 
 #dropList {
     width : 10vw;
-    min-width: 200px;
+    min-width: 150px;
     height : 60px;
-    font-size: 20px;
+    font-size: 15px;
     font-weight: bold;
     color: white;
     background-color: black;
@@ -51,7 +51,7 @@ body {
     width: 8vw;
     min-width: 150px;
     height: 60px;
-    font-size: 20px;
+    font-size: 15px;
     font-weight: bold;
     color: white;
     background-color: red;
@@ -71,7 +71,7 @@ body {
     font-style: bold;
     color: white;
     gap: 30px;
-    background-image: url("../../assets/Marvel.jpg");
+    background-image: url("../../../assets/Marvel.jpg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -80,9 +80,9 @@ body {
 }
 
 .Top-TextContainer { margin-left: 100px; }
-.Top-Text1 { font-size: 100px; }
-.Top-Text2 { margin-top: 30px; font-size: 50px; }
-.Top-Text3 { margin-top: 30px;font-size: 35px; }
+.Top-Text1 { font-size: 5vw; }
+.Top-Text2 { margin-top: 30px; font-size: 3vw; }
+.Top-Text3 { margin-top: 30px;font-size: 2vw; }
 
 .Top-Email {
     display: flex;
@@ -93,10 +93,10 @@ body {
 
 .Top-EmailForm {
     margin-left: 100px;
-    width: 15vw;
-    min-width: 350px;
-    height: 80px;
-    font-size: 30px;
+    width: 20vw;
+    min-width: 250px;
+    height: 3vw;
+    font-size: 1.3vw;
     box-sizing: border-box;
     border-radius: 10px;
     background-color: rgb(37, 35, 32);
@@ -106,9 +106,10 @@ body {
 
 .Top-EmailButton {
     font-size: 30px;
-    width: 10vw;
-    min-width: 300px;
-    height: 80px;
+    width: 14vw;
+    min-width: 250px;
+    height: 3vw;
+    font-size: 1.3vw;
     border-radius: 10px;
     background-color: red;
     color: white;
@@ -138,11 +139,15 @@ body {
     gap: 20px; 
     flex-direction: column;
 }
-.Middle-BigText { font-size: 60px; } 
-.Middle-SmallText { font-size: 40px; }
-.Middle-Image { width: 20vw; }
+.Middle-BigText { font-size: 3vw; } 
+.Middle-SmallText { font-size: 1.5vw; }
+.Middle-Image { width: 20vw; z-index: 2; }
 .Middle-Line { border-top: 10px solid #bbb; width: 80%; }
 
 .Bottom-Container {
     height: 200px;
+}
+
+.reverse-flex {
+    flex-direction: row-reverse;
 }
