@@ -17,6 +17,20 @@
       </g>
     </svg>
   </div>
-  <ng-content></ng-content>
-  
+  <div>
+    <div class="flex items-center text-amber-300 space-x-4 gap-5">
+      {{ user | uppercase }}
+      <ng-container *ngIf="user.length === 0; else signout">
+        <button mat-flat-button color="warn" routerLink="/login">
+          Sign In
+        </button>
+      </ng-container>
+      <ng-template #signout>
+        <button mat-flat-button color="warn" (click)="logout()">
+          Sign Out
+        </button>
+        <!-- Content to display when the condition is false -->
+      </ng-template>
+    </div>
+  </div>
 </nav>

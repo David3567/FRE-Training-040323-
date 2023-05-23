@@ -3,6 +3,7 @@ import { AbstractControl, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { catchError, throwError } from 'rxjs';
 import { AuthService } from 'src/app/core/auth.service';
+import { LocalStorageService } from 'src/app/core/local-storage.service';
 
 @Component({
   selector: 'app-login-form',
@@ -14,7 +15,8 @@ export class LoginFormComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private localStorageService: LocalStorageService
   ) {}
   loginForm = this.fb.group({
     email: ['', [Validators.required, Validators.email]],
@@ -72,9 +74,10 @@ export class LoginFormComponent implements OnInit {
             return throwError(() => new Error(error));
           })
         )
-        .subscribe((res) =>
-          this.router.navigate(['/movies'], { state: res.user })
-        );
+        .subscribe((res) => {
+          this.localStorageService.storeToken(res.accessToken);
+          this.router.navigate(['/']);
+        });
     }
   }
 }
