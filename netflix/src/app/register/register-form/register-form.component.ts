@@ -7,8 +7,11 @@ import {
   ValidationErrors,
   Validators,
 } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Observable, catchError, map, throwError } from 'rxjs';
 import { AuthService } from 'src/app/core/auth.service';
+import { LocalStorageService } from 'src/app/core/local-storage.service';
+import { UserService } from 'src/app/core/user.service';
 
 @Component({
   selector: 'app-register-form',
@@ -16,7 +19,13 @@ import { AuthService } from 'src/app/core/auth.service';
   styleUrls: ['./register-form.component.css'],
 })
 export class RegisterFormComponent implements OnInit {
-  constructor(private fb: FormBuilder, private authService: AuthService) {}
+  constructor(
+    private fb: FormBuilder,
+    private authService: AuthService,
+    private localStorageService: LocalStorageService,
+    private router: Router,
+    private userService: UserService
+  ) {}
   registerForm!: FormGroup;
   formArray!: FormArray;
   roleError: boolean = false;
@@ -167,7 +176,14 @@ export class RegisterFormComponent implements OnInit {
             return throwError(() => new Error(error));
           })
         )
-        .subscribe((res) => console.log('user signup with: ', res.accessToken));
+        .subscribe((res) => {
+          this.localStorageService.storeToken(res.accessToken);
+          const user = this.localStorageService.decodeToken(res.accessToken);
+          if (user) {
+            this.userService.setUser(user);
+          }
+          this.router.navigate(['/']);
+        });
     }
   }
   emailAlreadyExists(
