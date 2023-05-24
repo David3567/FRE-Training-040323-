@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { eachBox } from './interface';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-homepage',
@@ -40,4 +42,14 @@ export class HomepageComponent {
       even: true,
     }
   ]
+  storeData = new FormGroup({
+    email: new FormControl('', [Validators.required, Validators.email]),
+  })
+
+  constructor(private router: Router) {}
+
+  onSubmit() {
+    console.log(this.storeData);
+    this.router.navigate(['/step1']);
+  }
 }

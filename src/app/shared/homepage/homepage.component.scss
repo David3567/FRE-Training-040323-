@@ -11,7 +11,7 @@ body {
 
 
 .TopBar {
-    width: 100vw;
+    width: 95vw;
     height: 30%;
     max-height: 300px;
     display: flex;
@@ -104,7 +104,20 @@ body {
     text-align: center;
 }
 
+.formFormat {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.message {
+    margin-left: 100px;
+    color: white;
+    font-size: 0.8vw;
+}
+
 .Top-EmailButton {
+    margin-left: 100px;
     font-size: 30px;
     width: 14vw;
     min-width: 250px;

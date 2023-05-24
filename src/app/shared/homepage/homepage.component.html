@@ -17,10 +17,16 @@
             <div class="Top-Text3">{{bigImage[2]}}</div>
         </div>
         <div class="Top-Email">
-            <form>
-                <input class="Top-EmailForm" type="text" placeholder="Email address">
+            <form class="formFormat" [formGroup]="storeData" (ngSubmit)="onSubmit()">
+                <div>
+                    <label for="email"></label>
+                    <input class="Top-EmailForm" id="email" type="text" placeholder="Email address" formControlName="email">
+                    <div [hidden]="!storeData.controls['email'].errors?.['email'] || !storeData.controls['email'].touched">
+                        <div class="message">Primary email address is not valid.</div>
+                    </div>
+                </div>
+                <div><button class="Top-EmailButton" type="submit">Get Started</button></div>
             </form>
-            <button class="Top-EmailButton" [routerLink]="['/step1']">Get Started ></button>
         </div>
     </div>
     
