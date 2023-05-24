@@ -5,8 +5,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeModule } from './home/home.module';
 import { HttpClientModule } from '@angular/common/http';
-import { MoviesComponent } from './movies/movies/movies.component';
-import { MoviesModule } from './movies/movies.module';
+
 
 @NgModule({
   declarations: [AppComponent],

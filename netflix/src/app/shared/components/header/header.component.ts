@@ -1,6 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { LocalStorageService } from 'src/app/core/local-storage.service';
 import jwt_decode from 'jwt-decode';
+import { UserService } from 'src/app/core/user.service';
+import { Subscription } from 'rxjs';
+import { User } from 'src/app/core/user.interface';
 
 @Component({
   selector: 'app-header',
@@ -9,20 +12,26 @@ import jwt_decode from 'jwt-decode';
 })
 export class HeaderComponent implements OnInit {
   @Input() userHeader?: string;
-  constructor(private localStorageService: LocalStorageService) {}
+  constructor(
+    private userService: UserService
+  ) {}
 
-  user!: string;
-
+  user!: User;
+  userSubscription!: Subscription;
   ngOnInit() {
-    const token = this.localStorageService.getToken() || '';
-    if (token) {
-      const decoded: any = jwt_decode(token);
-      this.user = decoded.username;
-    }
-    // console.log(this.user);
+    this.userSubscription = this.userService
+      .getUser()
+      .subscribe((user: User) => {
+        this.user = user;
+      });
   }
 
   logout() {
-    this.localStorageService.deleteToken();
+    this.userService.deleteUser();
+  }
+  ngOnDestroy(): void {
+    if (this.userSubscription) {
+      this.userSubscription.unsubscribe();
+    }
   }
 }
