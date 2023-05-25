@@ -58,7 +58,7 @@ export class MainComponent implements OnInit {
   };
 
   register = () => {
-    this.router.navigate(['./step1']);
+    this.router.navigate(['./register/register-step1']);
   };
 
   slogans: Slogan[] = [

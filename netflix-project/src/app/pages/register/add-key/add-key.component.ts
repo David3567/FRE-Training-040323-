@@ -53,6 +53,6 @@ export class AddKeyComponent implements OnDestroy, OnInit {
     console.log('step2 onsubmit', newUser);
     this.userService.update(newUser);
     this.currentUser = newUser;
-    this.router.navigate(['./step3']);
+    this.router.navigate(['./register/register-step3']);
   }
 }

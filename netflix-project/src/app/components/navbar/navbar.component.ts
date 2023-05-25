@@ -23,4 +23,8 @@ export class NavbarComponent {
   logout(): void {
     this.UserService.clear();
   }
+
+  setTOUser(): void {
+    this.UserService.userUpdate('USER');
+  }
 }

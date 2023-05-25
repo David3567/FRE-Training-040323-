@@ -11,15 +11,19 @@ import { RegformComponent } from './pages/register/regform/regform.component';
 import { AddKeyComponent } from './pages/register/add-key/add-key.component';
 import { PlanComponent } from './pages/register/plan/plan.component';
 import { UserService } from 'src/app/services/user-service.service';
-import { DiscoveryComponent } from './pages/discovery/discovery.component';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { MovieItemComponent } from './components/movie-item/movie-item.component';
+import { DiscoveryComponent } from './pages/movieList/discovery/discovery.component';
+import {
+  HTTP_INTERCEPTORS,
+  HttpClient,
+  HttpClientModule,
+} from '@angular/common/http';
 import { DisplayBoxComponent } from './components/display-box/display-box.component';
-import { MovieDetailComponent } from './pages/movie-detail/movie-detail.component';
+import { MovieDetailComponent } from './pages/movieList/movie-detail/movie-detail.component';
 import { StoreModule } from '@ngrx/store';
 import { VideoModalComponent } from './components/video-modal/video-modal.component';
 import { YouTubePlayerModule } from '@angular/youtube-player';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { AuthInterceptor } from './Interceptors/auth.interceptor';
 
 export const movieUrl = new InjectionToken<string>('');
 export const discoverPath = new InjectionToken<string>('');
@@ -29,14 +33,7 @@ export const discoverPath = new InjectionToken<string>('');
     NavbarComponent,
     LoginComponent,
     MainComponent,
-    RegformComponent,
-    AddKeyComponent,
-    PlanComponent,
-    DiscoveryComponent,
-    MovieItemComponent,
     DisplayBoxComponent,
-    MovieDetailComponent,
-    VideoModalComponent,
   ],
   imports: [
     BrowserModule,
@@ -45,8 +42,6 @@ export const discoverPath = new InjectionToken<string>('');
     ReactiveFormsModule,
     HttpClientModule,
     StoreModule.forRoot({}, {}),
-    YouTubePlayerModule,
-    InfiniteScrollModule,
   ],
   providers: [
     { provide: UserService, useClass: UserService },
@@ -57,6 +52,11 @@ export const discoverPath = new InjectionToken<string>('');
     {
       provide: discoverPath,
       useValue: '/3/discover/movie',
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true,
     },
   ],
   bootstrap: [AppComponent],

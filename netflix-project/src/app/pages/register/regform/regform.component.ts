@@ -74,6 +74,6 @@ export class RegformComponent implements OnDestroy, OnInit {
     };
     console.log(newUser);
     this.userService.update(newUser);
-    this.router.navigate(['./step2']);
+    this.router.navigate(['./register/register-step2']);
   }
 }

@@ -23,8 +23,7 @@ export class MovieItemComponent implements OnInit {
     // container.classList.toggle('clicked');
     console.log('to detail', id);
     const currentScroll = window.scrollY;
-    console.log('Current scroll position:', currentScroll);
     this.navi.setScrollY(currentScroll);
-    this.router.navigate(['movieList', id]);
+    this.router.navigate(['./movie/list', id]);
   }
 }

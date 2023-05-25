@@ -1,6 +1,6 @@
-import { NaviService } from './../../services/navi.service';
+import { NaviService } from '../../../services/navi.service';
 import { Router } from '@angular/router';
-import { MovieService } from './../../services/movie.service';
+import { MovieService } from '../../../services/movie.service';
 import { Component, OnInit } from '@angular/core';
 import { MovieItem } from 'src/app/interface/movie';
 
@@ -23,7 +23,6 @@ export class DiscoveryComponent implements OnInit {
       this.movies = this.movieService.getPreviosListByGoingback();
 
       const y = this.navi.getScrollY();
-      console.log('goback to ', y);
 
       setTimeout(() => {
         window.scrollTo({

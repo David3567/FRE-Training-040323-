@@ -20,7 +20,7 @@ import jwt_decode from 'jwt-decode';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
-  localhost = 'http://127.0.0.1:4231/auth/signin';
+  loginUrl = 'http://127.0.0.1:4231/auth/signin';
 
   form: FormGroup = new FormGroup({});
 
@@ -54,31 +54,15 @@ export class LoginComponent implements OnInit {
 
     console.log(userData);
 
-    this.http.post(this.localhost, userData).subscribe(
-      (data: any) => {
-        const token: any = jwt_decode(data.accessToken);
-        const role = data.role;
-
-        const user: User = {
-          email: token.email,
-          username: token.username,
-          password: this.password.value,
-          role: role,
-          tmdb_key: token.tmdb_key,
-        };
-
-        console.log(user);
-
-        this.UserService.update(user);
-
+    this.UserService.login(userData).subscribe(
+      (res: any) => {
         this.router.navigate(['./main']);
       },
-      (error) => {
-        if (error.status === 401) {
-          alert('Unauthorized User, please sign in first');
-        }
+      (error: any) => {
+        alert(error.message);
       }
     );
+
     // const dataStream$: Observable<User> = new Observable<User>((observer) => {
     //   observer.next(userData);
     //   observer.complete();
