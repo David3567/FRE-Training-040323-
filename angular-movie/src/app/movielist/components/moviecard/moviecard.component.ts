@@ -5,6 +5,7 @@ import { Subject, takeUntil } from 'rxjs';
 import { Movie } from 'src/app/core/model/Movie';
 import { MovieDataService } from 'src/app/shared/service/moviedata/movie-data.service';
 import { ResolveDetailsService } from 'src/app/shared/service/resolvers/resolve-details.service';
+import { RestorescrollService } from 'src/app/shared/service/utility/restorescroll.service';
 export interface ChipColor {
   name: string;
   color: ThemePalette;
@@ -18,13 +19,14 @@ export class MoviecardComponent {
   isLoading = false;
   routerEventSubscriber = new Subject<void>();
   @Input() movieInfo!: Movie;
+  @Input() page!:number;
   availableColors: ChipColor[] = [
     { name: 'none', color: undefined },
     { name: 'Primary', color: 'primary' },
     { name: 'Accent', color: 'accent' },
     { name: 'Warn', color: 'warn' },
   ];
-  constructor(private data: MovieDataService, private router: Router, private resolver: ResolveDetailsService) {
+  constructor(private data: MovieDataService, private router: Router, private resolver: ResolveDetailsService, private scrollService: RestorescrollService) {
     this.router.events.pipe(
       takeUntil(this.routerEventSubscriber)
     ).subscribe((routerEvent) => {
@@ -36,7 +38,7 @@ export class MoviecardComponent {
   }
   onClick(id: number) {
     this.router.navigate(['/moviedetails', id]);
-
+    this.scrollService.savePosition(window.scrollY);
   }
 
 
@@ -45,7 +47,6 @@ export class MoviecardComponent {
       if (routerEvent.url.split('/').pop() === this.movieInfo.id.toString()) {
         this.isLoading = true;
       }
-
     }
 
     if (routerEvent instanceof NavigationEnd ||

@@ -7,7 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from './shared/shared.module';
 
 function initializeAppFactory(): void {
-  console.log("hi")
+  // console.log("hi")
 }
 @NgModule({
   declarations: [

@@ -1,7 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { Movie } from '../core/model/Movie';
 import { MovieDataService } from '../shared/service/moviedata/movie-data.service';
-import { BehaviorSubject, Observable, map, scan, switchMap, tap } from 'rxjs';
+import { BehaviorSubject, Observable, filter, forkJoin, map, scan, switchMap, tap, zip } from 'rxjs';
+import { RestorescrollService } from '../shared/service/utility/restorescroll.service';
+import { NavigationStart, Router } from '@angular/router';
 
 @Component({
   selector: 'app-movielist',
@@ -12,20 +14,27 @@ export class MovielistComponent {
 
   page: number = 1;
   loading: boolean = false;
+  @ViewChild('scroll') elementRef!: ElementRef;
   movieData$: BehaviorSubject<Movie[]> = new BehaviorSubject<Movie[]>([]);
-  constructor(private dataservice: MovieDataService) {
+  constructor(private dataservice: MovieDataService, private scrollService: RestorescrollService, private router: Router) {
+  }
+  ngOnInit(){
+    this.fetchMovieData()
+
 
   }
-  ngOnInit(): void {
-    this.fetchMovieData();
+  ngAfterViewInit(){
+    let y = this.scrollService.restorePosition()
+    this.elementRef.nativeElement.scrollTop += y;
   }
 
-  onScroll(){
+  onScroll() {
     if (!this.loading) {
       this.page++;
       this.fetchMovieData();
     }
   }
+
 
 
   fetchMovieData(): void {
@@ -35,6 +44,7 @@ export class MovielistComponent {
         this.movieData$.next(this.movieData$.getValue().concat(newData));
         this.loading = false;
       })
-    ).subscribe();
+    ).subscribe(()=>{
+    });
   }
 }
