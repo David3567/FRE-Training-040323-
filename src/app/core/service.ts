@@ -1,14 +1,16 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { FormGroup } from '@angular/forms';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
     providedIn: 'root'
 })
-export class ApiserviceService {
+export class ApiService {
     private idSource = new BehaviorSubject<string>('');
     private apiUrl = 'https://api.themoviedb.org/3/movie';
     private apiKey = 'b62014b892ccd0ded1db780fb3737613';
+    private apiBackend = 'http://localhost:4231'
 
     constructor(private http: HttpClient) { }
 
@@ -35,5 +37,13 @@ export class ApiserviceService {
 
     getCredits(id: number) {
         return this.http.get(`${this.apiUrl}/${id}/credits?api_key=${this.apiKey}&language=en-US`);
+    }
+
+    getUserCredentials(storeData: FormGroup) : Observable<any> {
+        const user = {
+            "email": storeData.value.email,
+            "password": storeData.value.password,
+        }
+        return this.http.post(`${this.apiBackend}/auth/signin`, user);
     }
 }

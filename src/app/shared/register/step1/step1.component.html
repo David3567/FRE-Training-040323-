@@ -15,20 +15,21 @@
         <p class="midText">We hate paperwork, too.</p>
         <form class="formFormat" [formGroup]="storeData" (ngSubmit)="onSubmit()">
             <div>
-                <label for="userId"></label>
-                <input class="Form-Style" id="userId" type="text" placeholder="Email" formControlName="userId">
-                <div class="message" *ngIf="storeData.controls['userId'].invalid && (storeData.controls['userId'].dirty || storeData.controls['userId'].touched)">
+                <label for="email"></label>
+                <input class="Form-Style" id="email" type="text" placeholder="Email" formControlName="email">
+                <div class="message" *ngIf="storeData.controls['email'].invalid && (storeData.controls['email'].dirty || storeData.controls['email'].touched)">
                     Email is Required
                 </div>
             </div>
             <div>
-                <label for="userPw"></label>
-                <input class="Form-Style" id="userPw" type="password" placeholder="Add a Password" formControlName="userPw">
-                <div class="message" *ngIf="storeData.controls['userPw'].invalid && (storeData.controls['userPw'].dirty || storeData.controls['userPw'].touched)">
+                <label for="password"></label>
+                <input class="Form-Style" id="password" type="password" placeholder="Add a Password" formControlName="password">
+                <div class="message" *ngIf="storeData.controls['password'].invalid && (storeData.controls['password'].dirty || storeData.controls['password'].touched)">
                     Password is Required
                 </div>
             </div>
-            <div><button class="NextButton" type="submit" [routerLink]="['/step2']">Next</button></div>
+            <div><button class="NextButton" type="submit">Next</button></div>
+            <div class="message" *ngIf="userExist">Email already in use. Please use another email</div>
         </form>
     </div>
 

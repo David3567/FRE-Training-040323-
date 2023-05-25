@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ApiserviceService } from '../../core/service';
+import { ApiService } from '../../core/service';
 import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 
@@ -14,17 +14,17 @@ export class MovieListComponent {
   tempUrl = "https://image.tmdb.org/t/p/w200/";
   movieList : any;
   
-  constructor(private _apiservice: ApiserviceService, private router: Router) {}
+  constructor(private service: ApiService, private router: Router) {}
 
   setId(movieId: number) {
     console.log(movieId)
     this.id = movieId.toString();
-    this._apiservice.setId(movieId.toString());
+    this.service.setId(movieId.toString());
     this.router.navigate(['/movie-details']);
   }
 
   ngOnInit() {
-    this._apiservice.getdata().subscribe(res => {
+    this.service.getdata().subscribe(res => {
       this.movieList = res;
       this.movieList = this.movieList.results;
       this.movieList.forEach((ele : any) => {

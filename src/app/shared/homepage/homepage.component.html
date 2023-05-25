@@ -25,7 +25,7 @@
                         <div class="message">Primary email address is not valid.</div>
                     </div>
                 </div>
-                <div><button class="Top-EmailButton" type="submit">Get Started</button></div>
+                <div><button class="Top-EmailButton" type="submit" [disabled]="!storeData.valid">Get Started</button></div>
             </form>
         </div>
     </div>

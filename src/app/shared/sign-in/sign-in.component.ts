@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { userData } from './interface';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ApiService } from 'src/app/core/service';
+import jwt_decode from 'jwt-decode';
+import { LocalStorageService } from 'src/app/core/localStorage';
 
 @Component({
   selector: 'app-sign-in',
@@ -8,14 +11,26 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./sign-in.component.scss']
 })
 export class SignInComponent {
+  constructor(
+    private service: ApiService,
+    private storage: LocalStorageService,
+  ) {}
+
   input : userData[] = [];
 
   storeData = new FormGroup({
-    userId: new FormControl('', [Validators.required, Validators.email]),
-    userPw: new FormControl('', Validators.required),
+    email: new FormControl('', [Validators.required, Validators.email]),
+    password: new FormControl('', Validators.required),
   })
 
   onSubmit() {
-    console.log(this.storeData);
+    if (this.storeData.valid) {
+      this.service.getUserCredentials(this.storeData).subscribe((res: any) => {
+        console.log('res', res);
+        // const decodedToken = jwt_decode(res.accessToken);
+        // console.log(decodedToken);
+        localStorage.setItem('userInfo', res.accessToken);
+      })
+    }
   }
 }

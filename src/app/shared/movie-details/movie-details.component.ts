@@ -1,5 +1,5 @@
 import { Component, Input, ViewChild } from '@angular/core';
-import { ApiserviceService } from 'src/app/core/service';
+import { ApiService } from 'src/app/core/service';
 import { YouTubePlayer } from '@angular/youtube-player';
 import { LocalStorageService } from '../../core/localStorage';
 
@@ -20,7 +20,7 @@ export class MovieDetailsComponent {
   movieImages : any;
   showVideoPopup: boolean = false;
 
-  constructor(private apiservice: ApiserviceService, private localStorage: LocalStorageService) {}
+  constructor(private service: ApiService, private localStorage: LocalStorageService) {}
 
   openVideoPopup() {
     this.showVideoPopup = true;
@@ -29,7 +29,7 @@ export class MovieDetailsComponent {
 
   getVideo(id: number) {
     this.showVideoPopup = true;
-    this.apiservice.getVideo(id).subscribe((res: any) => {
+    this.service.getVideo(id).subscribe((res: any) => {
       this.videoId = res.results[0].key;
       this.youtubePlayer.videoId = this.videoId;
     });
@@ -40,11 +40,11 @@ export class MovieDetailsComponent {
   }
 
   getData() {
-    this.apiservice.getMedia(this.getId).subscribe(res => {
+    this.service.getMedia(this.getId).subscribe(res => {
       this.movieMedia = res;
     })
 
-    this.apiservice.getdata().subscribe(res => {
+    this.service.getdata().subscribe(res => {
       this.movieList = res;
       this.movieList = this.movieList.results;
       this.movieList.forEach((ele : any) => {
@@ -56,7 +56,7 @@ export class MovieDetailsComponent {
       })
     })
 
-    this.apiservice.getImages(this.getId).subscribe(res => {
+    this.service.getImages(this.getId).subscribe(res => {
       this.movieImages = res;
       this.movieImages = this.movieImages.backdrops;
       this.movieImages.forEach((ele : any) => {
@@ -64,7 +64,7 @@ export class MovieDetailsComponent {
       })
     })
 
-    this.apiservice.getCredits(this.getId).subscribe(res => {
+    this.service.getCredits(this.getId).subscribe(res => {
       this.movieCredits = res;
       this.movieCredits = this.movieCredits.cast;
       this.movieCredits.forEach((ele : any) => {
@@ -74,7 +74,7 @@ export class MovieDetailsComponent {
   }
 
   ngOnInit() {
-    this.apiservice.id$.subscribe(id => { 
+    this.service.id$.subscribe(id => { 
       this.getId = id; 
       if (id == null || id == undefined || id == "") {
         this.getId = this.localStorage.getItem("movieId");

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { eachBox } from './interface';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { LocalStorageService } from 'src/app/core/localStorage';
 
 @Component({
   selector: 'app-homepage',
@@ -14,6 +15,7 @@ export class HomepageComponent {
     "Unlimited movies, TV shows, and more", "Watch anywhere. Cancel anytime.",
     "Ready to watch? Enter your email to create or restart your membership.",
   ]
+  message!: string;
 
   smallBox : eachBox[] = [
     {
@@ -46,10 +48,15 @@ export class HomepageComponent {
     email: new FormControl('', [Validators.required, Validators.email]),
   })
 
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router, 
+    private storage: LocalStorageService,
+  ) {}
 
   onSubmit() {
-    console.log(this.storeData);
-    this.router.navigate(['/step1']);
+    if (this.storeData.valid) {
+      this.storage.setItem('signup-Email', this.storeData.value.email);
+      this.router.navigate(['/step1']);
+    }
   }
 }
