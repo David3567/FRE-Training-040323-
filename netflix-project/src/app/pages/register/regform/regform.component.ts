@@ -37,8 +37,8 @@ export class RegformComponent implements OnDestroy, OnInit {
 
   ngOnInit(): void {
     this.firstForm = this.fb.group({
-      email: ['litongz73@tamu.edu', Validators.required, this.checkEmail()],
-      password: ['random_password', Validators.required],
+      email: ['', Validators.required, this.checkEmail()],
+      password: ['', Validators.required],
     });
   }
 

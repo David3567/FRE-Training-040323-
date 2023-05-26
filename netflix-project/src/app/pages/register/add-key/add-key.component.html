@@ -37,13 +37,12 @@
     </div>
     <div class="row g-2">
       <div *ngIf="!key.valid && (key.dirty || key.touched)">
-        <div style="text-indent: 10px; color: red; font-size: small;" *ngIf="key.errors?.['required']"> password is
-          required!
+        <div style="text-indent: 10px; color: red; font-size: small;" *ngIf="key.errors?.['required']"> Tmdb api key is required!
         </div>
       </div>
     </div>
     <div style="display: flex; justify-content: center; margin-top: 10px;">
-      <button class="btn btn-danger" type="submit"> Next</button>
+      <button class="btn btn-danger" type="submit" [disabled]="secondForm.invalid"> Next</button>
     </div>
 
   </form>

@@ -13,7 +13,7 @@
             routerLinkActive="active"><button type="button" class="btn btn-danger">Select Plan</button></a></li>
         <li class="nav-item" *ngIf="loginStatus"><a class="nav-link" href="#!" routerLink="/movie"
             routerLinkActive="active"><button type="button" class="btn btn-danger">Discover Movie List</button></a></li>
-        <li class="nav-item" *ngIf="!loginStatus"><a class="nav-link" href="#!" routerLink="/login"
+        <li class="nav-item" *ngIf="!loginStatus"><a class="nav-link" href="#!" routerLink="/register/login"
             routerLinkActive="active"><button type="button" class="btn btn-danger">Sign In</button></a></li>
         <li class="nav-item" *ngIf="loginStatus"><a class="nav-link" href="#!"><button type="button"
               class="btn btn-danger" (click)="logout()">Sign out</button></a></li>

@@ -34,8 +34,8 @@ export class AuthGuard implements OnInit {
     console.log('In guard,', user);
 
     if (user.role === undefined || user.role === '') {
-      alert('no such user');
-      this.router.navigate(['/main']);
+      alert('Please Login first to access that page.');
+      this.router.navigate(['/register/login']);
       return of(false);
     } else if (user.role === 'USER') {
       alert('select to be an Superuser or admin to access this page');

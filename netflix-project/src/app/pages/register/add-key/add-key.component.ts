@@ -33,8 +33,8 @@ export class AddKeyComponent implements OnDestroy, OnInit {
 
   ngOnInit(): void {
     this.secondForm = this.fb.group({
-      username: ['litongz', Validators.required],
-      key: ['9b4d0b3f81f6c163aac86be798191447', Validators.required],
+      username: ['', Validators.required],
+      key: ['', Validators.required],
     });
 
     this.userService.user$.subscribe((user) => {

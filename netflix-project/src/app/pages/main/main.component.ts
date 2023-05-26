@@ -46,7 +46,7 @@ export class MainComponent implements OnInit {
     return (control: FormControl): Observable<ValidationErrors | null> => {
       return this.http.post(this.url, { email: control.value }).pipe(
         map((result: any) => {
-          console.log(result);
+          // console.log(result);
           if (result === true) {
             return { emilexist: true };
           } else {

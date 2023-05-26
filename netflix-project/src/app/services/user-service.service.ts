@@ -18,7 +18,7 @@ export class UserService {
     const token = localStorage.getItem('token');
     const role = localStorage.getItem('role');
     if (token && role) {
-      console.log('on init, token', token);
+      // console.log('on init, token', token);
       const rawInfo: any = jwt_decode(token);
 
       const user: User = {
@@ -28,7 +28,7 @@ export class UserService {
         role: role,
       };
 
-      console.log('raw info', rawInfo);
+      // console.log('raw info', rawInfo);
       this.update(user);
       // const user: User = {
       //   email: rawInfo.email,

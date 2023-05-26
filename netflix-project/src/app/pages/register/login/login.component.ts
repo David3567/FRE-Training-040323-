@@ -1,6 +1,6 @@
 import { UserService } from 'src/app/services/user-service.service';
 import { Component, OnInit } from '@angular/core';
-import { User } from '../../interface/user';
+import { User } from '../../../interface/user';
 import { Observable, map, tap } from 'rxjs';
 import {
   FormBuilder,
@@ -52,7 +52,7 @@ export class LoginComponent implements OnInit {
       password: this.password.value,
     };
 
-    console.log(userData);
+    // console.log(userData);
 
     this.UserService.login(userData).subscribe(
       (res: any) => {
