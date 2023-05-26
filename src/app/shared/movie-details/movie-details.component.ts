@@ -2,6 +2,9 @@ import { Component, Input, ViewChild } from '@angular/core';
 import { ApiService } from 'src/app/core/service';
 import { YouTubePlayer } from '@angular/youtube-player';
 import { LocalStorageService } from '../../core/localStorage';
+import { range } from 'rxjs';
+import { concatMap } from 'rxjs/operators';
+
 
 @Component({
   selector: 'app-movie-details',
@@ -13,14 +16,14 @@ export class MovieDetailsComponent {
   getId: any;
   videoId: any;
   baseUrl = "https://image.tmdb.org/t/p/original";
-  movieList : any;
-  movieInfo : any;
-  movieMedia : any;
-  movieCredits : any;
-  movieImages : any;
+  tempUrl = "https://image.tmdb.org/t/p/w200";
+  movieList: any[] = [];
+  movieInfo: any;
+  movieCredits: any;
+  movieImages: any;
   showVideoPopup: boolean = false;
 
-  constructor(private service: ApiService, private localStorage: LocalStorageService) {}
+  constructor(private service: ApiService, private storage: LocalStorageService) { }
 
   openVideoPopup() {
     this.showVideoPopup = true;
@@ -40,47 +43,48 @@ export class MovieDetailsComponent {
   }
 
   getData() {
-    this.service.getMedia(this.getId).subscribe(res => {
-      this.movieMedia = res;
+    this.service.getInfo(this.getId).subscribe(res => {
+      this.movieInfo = res;
+      this.movieInfo.backdrop_path = this.baseUrl + this.movieInfo.backdrop_path;
     })
 
-    this.service.getData(1).subscribe(res => {
-      this.movieList = res;
-      this.movieList = this.movieList.results;
-      this.movieList.forEach((ele : any) => {
-        if (ele.id == this.getId) {
-          this.movieInfo = ele;
-          ele.poster_path = this.baseUrl + ele.poster_path;
-          ele.backdrop_path = this.baseUrl + ele.backdrop_path;
-        }
-      })
-    })
+
+    const pageNum = parseInt(this.storage.getItem('page'));
+    range(1, pageNum + 1).pipe(concatMap(i => this.service.getData(i))).subscribe((res) => {
+      let newList: any = res;
+      console.log(newList);
+      newList = newList.results;
+      newList.forEach((ele: any) => {
+        ele.poster_path = this.baseUrl + ele.poster_path;
+      });
+      this.movieList = [...this.movieList, ...newList];
+    });
 
     this.service.getImages(this.getId).subscribe(res => {
       this.movieImages = res;
       this.movieImages = this.movieImages.backdrops;
-      this.movieImages.forEach((ele : any) => {
-        ele.file_path = this.baseUrl + ele.file_path;
+      this.movieImages.forEach((ele: any) => {
+        ele.file_path = this.tempUrl + ele.file_path;
       })
     })
 
     this.service.getCredits(this.getId).subscribe(res => {
       this.movieCredits = res;
       this.movieCredits = this.movieCredits.cast;
-      this.movieCredits.forEach((ele : any) => {
-          ele.profile_path = this.baseUrl + ele.profile_path;
+      this.movieCredits.forEach((ele: any) => {
+        ele.profile_path = this.tempUrl + ele.profile_path;
       })
     })
   }
 
   ngOnInit() {
-    this.service.id$.subscribe(id => { 
-      this.getId = id; 
+    this.service.id$.subscribe(id => {
+      this.getId = id;
       if (id == null || id == undefined || id == "") {
-        this.getId = this.localStorage.getItem("movieId");
+        this.getId = this.storage.getItem("movieId");
         this.getData();
       } else if (id != null || id != undefined) {
-        this.localStorage.setItem("movieId", this.getId);
+        this.storage.setItem("movieId", this.getId);
         this.getData();
       }
     });

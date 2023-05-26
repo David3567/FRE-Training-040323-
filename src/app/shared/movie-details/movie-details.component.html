@@ -15,9 +15,9 @@
     <div class="context">
         <div class="left">
             <p class="title">{{movieInfo?.title}}</p>
-            <div class="rating">⭐{{movieInfo?.vote_average}} | {{movieInfo?.vote_count}} • {{movieMedia?.runtime}} mins </div>
+            <div class="rating">⭐{{movieInfo?.vote_average}} | {{movieInfo?.vote_count}} • {{movieInfo?.runtime}} mins </div>
             <div class="genres-container">
-                <p class="genres" *ngFor="let genres of movieMedia?.genres">{{genres.name}}</p>
+                <p class="genres" *ngFor="let genres of movieInfo?.genres">{{genres.name}}</p>
             </div>
             <p class="info">{{movieInfo?.overview}}</p>
             <div class="trailer">
@@ -32,7 +32,9 @@
             </div>
         </div>
         <div class="right">
-            <p class="poster-text">Poster</p>
+            <p class="poster-text">Poster
+                <span class="poster-text" *ngIf="movieImages[0] == null"> : No Posters Available for this Movie</span>
+            </p>
             <div class="poster-container">
                 <div *ngFor="let index of [].constructor(5).keys()">
                     <img class="poster-image" [src]="movieImages[index]?.file_path">
