@@ -18,25 +18,22 @@
 
     <div class="plan-container">
         <div class="button-display">
-            <button class="plan-button" (click)="redIt(1)">Standard with ads</button>
-            <button class="plan-button" (click)="redIt(2)">Standard</button>
-            <button class="plan-button" (click)="redIt(3)">Premium</button>
+            <p class="text">Choose Plan:</p>
+            <button class="plan-button" (click)="redIt(1); selectPlan(1)">Standard with ads</button>
+            <button class="plan-button" (click)="redIt(2); selectPlan(2)">Standard</button>
+            <button class="plan-button" (click)="redIt(3); selectPlan(3)">Premium</button>
         </div>
-        <div class="info-row" *ngFor="let text of plans">
-            <div class="text-display">
-                <p class="text">{{text.info[0]}}</p>
-                <p class="col1" [ngClass]="text.red == true? 'red' : 'black'">{{text.info[1]}}</p>
-                <p class="col2" [ngClass]="text.red == true? 'red' : 'black'">{{text.info[2]}}</p>
-                <p class="col3" [ngClass]="text.red == true? 'red' : 'black'">{{text.info[3]}}</p>
-            </div>
-            <div class="line-display">
-                <hr class="line">
+        <div class="infoRow">
+            <div class="text-display" *ngFor="let text of plans">
+                <p class="col0" [ngClass]="text.red ? 'red' : 'black'">{{ text.info[0] }}</p>
+                <p class="col1" [ngClass]="text.red ? 'red' : 'black'">{{ text.info[1] }}</p>
+                <p class="col2" [ngClass]="text.red ? 'red' : 'black'">{{ text.info[2] }}</p>
+                <p class="col3" [ngClass]="text.red ? 'red' : 'black'">{{ text.info[3] }}</p>
+                <p class="col4" [ngClass]="text.red ? 'red' : 'black'">{{ text.info[4] }}</p>
             </div>
         </div>
-        <button class="NextButton" type="submit" [routerLink]="['/movie-list']">Next</button>
+        <button class="NextButton" type="submit" [disabled]="plan == 0" (click)="onSubmit()">Next</button>
     </div>
 
-    <div class="help-container">
-    </div>
-
+    <div class="help-container"></div>
 </body>

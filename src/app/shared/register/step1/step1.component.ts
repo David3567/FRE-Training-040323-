@@ -23,7 +23,7 @@ export class Step1Component {
   });
 
   get storedEmail(): string {
-    const checkEmail = this.storage.getItem('homepageEmail') || '';
+    const checkEmail = this.storage.getItem('signup-email') || '';
     if (checkEmail == '') {
       return "Email"
     } else {
@@ -35,6 +35,7 @@ export class Step1Component {
     this.authService.checkEmail(this.storeData.value.email!).subscribe((res: any) => {
       if (res == false) {
         this.userExist = false;
+        this.storage.setItem("signup-pw", this.storeData.value.password);
         this.router.navigate(['/step2']);
         //Want to save password more safely
       } else {

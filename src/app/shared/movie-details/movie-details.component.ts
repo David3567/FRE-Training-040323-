@@ -44,7 +44,7 @@ export class MovieDetailsComponent {
       this.movieMedia = res;
     })
 
-    this.service.getdata().subscribe(res => {
+    this.service.getData(1).subscribe(res => {
       this.movieList = res;
       this.movieList = this.movieList.results;
       this.movieList.forEach((ele : any) => {

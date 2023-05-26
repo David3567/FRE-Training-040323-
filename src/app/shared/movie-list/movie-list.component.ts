@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { ApiService } from '../../core/service';
 import { Router } from '@angular/router';
-import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-movie-list',
@@ -11,8 +10,9 @@ import { BehaviorSubject } from 'rxjs';
 export class MovieListComponent {
   id : any;
   baseUrl = "https://image.tmdb.org/t/p/original";
-  tempUrl = "https://image.tmdb.org/t/p/w200/";
+  tempUrl = "https://image.tmdb.org/t/p/w200";
   movieList : any;
+  page = 1;
   
   constructor(private service: ApiService, private router: Router) {}
 
@@ -23,8 +23,21 @@ export class MovieListComponent {
     this.router.navigate(['/movie-details']);
   }
 
+  onScroll() {
+    this.service.getData(++this.page).subscribe(res => {
+      let newList : any = res;
+      newList = newList.results;
+      newList.forEach((ele : any) => {
+        ele.poster_path = this.tempUrl + ele.poster_path;
+      })
+      this.movieList = [...this.movieList, ...newList];
+    });
+    console.log(this.movieList);
+    console.log(this.page, "Page");
+  }
+
   ngOnInit() {
-    this.service.getdata().subscribe(res => {
+    this.service.getData(this.page).subscribe(res => {
       this.movieList = res;
       this.movieList = this.movieList.results;
       this.movieList.forEach((ele : any) => {

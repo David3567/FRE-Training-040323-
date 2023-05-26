@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { plans } from '../step3/interface';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ApiService } from 'src/app/core/service';
+import { LocalStorageService } from 'src/app/core/localStorage';
+import { AuthService } from 'src/app/core/auth-service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-step2',
@@ -9,14 +10,26 @@ import { ApiService } from 'src/app/core/service';
   styleUrls: ['./step2.component.scss']
 })
 export class Step2Component {
+  constructor(
+    private AuthService: AuthService,
+    private storage: LocalStorageService,
+    private router: Router,
+  ) {}
+
   storeData = new FormGroup({
-    email: new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl('', Validators.required),
+    username: new FormControl('', [Validators.required]),
+    tmdbKey: new FormControl('', Validators.required),
   })
 
-  constructor(private service: ApiService) {}
+  allFill() {
+    const emailFill = this.storeData.controls['username'];
+    const pwFill = this.storeData.controls['tmdbKey'];
+    return emailFill.value == '' && pwFill.value == '' && emailFill.untouched && pwFill.untouched;
+  }
 
   onSubmit() {
-    console.log();
+    this.storage.setItem("signup-username", this.storeData.value.username);
+    this.storage.setItem("signup-tmdb", this.storeData.value.tmdbKey)
+    this.router.navigate(['/step3']);
   }
 }

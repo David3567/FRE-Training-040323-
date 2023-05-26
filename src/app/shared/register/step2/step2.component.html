@@ -15,20 +15,20 @@
         <p class="midText">We hate paperwork, too.</p>
         <form class="formFormat" [formGroup]="storeData" (ngSubmit)="onSubmit()">
             <div>
-                <label for="email"></label>
-                <input class="Form-Style" id="email" type="text" placeholder="Enter your username" formControlName="email">
-                <div class="message" *ngIf="storeData.controls['email'].invalid && (storeData.controls['email'].dirty || storeData.controls['email'].touched)">
-                    Email is Required
+                <label for="username"></label>
+                <input class="Form-Style" id="username" type="text" placeholder="Enter your username" formControlName="username">
+                <div class="message" *ngIf="storeData.controls['username'].invalid && (storeData.controls['username'].dirty || storeData.controls['username'].touched)">
+                    Username is Required
                 </div>
             </div>
             <div>
-                <label for="password"></label>
-                <input class="Form-Style" id="password" type="password" placeholder="Add your Tmdb_Api_Key" formControlName="password">
-                <div class="message" *ngIf="storeData.controls['password'].invalid && (storeData.controls['password'].dirty || storeData.controls['password'].touched)">
-                    Password is Required
+                <label for="tmdbKey"></label>
+                <input class="Form-Style" id="tmdbKey" type="tmdbKey" placeholder="Add your Tmdb_Api_Key" formControlName="tmdbKey">
+                <div class="message" *ngIf="storeData.controls['tmdbKey'].invalid && (storeData.controls['tmdbKey'].dirty || storeData.controls['tmdbKey'].touched)">
+                    tmdb Key is Required
                 </div>
             </div>
-            <div><button class="NextButton" type="submit" [routerLink]="['/step3']">Next</button></div>
+            <div><button class="NextButton" type="submit" [disabled]="allFill()">Next</button></div>
         </form>
     </div>
 

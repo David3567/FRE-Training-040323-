@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { plans } from '../step3/interface';
+import { LocalStorageService } from 'src/app/core/localStorage';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/core/auth-service';
 
 @Component({
   selector: 'app-step3',
@@ -7,29 +10,28 @@ import { plans } from '../step3/interface';
   styleUrls: ['./step3.component.scss']
 })
 export class Step3Component {
+  constructor(
+    private storage: LocalStorageService,
+    private router: Router,
+    private AuthService: AuthService,
+  ) {}
+
+  plan: number = 0;
   plans : plans[] = [
     {
-      info: ["Monthly price", "$6.99", "$15.49", "19.99"],
-      red: false,
-      index: 0,
+      info: ["Monthly price", "Video quality", "Resolution", "Watch on your TV, computer, mobile phone and tablet", "Downloads"],
     }, {
-      info : ["Video quality", "Great", "Great", "Best"],
-      red: false,
-      index: 0,
+      info : ["$6.99", "Great", "1080p", "✓", "—"],
     }, {
-      info : ["Resolution", "1080p", "1080p", "4K+HDR"],
-      red: false,
-      index: 0,
+      info : ["$15.49", "Great", "1080p", "✓", "✓"],
     }, {
-      info : ["Watch on your TV, computer, mobile phone and tablet", "✓", "✓", "✓"],
-      red: false,
-      index: 0,
-    }, {
-      info : ["Downloads", "—", "✓", "✓"],
-      red: false,
-      index: 0,
+      info : ["$19.99", "Best", "4K+HDR", "✓", "✓"],
     }
   ]
+
+  selectPlan(plan: any) {
+    this.plan = plan;
+  }
 
   redIt(data : number) {
     for (let pos in this.plans) {
@@ -41,5 +43,27 @@ export class Step3Component {
         this.plans[pos].index = data;
       }
     }
+  }
+
+  onSubmit() {
+    if (this.plan == 1) {
+      this.storage.setItem("signup-role", "USER");
+    } else if (this.plan == 2) {
+      this.storage.setItem("signup-role", "SUPERUSER");
+    } else if (this.plan == 3) {
+      this.storage.setItem("signup-role", "ADMIN");
+    }
+
+    const username = this.storage.getItem("signup-username");
+    const password = this.storage.getItem("signup-pw");
+    const email = this.storage.getItem("signup-email");
+    const role = this.storage.getItem("signup-role");
+    const tmdb = this.storage.getItem("signup-tmdb");
+    let userInfo = [username, password, email, role, tmdb];
+
+    // this.AuthService.signUp(userInfo).subscribe((res: any) => {
+    //   this.storage.setItem("userInfo", res.accessToken);
+    // })
+    this.router.navigate(['/movie-list']);
   }
 }

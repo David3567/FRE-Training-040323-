@@ -4,6 +4,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ApiService } from 'src/app/core/service';
 import jwt_decode from 'jwt-decode';
 import { LocalStorageService } from 'src/app/core/localStorage';
+import { AuthService } from 'src/app/core/auth-service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sign-in',
@@ -12,8 +14,8 @@ import { LocalStorageService } from 'src/app/core/localStorage';
 })
 export class SignInComponent {
   constructor(
-    private service: ApiService,
-    private storage: LocalStorageService,
+    private AuthService: AuthService,
+    private router: Router,
   ) {}
 
   input : userData[] = [];
@@ -25,11 +27,12 @@ export class SignInComponent {
 
   onSubmit() {
     if (this.storeData.valid) {
-      this.service.getUserCredentials(this.storeData).subscribe((res: any) => {
+      this.AuthService.signIn(this.storeData).subscribe((res: any) => {
         console.log('res', res);
         // const decodedToken = jwt_decode(res.accessToken);
         // console.log(decodedToken);
         localStorage.setItem('userInfo', res.accessToken);
+        this.router.navigate(['/movie-list']);
       })
     }
   }

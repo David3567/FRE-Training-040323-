@@ -55,7 +55,7 @@ export class HomepageComponent {
 
   onSubmit() {
     if (this.storeData.valid) {
-      this.storage.setItem('signup-Email', this.storeData.value.email);
+      this.storage.setItem('signup-email', this.storeData.value.email);
       this.router.navigate(['/step1']);
     }
   }
