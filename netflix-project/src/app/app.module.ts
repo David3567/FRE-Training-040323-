@@ -17,6 +17,7 @@ import {
 import { DisplayBoxComponent } from './components/display-box/display-box.component';
 import { StoreModule } from '@ngrx/store';
 import { AuthInterceptor } from './Interceptors/auth.interceptor';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 export const movieUrl = new InjectionToken<string>('');
 export const discoverPath = new InjectionToken<string>('');
@@ -35,6 +36,7 @@ export const discoverPath = new InjectionToken<string>('');
     ReactiveFormsModule,
     HttpClientModule,
     StoreModule.forRoot({}, {}),
+    BrowserAnimationsModule,
   ],
   providers: [
     { provide: UserService, useClass: UserService },

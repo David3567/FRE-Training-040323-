@@ -13,10 +13,44 @@
 .modal-content {
   background-color: white;
   color: black;
-  padding: 20px;
-  height: 50%;
+  display: flex;
+  flex-direction: column;
+  height: 80%;
+  width: 80%;
+  background-color: white;
 }
 
-youtube-player{
-  height: 80%;
+.modal-header {
+  justify-content: flex-end;
+}
+
+.modal-body {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center
+}
+
+youtube-player {
+  height: 100%;
+}
+
+
+.button-previous {
+  width: 50px;
+  height: 50px;
+  background-image: url('../../../assets/icons8-previous-100.png');
+  background-size: cover;
+  background-color: rgba(0, 0, 0, 0.3);
+  border: white;
+
+}
+
+.button-next {
+  width: 50px;
+  height: 50px;
+  background-image: url('../../../assets/icons8-next-100.png');
+  background-size: cover;
+  background-color: rgba(0, 0, 0, 0.3);
+  border: white;
 }
