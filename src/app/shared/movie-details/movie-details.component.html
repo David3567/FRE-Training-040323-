@@ -3,14 +3,18 @@
     'background-size': 'cover',
     'background-repeat': 'no-repeat'
   }">
-    <div class="Top-Bar">
-        <div class="Top-Bar-Elements">
-            <button class="Logo-Button" [routerLink]="['/homepage']">
-                <img class="Logo" src="../../assets/Logo_Fake.png" />
-            </button>
-            <button class="signinButton" [routerLink]="['/sign-in']">Sign In</button>
-        </div>
+  <div class="Top-Bar">
+    <div class="Top-Bar-Elements">
+      <button class="Logo-Button" [routerLink]="['/homepage']">
+        <img class="Logo" src="../../assets/Logo_Fake.png" />
+      </button>
+      <button *ngIf='!username' class="signinButton" [routerLink]="['/sign-in']">Sign In</button>
+      <div *ngIf='username' class="userLogin">
+        <p class="username">{{username}}</p>
+        <button class="signinButton" (click)="signOut()">Sign Out</button>
+      </div>
     </div>
+  </div>
     <div class="divider"></div>
     <div class="context">
         <div class="left">
@@ -21,6 +25,7 @@
             </div>
             <p class="info">{{movieInfo?.overview}}</p>
             <div class="trailer">
+                <button class="backList" [routerLink]="['/movie-list']">Back to List</button>
                 <button class="playLong">▷ Play Now</button>
                 <button class="playShort" (click)="getVideo(getId)">Trailer</button>
                 <div class="video-popup-overlay" *ngIf="showVideoPopup">

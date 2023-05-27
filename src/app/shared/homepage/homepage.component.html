@@ -1,15 +1,20 @@
-<html></html>
 <body>
     <div class="TopBar">
         <img class="Logo" src="../../../assets/Logo_Fake.png" />
         <div class="TopBarDivider">
-            <select id="dropList" onchange="">
+            <div *ngIf='username' class="userLogin">
+                <p class="username">{{username}}</p>
+            </div>
+            <select class="dropList" onchange="">
                 <option *ngFor="let lang of langList" [value]="langList">{{lang}}</option>
             </select>
-            <button class="signinButton" [routerLink]="['/sign-in']">Sign In</button>
+            <button *ngIf='!username' class="signinButton" [routerLink]="['/sign-in']">Sign In</button>
+            <div *ngIf='username' class="userLogin">
+                <button class="signinButton" (click)="signOut()">Sign Out</button>
+            </div>
         </div>
     </div>
-    
+
     <div class="Top-Container">
         <div class="Top-TextContainer">
             <div class="Top-Text1">{{bigImage[0]}}</div>
@@ -19,17 +24,22 @@
         <div class="Top-Email">
             <form class="formFormat" [formGroup]="storeData" (ngSubmit)="onSubmit()">
                 <div>
-                    <label for="email"></label>
-                    <input class="Top-EmailForm" id="email" type="text" placeholder="Email address" formControlName="email">
-                    <div [hidden]="!storeData.controls['email'].errors?.['email'] || !storeData.controls['email'].touched">
+                    <label for="email" *ngIf='!username'></label>
+                    <input class="Top-EmailForm" id="email" type="text" placeholder="Email address"
+                        formControlName="email" *ngIf='!username'>
+                    <div *ngIf='!username'
+                        [hidden]="!storeData.controls['email'].errors?.['email'] || !storeData.controls['email'].touched">
                         <div class="message">Primary email address is not valid.</div>
                     </div>
                 </div>
-                <div><button class="Top-EmailButton" type="submit" [disabled]="!storeData.valid">Get Started</button></div>
+                <div>
+                    <button *ngIf='!username' class="Top-EmailButton" type="submit" [disabled]="!storeData.valid">Get Started</button>
+                    <button *ngIf='username' class="Top-EmailButton" type="submit" [routerLink]="['/movie-list']">Go to Movie List</button>
+                </div>
             </form>
         </div>
     </div>
-    
+
     <div class="Middle-Container">
         <div class="Middle-Format" *ngFor="let block of smallBox">
             <div class="Middle-Block">

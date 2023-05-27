@@ -4,8 +4,11 @@
       <button class="Logo-Button" [routerLink]="['/homepage']">
         <img class="Logo" src="../../assets/Logo_Fake.png" />
       </button>
-      <button class="signinButton" [routerLink]="['/sign-in']">Sign In</button>
-      <p *ngIf=""></p>
+      <button *ngIf='!username' class="signinButton" [routerLink]="['/sign-in']">Sign In</button>
+      <div *ngIf='username' class="userLogin">
+        <p class="username">{{username}}</p>
+        <button class="signinButton" (click)="signOut()">Sign Out</button>
+      </div>
     </div>
   </div>
     <div class="movie-container" infiniteScroll
@@ -19,7 +22,7 @@
           <img class="poster" src="{{index.poster_path}}">
           <p class="title">{{index.title}}</p>
           <p class="context">{{index.overview}}</p>
-          <button class="button" type="submit" (click)="onSubmit(index.id)">
+          <button *ngIf="isAdmin == 'ADMIN'" class="button" type="submit" (click)="onSubmit(index.id)">
             More Details
           </button>
         </div>

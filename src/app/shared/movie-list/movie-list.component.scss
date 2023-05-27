@@ -40,6 +40,17 @@ app-movie-details {
     border: none;
 }
 
+.userLogin {
+    display: flex;
+    flex-direction: row;
+    font-size: 30px;
+    font-family: Sans-Serif;
+    font-weight: bold;
+    color: white;
+    gap: 2vw;
+    align-items: center;
+}
+
 .signinButton {
     background-color: red;
     border: none;
@@ -101,13 +112,12 @@ app-movie-details {
     left: 15%;
     font-size: 15px;
     color: white;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
     display: -webkit-box;
+    -webkit-line-clamp: 5;
     -webkit-box-orient: vertical;
-    -webkit-line-clamp: 10;
-}
+    overflow: hidden;
+    word-wrap: break-word;
+  }
 
 .button {
     position: absolute;

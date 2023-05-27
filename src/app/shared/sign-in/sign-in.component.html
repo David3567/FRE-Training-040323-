@@ -24,6 +24,7 @@
                 </div>
             </div>
             <div><button class="SignInButton" type="submit">Sign In</button></div>
+            <div class="message" *ngIf="errorText">{{errorText}}</div>
         </form>
         <div class="Preference">
             <div class="boxDivider">

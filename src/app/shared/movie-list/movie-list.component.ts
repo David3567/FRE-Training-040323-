@@ -11,24 +11,25 @@ import jwt_decode from 'jwt-decode';
   styleUrls: ['./movie-list.component.scss']
 })
 export class MovieListComponent {
-  id : any;
+  id: any;
   baseUrl = "https://image.tmdb.org/t/p/original";
   tempUrl = "https://image.tmdb.org/t/p/w200";
-  movieList : any;
+  movieList: any;
   page = 1;
-  username = "";
-  
+  username = this.storage.getItem("signup-username");
+  isAdmin = this.storage.getItem("signup-role");
+
   constructor(
-    private service: ApiService, 
+    private service: ApiService,
     private router: Router,
     private storage: LocalStorageService,
-  ) {}
+  ) { }
 
   onScroll() {
     this.service.getData(++this.page).subscribe(res => {
-      let newList : any = res;
+      let newList: any = res;
       newList = newList.results;
-      newList.forEach((ele : any) => {
+      newList.forEach((ele: any) => {
         ele.poster_path = this.tempUrl + ele.poster_path;
       })
       this.movieList = [...this.movieList, ...newList];
@@ -42,6 +43,15 @@ export class MovieListComponent {
     const savedPos = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
     this.storage.setItem("windowPos", savedPos.toString());
     this.router.navigate(['/movie-details']);
+  }
+
+  signOut() {
+    this.storage.setItem('signup-username', "");
+    this.storage.setItem('signup-email', "");
+    this.storage.setItem('signup-role', "");
+    this.storage.setItem('signup-tmdb', "");
+    this.username = "";
+    this.router.navigate(['/homepage']);
   }
 
   ngOnInit() {
@@ -58,12 +68,12 @@ export class MovieListComponent {
       this.movieList = [...this.movieList, ...newList];
     });
 
-    const tokenDecode = jwt_decode(this.storage.getItem("userInfo"));
+    //const tokenDecode = jwt_decode(this.storage.getItem("userInfo"));
 
     this.service.getData(this.page).subscribe(res => {
       this.movieList = res;
       this.movieList = this.movieList.results;
-      this.movieList.forEach((ele : any) => {
+      this.movieList.forEach((ele: any) => {
         ele.poster_path = this.tempUrl + ele.poster_path;
       })
     })
@@ -75,7 +85,7 @@ export class MovieListComponent {
     const savedPos = parseInt(this.storage.getItem("windowPos") || '0');
     window.scrollTo({
       top: savedPos,
-      left: 0,  
+      left: 0,
       behavior: 'smooth'
     });
   }

@@ -10,6 +10,12 @@ import { LocalStorageService } from 'src/app/core/localStorage';
   styleUrls: ['./homepage.component.scss']
 })
 export class HomepageComponent {
+  constructor(
+    private router: Router, 
+    private storage: LocalStorageService,
+  ) {}
+  
+  username = this.storage.getItem("signup-username");
   langList : string[] = ['🌐 English'];
   bigImage : string[] = [
     "Unlimited movies, TV shows, and more", "Watch anywhere. Cancel anytime.",
@@ -48,15 +54,23 @@ export class HomepageComponent {
     email: new FormControl('', [Validators.required, Validators.email]),
   })
 
-  constructor(
-    private router: Router, 
-    private storage: LocalStorageService,
-  ) {}
+  signOut() {
+    this.storage.setItem('signup-username', "");
+    this.storage.setItem('signup-email', "");
+    this.storage.setItem('signup-role', "");
+    this.storage.setItem('signup-tmdb', "");
+    this.username = "";
+  }
 
   onSubmit() {
     if (this.storeData.valid) {
       this.storage.setItem('signup-email', this.storeData.value.email);
       this.router.navigate(['/step1']);
     }
+  }
+
+  ngOnInit() {
+    this.storage.removeItem('page');
+    this.storage.removeItem('windowPos');
   }
 }

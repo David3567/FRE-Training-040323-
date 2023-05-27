@@ -4,6 +4,7 @@ import { YouTubePlayer } from '@angular/youtube-player';
 import { LocalStorageService } from '../../core/localStorage';
 import { range } from 'rxjs';
 import { concatMap } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -12,6 +13,12 @@ import { concatMap } from 'rxjs/operators';
   styleUrls: ['./movie-details.component.scss']
 })
 export class MovieDetailsComponent {
+  constructor(
+    private service: ApiService, 
+    private storage: LocalStorageService,
+    private router: Router,
+  ) {}
+
   @ViewChild('myPlayer') youtubePlayer!: YouTubePlayer;
   getId: any;
   videoId: any;
@@ -22,8 +29,7 @@ export class MovieDetailsComponent {
   movieCredits: any;
   movieImages: any;
   showVideoPopup: boolean = false;
-
-  constructor(private service: ApiService, private storage: LocalStorageService) { }
+  username = this.storage.getItem("signup-username");
 
   openVideoPopup() {
     this.showVideoPopup = true;
@@ -49,16 +55,16 @@ export class MovieDetailsComponent {
     })
 
 
-    const pageNum = parseInt(this.storage.getItem('page'));
-    range(1, pageNum + 1).pipe(concatMap(i => this.service.getData(i))).subscribe((res) => {
-      let newList: any = res;
-      console.log(newList);
-      newList = newList.results;
-      newList.forEach((ele: any) => {
-        ele.poster_path = this.baseUrl + ele.poster_path;
-      });
-      this.movieList = [...this.movieList, ...newList];
-    });
+    // const pageNum = parseInt(this.storage.getItem('page'));
+    // range(1, pageNum + 1).pipe(concatMap(i => this.service.getData(i))).subscribe((res) => {
+    //   let newList: any = res;
+    //   console.log(newList);
+    //   newList = newList.results;
+    //   newList.forEach((ele: any) => {
+    //     ele.poster_path = this.baseUrl + ele.poster_path;
+    //   });
+    //   this.movieList = [...this.movieList, ...newList];
+    // });
 
     this.service.getImages(this.getId).subscribe(res => {
       this.movieImages = res;
@@ -75,6 +81,15 @@ export class MovieDetailsComponent {
         ele.profile_path = this.tempUrl + ele.profile_path;
       })
     })
+  }
+
+  signOut() {
+    this.storage.setItem('signup-username', "");
+    this.storage.setItem('signup-email', "");
+    this.storage.setItem('signup-role', "");
+    this.storage.setItem('signup-tmdb', "");
+    this.username = "";
+    this.router.navigate(['/homepage']);
   }
 
   ngOnInit() {
