@@ -15,6 +15,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { YoutubePlayerComponent } from './youtube-player/youtube-player.component';
 import { YouTubePlayerModule } from '@angular/youtube-player';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { BrowserModule } from '@angular/platform-browser';
 @NgModule({
   declarations: [
     MoviesComponent,
@@ -35,6 +37,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     MatIconModule,
     YouTubePlayerModule,
     MatProgressSpinnerModule,
+    InfiniteScrollModule,
   ],
 })
 export class MoviesModule {}

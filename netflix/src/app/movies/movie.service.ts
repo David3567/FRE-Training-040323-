@@ -16,8 +16,14 @@ export class MovieService {
 
   constructor(private http: HttpClient, private router: Router) {}
 
-  getMovies$ = this.http.get<MovieList>(this.url);
+  getMovies$ = this.http
+    .get<MovieList>(this.url)
+    .pipe(map((movies) => movies.results));
 
+  getMovies(page: number): Observable<Movie[]> {
+    const url = `https://api.themoviedb.org/3/discover/movie?api_key=9f7b20416809f982ba3dd585db30907b&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${page}&with_watch_monetization_types=flatrate`;
+    return this.http.get<MovieList>(url).pipe(map((movies) => movies.results));
+  }
   getDataAndNavigate(id: string) {
     return this.http.get(
       `https://api.themoviedb.org/3/movie/${id}?api_key=9f7b20416809f982ba3dd585db30907b&language=en-US&append_to_response=credits,images`
