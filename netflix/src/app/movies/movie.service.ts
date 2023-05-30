@@ -8,6 +8,8 @@ import { Observable, map } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
+
+// const fetch
 export class MovieService {
   url =
     'https://api.themoviedb.org/3/discover/movie?api_key=9f7b20416809f982ba3dd585db30907b&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_watch_monetization_types=flatrate';
@@ -16,18 +18,18 @@ export class MovieService {
 
   getMovies$ = this.http.get<MovieList>(this.url);
 
-  getDataAndNavigate(id: number) {
+  getDataAndNavigate(id: string) {
     return this.http.get(
       `https://api.themoviedb.org/3/movie/${id}?api_key=9f7b20416809f982ba3dd585db30907b&language=en-US&append_to_response=credits,images`
     );
   }
 
-  getMovieDetails(movieId: number): Observable<any> {
+  getMovieDetails(movieId: string): Observable<any> {
     const url = `https://api.themoviedb.org/3/movie/${movieId}?api_key=9f7b20416809f982ba3dd585db30907b&append_to_response=credits`;
     return this.http.get(url);
   }
 
-  getActors(movieId: number): Observable<any[]> {
+  getActors(movieId: string): Observable<any[]> {
     return this.getMovieDetails(movieId).pipe(
       map((response: any) => {
         const cast = response.credits.cast;
@@ -48,7 +50,7 @@ export class MovieService {
     return `https://image.tmdb.org/t/p/${imageSize}${path}`;
   }
 
-  getMovieGeneralInfo(movieId: number): Observable<any> {
+  getMovieGeneralInfo(movieId: string): Observable<any> {
     return this.getMovieDetails(movieId).pipe(
       map((response: any) => {
         return {
@@ -64,7 +66,7 @@ export class MovieService {
     );
   }
 
-  getMoviePostersLimited(movieId: number, limit: number) {
+  getMoviePostersLimited(movieId: string, limit: number) {
     const url = `https://api.themoviedb.org/3/movie/${movieId}/images?api_key=9f7b20416809f982ba3dd585db30907b`;
     return this.http
       .get(url)

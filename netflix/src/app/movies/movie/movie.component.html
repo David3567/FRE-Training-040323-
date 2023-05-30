@@ -21,7 +21,7 @@
       </mat-chip-listbox>
     </div>
     <p class="overview">{{ movieDetails.overview | slice : 0 : 120 }} ...</p>
-    <div>
+    <div class="flex space-x-2 items-center">
       <button
         mat-raised-button
         color="accent"
@@ -29,6 +29,8 @@
       >
         Details
       </button>
+
+      <mat-spinner color="warn" [diameter]="20" *ngIf="isLoading"></mat-spinner>
     </div>
   </div>
 </div>

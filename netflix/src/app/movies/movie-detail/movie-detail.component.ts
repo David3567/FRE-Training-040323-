@@ -20,15 +20,19 @@ export class MovieDetailComponent implements OnInit {
   id: string | null = '';
   movieTrailers: any[] = [];
   videosLoaded = false;
+  data: any;
 
   ngOnInit(): void {
     this.id = this.route.snapshot.paramMap.get('id');
-    const data = history.state.data;
-    this.actors = data.actors;
-    console.log(this.actors);
-    this.movieInfo = data.movieInfo;
-    this.moviePosters = data.moviePosters;
-    this.imageUrl = `https://image.tmdb.org/t/p/original/${this.movieInfo.poster_path}`;
+    console.log(this.id);
+    this.route.data.subscribe((data) => {
+      console.log(data);
+      const resolvedData = data['data'];
+      this.actors = resolvedData.actors;
+      this.movieInfo = resolvedData.movieInfo;
+      this.moviePosters = resolvedData.moviePosters;
+      this.imageUrl = `https://image.tmdb.org/t/p/original/${this.movieInfo.poster_path}`;
+    });
   }
 
   getMovieTrailers() {

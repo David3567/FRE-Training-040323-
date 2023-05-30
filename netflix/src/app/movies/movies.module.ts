@@ -14,6 +14,7 @@ import { MovieDetailComponent } from './movie-detail/movie-detail.component';
 import { MatIconModule } from '@angular/material/icon';
 import { YoutubePlayerComponent } from './youtube-player/youtube-player.component';
 import { YouTubePlayerModule } from '@angular/youtube-player';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 @NgModule({
   declarations: [
     MoviesComponent,
@@ -33,6 +34,7 @@ import { YouTubePlayerModule } from '@angular/youtube-player';
     MatCardModule,
     MatIconModule,
     YouTubePlayerModule,
+    MatProgressSpinnerModule,
   ],
 })
 export class MoviesModule {}
