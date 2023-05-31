@@ -1,0 +1,6 @@
+.highlight {
+  cursor: pointer;
+}
+.highlight td {
+  color: red;
+}

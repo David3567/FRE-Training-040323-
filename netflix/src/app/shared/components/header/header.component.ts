@@ -4,6 +4,7 @@ import jwt_decode from 'jwt-decode';
 import { UserService } from 'src/app/core/user.service';
 import { Subscription } from 'rxjs';
 import { User } from 'src/app/core/user.interface';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -12,9 +13,7 @@ import { User } from 'src/app/core/user.interface';
 })
 export class HeaderComponent implements OnInit {
   @Input() userHeader?: string;
-  constructor(
-    private userService: UserService
-  ) {}
+  constructor(private userService: UserService, private router: Router) {}
 
   user!: User;
   userSubscription!: Subscription;
@@ -28,6 +27,7 @@ export class HeaderComponent implements OnInit {
 
   logout() {
     this.userService.deleteUser();
+    this.router.navigate(['/']);
   }
   ngOnDestroy(): void {
     if (this.userSubscription) {

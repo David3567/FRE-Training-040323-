@@ -13,8 +13,6 @@ import { MoviesComponent } from './movies/movies.component';
 import { MovieDetailComponent } from './movie-detail/movie-detail.component';
 import { Observable, forkJoin, map, of } from 'rxjs';
 import { MovieService } from './movie.service';
-import { UserService } from '../core/user.service';
-import { AuthService } from '../core/auth.service';
 import { LocalStorageService } from '../core/local-storage.service';
 import { UserUpdateComponent } from './user-update/user-update.component';
 

@@ -34,5 +34,7 @@ export class AuthService {
     return this.http.post<any>(`${this.url}/auth/signup`, userCredential);
   }
 
-  updateUser(userCredential: any) {}
+  updateUser(userCredential: any) {
+    
+  }
 }
