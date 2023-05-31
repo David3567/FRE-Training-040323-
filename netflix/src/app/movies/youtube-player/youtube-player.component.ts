@@ -39,4 +39,5 @@ export class YoutubePlayerComponent
   ngOnChanges() {
     // console.log('currVid: ', this.currentVideo);
   }
+  closeYoutube() {}
 }

@@ -1,4 +1,12 @@
-<div class="slider">
+<div class="slider flex flex-col items-end space-y-2">
+  <button
+    mat-mini-fab
+    aria-label="Example icon button with a home icon"
+    color="warn"
+    (click)="closeYoutube()"
+  >
+    <mat-icon>clear</mat-icon>
+  </button>
   <div class="video-container">
     <div class="video-wrapper">
       <youtube-player [videoId]="videos[currentVideoIndex]"></youtube-player>

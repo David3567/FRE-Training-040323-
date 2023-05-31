@@ -60,6 +60,9 @@ const canActivateUser: CanActivateFn = (
   const userRole = localStorageService.getUserRole();
   if (userRole === 'SUPERUSER' || userRole === 'ADMIN') {
     return true;
+  } else if (userRole === '') {
+    router.navigate(['/login']);
+    return false;
   } else {
     router.navigate(['/movies/user']);
     return false;

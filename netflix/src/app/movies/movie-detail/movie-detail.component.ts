@@ -26,7 +26,6 @@ export class MovieDetailComponent implements OnInit {
     this.id = this.route.snapshot.paramMap.get('id');
     console.log(this.id);
     this.route.data.subscribe((data) => {
-      console.log(data);
       const resolvedData = data['data'];
       this.actors = resolvedData.actors;
       this.movieInfo = resolvedData.movieInfo;
@@ -43,4 +42,5 @@ export class MovieDetailComponent implements OnInit {
         this.videosLoaded = true;
       });
   }
+
 }

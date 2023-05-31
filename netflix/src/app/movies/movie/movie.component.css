@@ -1,12 +1,8 @@
 .card {
   display: flex;
   flex-direction: column;
-  box-shadow: 10px 5px 5px blue;
   transition: 0.3s;
   background-color: #03001c;
-}
-.card:hover {
-  box-shadow: 0 8px 16px 0 rgba(232, 227, 227, 0.2);
 }
 img {
   object-fit: contain;
@@ -15,7 +11,7 @@ img {
   width: 340px;
 }
 .content {
-  padding: 1.25em;
+  padding: 1.5em;
   display: flex;
   flex-direction: column;
   gap: 10px;
