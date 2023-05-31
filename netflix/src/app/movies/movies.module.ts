@@ -16,13 +16,16 @@ import { YoutubePlayerComponent } from './youtube-player/youtube-player.componen
 import { YouTubePlayerModule } from '@angular/youtube-player';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
-import { BrowserModule } from '@angular/platform-browser';
+import { UserUpdateComponent } from './user-update/user-update.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatTableModule } from '@angular/material/table';
 @NgModule({
   declarations: [
     MoviesComponent,
     MovieComponent,
     MovieDetailComponent,
     YoutubePlayerComponent,
+    UserUpdateComponent,
   ],
   imports: [
     CommonModule,
@@ -38,6 +41,8 @@ import { BrowserModule } from '@angular/platform-browser';
     YouTubePlayerModule,
     MatProgressSpinnerModule,
     InfiniteScrollModule,
+    ReactiveFormsModule,
+    MatTableModule,
   ],
 })
 export class MoviesModule {}

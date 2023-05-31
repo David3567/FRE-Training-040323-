@@ -13,12 +13,7 @@ import { LocalStorageService } from './local-storage.service';
   providedIn: 'root',
 })
 export class AuthService {
-  constructor(
-    private http: HttpClient,
-    private authService: AuthService,
-    private router: Router,
-    private localStorageService: LocalStorageService
-  ) {}
+  constructor(private http: HttpClient) {}
 
   url = 'http://localhost:4231';
   checkEmail(email: string) {
@@ -38,6 +33,6 @@ export class AuthService {
   }) {
     return this.http.post<any>(`${this.url}/auth/signup`, userCredential);
   }
-  
+
   updateUser(userCredential: any) {}
 }

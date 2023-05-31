@@ -16,6 +16,7 @@ import { MovieService } from './movie.service';
 import { UserService } from '../core/user.service';
 import { AuthService } from '../core/auth.service';
 import { LocalStorageService } from '../core/local-storage.service';
+import { UserUpdateComponent } from './user-update/user-update.component';
 
 const movieDetailResolver: ResolveFn<any> = (
   route: ActivatedRouteSnapshot,
@@ -62,7 +63,7 @@ const canActivateUser: CanActivateFn = (
   if (userRole === 'SUPERUSER' || userRole === 'ADMIN') {
     return true;
   } else {
-    router.navigate(['/']);
+    router.navigate(['/movies/user']);
     return false;
   }
 };
@@ -71,6 +72,10 @@ const routes: Routes = [
   {
     path: '',
     component: MoviesComponent,
+  },
+  {
+    path: 'user',
+    component: UserUpdateComponent,
   },
   {
     path: ':id',
