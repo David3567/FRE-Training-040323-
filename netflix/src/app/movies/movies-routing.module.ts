@@ -1,7 +1,9 @@
 import { NgModule, inject } from '@angular/core';
 import {
   ActivatedRouteSnapshot,
+  CanActivateFn,
   ResolveFn,
+  Router,
   RouterModule,
   RouterStateSnapshot,
   Routes,
@@ -11,6 +13,9 @@ import { MoviesComponent } from './movies/movies.component';
 import { MovieDetailComponent } from './movie-detail/movie-detail.component';
 import { Observable, forkJoin, map, of } from 'rxjs';
 import { MovieService } from './movie.service';
+import { UserService } from '../core/user.service';
+import { AuthService } from '../core/auth.service';
+import { LocalStorageService } from '../core/local-storage.service';
 
 const movieDetailResolver: ResolveFn<any> = (
   route: ActivatedRouteSnapshot,
@@ -47,6 +52,21 @@ const movieDetailResolver: ResolveFn<any> = (
   }
 };
 
+const canActivateUser: CanActivateFn = (
+  route: ActivatedRouteSnapshot,
+  state: RouterStateSnapshot
+) => {
+  const localStorageService = inject(LocalStorageService);
+  const router = inject(Router);
+  const userRole = localStorageService.getUserRole();
+  if (userRole === 'SUPERUSER' || userRole === 'ADMIN') {
+    return true;
+  } else {
+    router.navigate(['/']);
+    return false;
+  }
+};
+
 const routes: Routes = [
   {
     path: '',
@@ -56,6 +76,7 @@ const routes: Routes = [
     path: ':id',
     component: MovieDetailComponent,
     resolve: { data: movieDetailResolver },
+    canActivate: [canActivateUser],
   },
 ];
 

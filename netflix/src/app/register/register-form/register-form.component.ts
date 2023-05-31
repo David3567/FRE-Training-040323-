@@ -178,6 +178,7 @@ export class RegisterFormComponent implements OnInit {
         )
         .subscribe((res) => {
           this.localStorageService.storeToken(res.accessToken);
+          this.localStorageService.storeUserRole(res.role);
           const user = this.localStorageService.decodeToken(res.accessToken);
           if (user) {
             this.userService.setUser(user);

@@ -10,11 +10,18 @@ export class LocalStorageService {
   storeToken(token: string): void {
     localStorage.setItem('token', token);
   }
+  storeUserRole(userRole: string): void {
+    localStorage.setItem('role', userRole);
+  }
   getToken() {
     return localStorage.getItem('token') || '';
   }
+  getUserRole() {
+    return localStorage.getItem('role') || '';
+  }
   deleteToken() {
     localStorage.removeItem('token');
+    localStorage.removeItem('role');
   }
   decodeToken(token: string) {
     try {

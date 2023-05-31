@@ -1,11 +1,24 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import {
+  ActivatedRoute,
+  Router,
+  RouterStateSnapshot,
+  UrlTree,
+} from '@angular/router';
+import { Observable } from 'rxjs';
+import { LocalStorageService } from './local-storage.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient,
+    private authService: AuthService,
+    private router: Router,
+    private localStorageService: LocalStorageService
+  ) {}
 
   url = 'http://localhost:4231';
   checkEmail(email: string) {
@@ -25,4 +38,6 @@ export class AuthService {
   }) {
     return this.http.post<any>(`${this.url}/auth/signup`, userCredential);
   }
+  
+  updateUser(userCredential: any) {}
 }
