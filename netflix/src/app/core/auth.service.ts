@@ -17,7 +17,7 @@ export class AuthService {
 
   url = 'http://localhost:4231';
   checkEmail(email: string) {
-    return this.http.post('http://localhost:4231/auth/check-email', {
+    return this.http.post(`${this.url}/auth/check-email`, {
       email: email,
     });
   }
@@ -34,7 +34,11 @@ export class AuthService {
     return this.http.post<any>(`${this.url}/auth/signup`, userCredential);
   }
 
-  updateUser(userCredential: any) {
-    
+  updateUser(userCredential: {
+    username: string;
+    email: string;
+    role: string;
+  }) {
+    return this.http.patch<any>(`${this.url}/auth/userupdate`, userCredential);
   }
 }

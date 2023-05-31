@@ -16,15 +16,16 @@ export class RequestInterceptor implements HttpInterceptor {
     request: HttpRequest<unknown>,
     next: HttpHandler
   ): Observable<HttpEvent<unknown>> {
-    // if (request.url === 'http://localhost:4231/auth/userupdate') {
-    //   const token = this.localStorageService.getToken();
-    //   const modifiedRequest = request.clone({
-    //     setHeaders: {
-    //       Authorization: `Bearer ${token}`,
-    //     },
-    //   });
-    //   return next.handle(modifiedRequest);
-    // }
+    if (request.url === 'http://localhost:4231/auth/userupdate') {
+      const token = this.localStorageService.getToken();
+      const modifiedRequest = request.clone({
+        setHeaders: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      
+      return next.handle(modifiedRequest);
+    }
     return next.handle(request);
   }
 }

@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/core/auth.service';
+import { LocalStorageService } from 'src/app/core/local-storage.service';
+import { User } from 'src/app/core/user.interface';
+import { UserService } from 'src/app/core/user.service';
 
 @Component({
   selector: 'app-user-update',
@@ -7,8 +12,15 @@ import { FormBuilder, FormGroup } from '@angular/forms';
   styleUrls: ['./user-update.component.css'],
 })
 export class UserUpdateComponent implements OnInit {
-  constructor(private fb: FormBuilder) {}
+  constructor(
+    private fb: FormBuilder,
+    private authService: AuthService,
+    private userService: UserService,
+    private router: Router,
+    private localStorageService: LocalStorageService
+  ) {}
 
+  userData!: User;
   updateUserForm!: FormGroup;
   roleError: boolean = false;
   plans: {
@@ -87,7 +99,23 @@ export class UserUpdateComponent implements OnInit {
     if (!this.role?.value) {
       this.roleError = true;
     } else {
-      console.log('test!');
+      this.userService.getUser().subscribe((user) => {
+        const { username, email } = user;
+        const userUpdateData = {
+          username: username,
+          email: email,
+          role: this.role?.value,
+        };
+        this.authService.updateUser(userUpdateData).subscribe((res) => {
+         this.localStorageService.storeToken(res.accessToken);
+         this.localStorageService.storeUserRole(res.role);
+         const user = this.localStorageService.decodeToken(res.accessToken);
+         if (user) {
+           this.userService.setUser(user);
+         }
+         this.router.navigate(['/']);
+        })
+      });
     }
   }
 }
