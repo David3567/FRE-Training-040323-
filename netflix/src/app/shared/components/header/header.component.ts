@@ -13,10 +13,12 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
   @Input() userHeader?: string;
-  constructor(private userService: UserService, private router: Router) {}
 
   user!: User;
   userSubscription!: Subscription;
+
+  constructor(private userService: UserService, private router: Router) {}
+
   ngOnInit() {
     this.userSubscription = this.userService
       .getUser()
@@ -25,13 +27,14 @@ export class HeaderComponent implements OnInit {
       });
   }
 
-  logout() {
-    this.userService.deleteUser();
-    this.router.navigate(['/']);
-  }
   ngOnDestroy(): void {
     if (this.userSubscription) {
       this.userSubscription.unsubscribe();
     }
+  }
+
+  logout() {
+    this.userService.deleteUser();
+    this.router.navigate(['/']);
   }
 }

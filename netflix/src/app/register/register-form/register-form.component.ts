@@ -19,13 +19,6 @@ import { UserService } from 'src/app/core/user.service';
   styleUrls: ['./register-form.component.css'],
 })
 export class RegisterFormComponent implements OnInit {
-  constructor(
-    private fb: FormBuilder,
-    private authService: AuthService,
-    private localStorageService: LocalStorageService,
-    private router: Router,
-    private userService: UserService
-  ) {}
   registerForm!: FormGroup;
   formArray!: FormArray;
   roleError: boolean = false;
@@ -78,6 +71,39 @@ export class RegisterFormComponent implements OnInit {
     download: string;
   };
 
+  constructor(
+    private fb: FormBuilder,
+    private authService: AuthService,
+    private localStorageService: LocalStorageService,
+    private router: Router,
+    private userService: UserService
+  ) {}
+
+  ngOnInit() {
+    this.registerForm = this.fb.group({
+      formArray: this.fb.array([
+        this.fb.group({
+          // Define the controls for step 1
+          // Example: firstNameFormCtrl, lastNameFormCtrl
+          email: [
+            '',
+            [Validators.required, Validators.email],
+            this.emailAlreadyExists.bind(this),
+          ],
+          password: ['', Validators.required],
+          username: ['', Validators.required],
+        }),
+        this.fb.group({
+          // Define the controls for step 2
+          // Example: emailFormCtrl
+          role: [''],
+        }),
+        // Add more form groups for additional steps if needed
+      ]),
+    });
+    this.formArray = this.registerForm.get('formArray') as FormArray;
+  }
+  
   selectRow(row: {
     name: string;
     price: number;
@@ -111,31 +137,6 @@ export class RegisterFormComponent implements OnInit {
       );
     }
     return result;
-  }
-
-  ngOnInit() {
-    this.registerForm = this.fb.group({
-      formArray: this.fb.array([
-        this.fb.group({
-          // Define the controls for step 1
-          // Example: firstNameFormCtrl, lastNameFormCtrl
-          email: [
-            '',
-            [Validators.required, Validators.email],
-            this.emailAlreadyExists.bind(this),
-          ],
-          password: ['', Validators.required],
-          username: ['', Validators.required],
-        }),
-        this.fb.group({
-          // Define the controls for step 2
-          // Example: emailFormCtrl
-          role: [''],
-        }),
-        // Add more form groups for additional steps if needed
-      ]),
-    });
-    this.formArray = this.registerForm.get('formArray') as FormArray;
   }
 
   get email() {

@@ -20,10 +20,12 @@ export class LoginFormComponent implements OnInit {
     private localStorageService: LocalStorageService,
     private userService: UserService
   ) {}
+  ngOnInit() {}
   loginForm = this.fb.group({
     email: ['', [Validators.required, Validators.email]],
     password: ['', Validators.required],
   });
+  
 
   getEmailErrorMessage() {
     if (this.email?.hasError('required')) {
@@ -39,7 +41,6 @@ export class LoginFormComponent implements OnInit {
     return '';
   }
 
-  ngOnInit() {}
 
   get email() {
     return this.loginForm.get('email');

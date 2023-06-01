@@ -12,14 +12,6 @@ import { UserService } from 'src/app/core/user.service';
   styleUrls: ['./user-update.component.css'],
 })
 export class UserUpdateComponent implements OnInit {
-  constructor(
-    private fb: FormBuilder,
-    private authService: AuthService,
-    private userService: UserService,
-    private router: Router,
-    private localStorageService: LocalStorageService
-  ) {}
-
   userData!: User;
   updateUserForm!: FormGroup;
   roleError: boolean = false;
@@ -64,6 +56,20 @@ export class UserUpdateComponent implements OnInit {
     download: string;
   };
 
+  constructor(
+    private fb: FormBuilder,
+    private authService: AuthService,
+    private userService: UserService,
+    private router: Router,
+    private localStorageService: LocalStorageService
+  ) {}
+
+  ngOnInit(): void {
+    this.updateUserForm = this.fb.group({
+      role: [''],
+    });
+  }
+  
   selectRow(row: {
     name: string;
     price: number;
@@ -89,11 +95,6 @@ export class UserUpdateComponent implements OnInit {
   get role() {
     return this.updateUserForm.get('role');
   }
-  ngOnInit(): void {
-    this.updateUserForm = this.fb.group({
-      role: [''],
-    });
-  }
 
   updateUser() {
     if (!this.role?.value) {
@@ -107,14 +108,14 @@ export class UserUpdateComponent implements OnInit {
           role: this.role?.value,
         };
         this.authService.updateUser(userUpdateData).subscribe((res) => {
-         this.localStorageService.storeToken(res.accessToken);
-         this.localStorageService.storeUserRole(res.role);
-         const user = this.localStorageService.decodeToken(res.accessToken);
-         if (user) {
-           this.userService.setUser(user);
-         }
-         this.router.navigate(['/']);
-        })
+          this.localStorageService.storeToken(res.accessToken);
+          this.localStorageService.storeUserRole(res.role);
+          const user = this.localStorageService.decodeToken(res.accessToken);
+          if (user) {
+            this.userService.setUser(user);
+          }
+          this.router.navigate(['/']);
+        });
       });
     }
   }

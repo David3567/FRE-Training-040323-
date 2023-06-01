@@ -9,10 +9,6 @@ import { MovieService } from '../movie.service';
   styleUrls: ['./movie-detail.component.css'],
 })
 export class MovieDetailComponent implements OnInit {
-  constructor(
-    private route: ActivatedRoute,
-    private movieService: MovieService
-  ) {}
   actors!: any[];
   imageUrl: string = '';
   movieInfo: any;
@@ -21,7 +17,11 @@ export class MovieDetailComponent implements OnInit {
   movieTrailers: any[] = [];
   videosLoaded = false;
   data: any;
-
+  
+  constructor(
+    private route: ActivatedRoute,
+    private movieService: MovieService
+  ) {}
   ngOnInit(): void {
     this.id = this.route.snapshot.paramMap.get('id');
     console.log(this.id);

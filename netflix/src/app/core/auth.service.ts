@@ -13,9 +13,10 @@ import { LocalStorageService } from './local-storage.service';
   providedIn: 'root',
 })
 export class AuthService {
-  constructor(private http: HttpClient) {}
-
   url = 'http://localhost:4231';
+
+  constructor(private http: HttpClient) {}
+  
   checkEmail(email: string) {
     return this.http.post(`${this.url}/auth/check-email`, {
       email: email,

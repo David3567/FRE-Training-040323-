@@ -14,17 +14,9 @@ export class MoviesComponent implements OnInit, OnDestroy {
   isLoading: boolean = false;
   page: number = 1;
   subscription: Subscription | undefined;
-
-  fetchMovies(): void {
-    this.isLoading = true;
-    this.subscription = this.movieService
-      .getMovies(this.page)
-      .subscribe((moviesList) => {
-        this.movies = this.movies.concat(moviesList);
-        this.isLoading = false;
-      });
-  }
+  
   constructor(private movieService: MovieService) {}
+
   ngOnInit(): void {
     this.fetchMovies();
   }
@@ -33,6 +25,16 @@ export class MoviesComponent implements OnInit, OnDestroy {
     if (this.subscription) {
       this.subscription.unsubscribe();
     }
+  }
+  
+  fetchMovies(): void {
+    this.isLoading = true;
+    this.subscription = this.movieService
+      .getMovies(this.page)
+      .subscribe((moviesList) => {
+        this.movies = this.movies.concat(moviesList);
+        this.isLoading = false;
+      });
   }
   scrollCallback(): void {
     console.log('scrolled');

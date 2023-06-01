@@ -18,6 +18,11 @@ export class UserService {
     exp: 0,
   });
 
+  constructor(private localStorageService: LocalStorageService) {
+    this.token = this.localStorageService.getToken();
+    this.decodeToken();
+  }
+  
   private decodeToken(): void {
     if (this.token) {
       try {
@@ -29,10 +34,6 @@ export class UserService {
     }
   }
 
-  constructor(private localStorageService: LocalStorageService) {
-    this.token = this.localStorageService.getToken();
-    this.decodeToken();
-  }
 
   getUser(): Observable<User> {
     return this.userSubject.asObservable();
