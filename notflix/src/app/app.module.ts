@@ -24,7 +24,7 @@ import { RegisterEmailComponent } from './components/register-page/register-emai
 import { RegisterUsernameComponent } from './components/register-page/register-username/register-username.component';
 import { RegisterPlanComponent } from './components/register-page/register-plan/register-plan.component';
 import {MatTableModule} from '@angular/material/table';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { MovieListPageComponent } from './components/movie-list-page/movie-list-page.component';
 import { MovieItemComponent } from './components/movie-list-page/movie-item/movie-item.component';
 import { TruncatePipe } from './truncate.pipe';
@@ -33,7 +33,12 @@ import { MovieDetailsComponent } from './components/movie-list-page/movie-detail
 import {YouTubePlayerModule} from '@angular/youtube-player';
 import { TrailerComponent } from './components/trailer/trailer.component'
 import {MatDialogModule} from '@angular/material/dialog';
-import { VideoModalComponent } from './video-modal/video-modal.component'
+import { VideoModalComponent } from './video-modal/video-modal.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { AuthGuardService } from './auth-guard.service';
+// import { AuthGuardComponent } from './auth-guard/auth-guard.component'
+import {InfiniteScrollModule} from 'ngx-infinite-scroll'
+import { RequestInterceptor } from './request.interceptor';
 
 
 
@@ -57,7 +62,9 @@ import { VideoModalComponent } from './video-modal/video-modal.component'
     TruncatePipe,
     MovieDetailsComponent,
     TrailerComponent,
-    VideoModalComponent
+    VideoModalComponent,
+    PageNotFoundComponent,
+    // AuthGuardComponent
   ],
   imports: [
     BrowserModule,
@@ -75,8 +82,9 @@ import { VideoModalComponent } from './video-modal/video-modal.component'
     ReactiveFormsModule,
     YouTubePlayerModule,
     MatDialogModule,
+    InfiniteScrollModule
   ],
-  providers: [TruncatePipe],
+  providers: [TruncatePipe, AuthGuardService, {provide: HTTP_INTERCEPTORS, useClass: RequestInterceptor, multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

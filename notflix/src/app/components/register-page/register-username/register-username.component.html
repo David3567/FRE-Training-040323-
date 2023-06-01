@@ -3,15 +3,15 @@
   <h3>Create a username and add your Tmdb API key</h3>
   <h6>Just a few more steps and you're done!</h6>
   <h6>We hate paperwork, too.</h6>
-  <form action="">
+  <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
     <mat-form-field>
       <mat-label>Username</mat-label>
-      <input type="text" matInput>
+      <input type="text" matInput formControlName="username">
     </mat-form-field>
     <mat-form-field>
       <mat-label>Key</mat-label>
-      <input type="text" matInput>
+      <input type="text" matInput formControlName="apiKey">
     </mat-form-field>
+    <button mat-button type="submit">Next</button>
   </form>
-  <button mat-button routerLink="../plan">Next</button>
 </div>

@@ -1,13 +1,16 @@
-<div class="item-container" [ngStyle]="{background: 'linear-gradient(to top left,#191a1a1b,#080100), url(http://image.tmdb.org/t/p//w1280' + movieInfo.poster_path + ')'}" (click)="onClick()" routerLink="/movie">
+<div class="item-container" [ngStyle]="{background: 'linear-gradient(to top left,#191a1a1b,#080100), url(http://image.tmdb.org/t/p//w1280' + movieInfo.poster_path + ')'}" [routerLink]="getRouterLink()">
+  <div class="loading" *ngIf="loading">
+    Loading...
+  </div>
   <img [src]="'http://image.tmdb.org/t/p//w1280' + movieInfo.poster_path" alt="movie image">
   <div class="content-container">
-    <h3>{{movieInfo.original_title}}</h3>
+    <h3 class="title">{{movieInfo.original_title}}</h3>
     <div class="stats-container">
       <div class="date">{{movieInfo.release_date.substring(0, 4)}}</div>
       <div class="language"><em>{{movieInfo.original_language}}</em></div>
       <div class="rating">{{movieInfo.vote_average}}</div>
     </div>
-    <p><em>{{movieOverview}}</em></p>
+    <p class="content"><em>{{movieInfo.overview | truncate: 90}}</em></p>
     <button mat-button>More Details</button>
   </div>
 </div>

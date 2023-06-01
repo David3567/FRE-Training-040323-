@@ -14,3 +14,109 @@
   justify-content: center;
   align-items: center;
 }
+
+.form-container {
+  display: flex;
+  color: black;
+  flex-direction: column;
+
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  button {
+    background-color: red;
+    border: none;
+    height: 3rem;
+    color: white;
+    border-radius: .5rem;
+
+    &:hover {
+      cursor: pointer;
+
+    }
+  }
+}
+
+* {
+  color: black;
+  padding: 0;
+}
+
+mat-icon {
+  padding-top: .7rem;
+  margin-right: -.5rem;
+}
+
+.plan-container {
+  display: flex;
+  flex-direction: column;
+
+}
+
+
+.plan-type-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.plan-type-box {
+  background-color: darkred;
+  width: 8rem;
+  height: 8rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  border-radius: 1rem;
+  margin-right: .25rem;
+}
+
+.plan-type-triangle {
+  width: 0;
+  height: 0;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+
+  border-top: 20px solid transparent;
+
+
+}
+
+// .plan-type-triangle2 {
+//   width:0px;
+//             height:0px;
+//             border:10px solid;
+//             border-top-color: red;
+//             border-left-color: transparent;
+//             border-right-color: transparent;
+//             border-bottom-color: transparent;
+//             background-color: red;
+// }
+
+.selected {
+  .plan-type-box{
+    background-color: red;
+
+  }
+  .plan-type-triangle {
+    border-top: 20px solid red;
+  }
+
+  color: red;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+
+  td, th {
+    padding-bottom: 1rem;
+    padding-top: 1rem;
+  }
+}
+
+.horizontal-line {
+  border-bottom: 2px solid #ccc;
+}

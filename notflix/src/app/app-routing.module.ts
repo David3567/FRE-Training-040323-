@@ -8,6 +8,9 @@ import { RegisterUsernameComponent } from './components/register-page/register-u
 import { RegisterPlanComponent } from './components/register-page/register-plan/register-plan.component';
 import { MovieListPageComponent } from './components/movie-list-page/movie-list-page.component';
 import { MovieDetailsComponent } from './components/movie-list-page/movie-details/movie-details.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { MovieResolver } from './movie.resolver';
+import { AuthGuardService } from './auth-guard.service';
 
 const routes: Routes = [
   {path: '', component: HomePageComponent},
@@ -17,8 +20,10 @@ const routes: Routes = [
     {path: 'username', component: RegisterUsernameComponent},
     {path: 'plan', component: RegisterPlanComponent}
   ]},
-  {path: 'movies', component: MovieListPageComponent},
-  {path: 'movies/:id', component: MovieDetailsComponent}
+  {path: 'movies', component: MovieListPageComponent, canActivate: [AuthGuardService]},
+  {path: 'movies/:id', component: MovieDetailsComponent, resolve: {movieData: MovieResolver}},
+  {path: 'not-found', component: PageNotFoundComponent},
+  {path: '**',  redirectTo: '/not-found'}
 ];
 
 @NgModule({

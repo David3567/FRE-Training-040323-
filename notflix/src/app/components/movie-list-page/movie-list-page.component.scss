@@ -5,8 +5,9 @@
   gap: .75rem;
   align-content: flex-start;
   justify-content: flex-start;
+  align-items: stretch;
   app-movie-item {
-    flex: calc(14.29% - .75rem);
+    flex: 1;
     max-width: calc(14.29% - .75rem);
 
     @media only screen and (max-width: 1800px) {

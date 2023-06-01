@@ -3,15 +3,15 @@
   <h3>Create a password to start your membership</h3>
   <h6>Just a few more steps and you're done!</h6>
   <h6>We hate paperwork, too.</h6>
-  <form action="">
+  <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
     <mat-form-field>
       <mat-label>Email</mat-label>
-      <input type="email" matInput>
+      <input type="email" formControlName="email" matInput>
     </mat-form-field>
     <mat-form-field>
       <mat-label>Password</mat-label>
-      <input type="password" matInput>
+      <input type="password" matInput formControlName="password">
     </mat-form-field>
+    <button mat-button type="submit">Next</button>
   </form>
-  <button mat-button routerLink="username">Next</button>
 </div>
