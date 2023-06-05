@@ -45,4 +45,7 @@ export class AuthService {
         }
         return this.http.patch(`${this.apiBackend}/auth/userupdate`, user);
     }
+
+    // @Patch('/userupdate')
+    // @UseGuards(AuthGuard('jwt'))
 }

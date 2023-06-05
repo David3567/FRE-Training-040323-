@@ -45,10 +45,6 @@ export class MovieListComponent {
     this.router.navigate(['/movie-details']);
   }
 
-  updateUser() {
-    this.router.navigate(['/update-role']);
-  }
-
   signOut() {
     this.storage.setItem('signup-username', "");
     this.storage.setItem('signup-email', "");

@@ -5,9 +5,9 @@
         <img class="Logo" src="../../assets/Logo_Fake.png" />
       </button>
       <button *ngIf='!username' class="signinButton" [routerLink]="['/sign-in']">Sign In</button>
+      <button class="signinButton" [routerLink]="['/update-role']">Change Plan</button>
       <div *ngIf='username' class="userLogin">
         <p class="username">{{username}}</p>
-        <!-- <button class="signinButton" (click)="updateUser()">Change Plan</button> -->
         <button class="signinButton" (click)="signOut()">Sign Out</button>
       </div>
     </div>

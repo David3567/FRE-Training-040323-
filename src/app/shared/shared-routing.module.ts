@@ -7,6 +7,7 @@ import { Step2Component } from './register/step2/step2.component';
 import { Step3Component } from './register/step3/step3.component';
 import { MovieListComponent } from './movie-list/movie-list.component';
 import { MovieDetailsComponent } from './movie-details/movie-details.component';
+import { UpdateRoleComponent } from './update-role/update-role.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'homepage', pathMatch: 'full' },
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: 'step3', component: Step3Component },
   { path: 'movie-list', component: MovieListComponent },
   { path: 'movie-details', component: MovieDetailsComponent },
+  { path: 'update-role', component: UpdateRoleComponent },
 ];
 
 @NgModule({

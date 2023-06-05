@@ -1,0 +1,24 @@
+<body>
+    <div class="Top-Bar">
+        <div class="Top-Bar-Elements">
+            <button class="Logo-Button" [routerLink]="['/homepage']">
+                <img class="Logo" src="../../assets/Logo_Fake.png" />
+            </button>
+            <button class="signinButton" [routerLink]="['/movie-list']">Back to Movies</button>
+        </div>
+    </div>
+    <hr>
+    <div class="intro-container">
+        <p class="topText">Choose the plan that’s right for you!</p>
+    </div>
+
+    <div class="plan-container">
+        <div class="button-display">
+            <p class="text">Choose Plan:</p>
+            <button class="plan-button" (click)="selectPlan(1)">Standard with ads</button>
+            <button class="plan-button" (click)="selectPlan(2)">Standard</button>
+            <button class="plan-button" (click)="selectPlan(3)">Premium</button>
+        </div>
+        <button class="NextButton" type="submit" [disabled]="plan == 0" (click)="onSubmit()">Update Plan</button>
+    </div>
+</body>

@@ -14,6 +14,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { YouTubePlayerModule } from '@angular/youtube-player';
 import { LocalStorageService } from '../core/localStorage';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { UpdateRoleComponent } from './update-role/update-role.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
     Step1Component,
     Step2Component,
     Step3Component,
+    UpdateRoleComponent,
   ],
   imports: [
     CommonModule,
