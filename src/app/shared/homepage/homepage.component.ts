@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { eachBox } from './interface';
+import { eachBox } from 'src/app/core/interfaces';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LocalStorageService } from 'src/app/core/localStorage';

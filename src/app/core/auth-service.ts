@@ -34,4 +34,15 @@ export class AuthService {
         const user = { "email": email }
         return this.http.post(`${this.apiBackend}/auth/check-email`, user)
     }
+
+    updateUser(info: Array<string>) {
+        const user = {
+            "username": info[0],
+            "password": info[1],
+            "email": info[2],
+            "role": info[3],
+            "tmdb_key": info[4]
+        }
+        return this.http.patch(`${this.apiBackend}/auth/userupdate`, user);
+    }
 }

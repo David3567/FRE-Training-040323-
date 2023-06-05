@@ -7,6 +7,7 @@
       <button *ngIf='!username' class="signinButton" [routerLink]="['/sign-in']">Sign In</button>
       <div *ngIf='username' class="userLogin">
         <p class="username">{{username}}</p>
+        <!-- <button class="signinButton" (click)="updateUser()">Change Plan</button> -->
         <button class="signinButton" (click)="signOut()">Sign Out</button>
       </div>
     </div>
@@ -22,7 +23,7 @@
           <img class="poster" src="{{index.poster_path}}">
           <p class="title">{{index.title}}</p>
           <p class="context">{{index.overview}}</p>
-          <button *ngIf="isAdmin == 'ADMIN'" class="button" type="submit" (click)="onSubmit(index.id)">
+          <button *ngIf="isAdmin == 'ADMIN' || isAdmin == 'SUPERUSER'" class="button" type="submit" (click)="onSubmit(index.id)">
             More Details
           </button>
         </div>

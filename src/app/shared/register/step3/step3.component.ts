@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { plans } from '../step3/interface';
+import { plans } from 'src/app/core/interfaces';
 import { LocalStorageService } from 'src/app/core/localStorage';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/core/auth-service';

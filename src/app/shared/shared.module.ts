@@ -15,8 +15,6 @@ import { YouTubePlayerModule } from '@angular/youtube-player';
 import { LocalStorageService } from '../core/localStorage';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
-
-
 @NgModule({
   declarations: [
     HomepageComponent,
@@ -25,7 +23,7 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
     MovieDetailsComponent,
     Step1Component,
     Step2Component,
-    Step3Component
+    Step3Component,
   ],
   imports: [
     CommonModule,

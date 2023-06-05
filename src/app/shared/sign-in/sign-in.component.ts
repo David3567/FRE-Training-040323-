@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
-import { userData } from './interface';
+import { userData } from 'src/app/core/interfaces';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ApiService } from 'src/app/core/service';
 import jwt_decode from 'jwt-decode';
 import { LocalStorageService } from 'src/app/core/localStorage';
 import { AuthService } from 'src/app/core/auth-service';
