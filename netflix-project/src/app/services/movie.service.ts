@@ -26,7 +26,7 @@ import { Url } from '../interface/url';
 @Injectable({
   providedIn: 'root',
 })
-export class MovieService implements OnInit {
+export class MovieService {
   private api_key: string = '?api_key=' + '9b4d0b3f81f6c163aac86be798191447';
   private url: string = 'https://image.tmdb.org/t/p/';
 

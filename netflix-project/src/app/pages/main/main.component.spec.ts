@@ -1,6 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { MainComponent } from './main.component';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DisplayBoxComponent } from 'src/app/components/display-box/display-box.component';
 
 describe('MainComponent', () => {
   let component: MainComponent;
@@ -8,9 +11,9 @@ describe('MainComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ MainComponent ]
-    })
-    .compileComponents();
+      imports: [HttpClientModule, ReactiveFormsModule, FormsModule],
+      declarations: [MainComponent, DisplayBoxComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(MainComponent);
     component = fixture.componentInstance;

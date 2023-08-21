@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { RegformComponent } from './regform.component';
+import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
 
 describe('RegformComponent', () => {
   let component: RegformComponent;
@@ -8,9 +10,9 @@ describe('RegformComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ RegformComponent ]
-    })
-    .compileComponents();
+      declarations: [RegformComponent],
+      imports: [HttpClientModule, ReactiveFormsModule],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(RegformComponent);
     component = fixture.componentInstance;
